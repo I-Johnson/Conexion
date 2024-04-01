@@ -1,5 +1,4 @@
 package conexion;
-import java.util.ArrayList;
 
 public class User extends Page{
 	private String userName;
@@ -15,13 +14,16 @@ public class User extends Page{
 	 * @param userEmail
 	 * @param userBio
 	 */
-	public User(IDGenerator idGenerator, ArrayList<Skill> skills, ArrayList<Post> posts, String userName, String userPassword,
+	public User(IDGenerator idGenerator, String userName, String userPassword,
 			String userEmail, String userBio) {
-		super(idGenerator, skills, posts);
+		super(idGenerator);
 		this.userName = userName;
 		this.userPassword = userPassword;
 		this.userEmail = userEmail;
 		this.userBio = userBio;
+		
+		// giving user permission to edit their own page
+		this.addEditor(this);
 	}
 	/**
 	 * @return the userName
@@ -72,9 +74,40 @@ public class User extends Page{
 		this.userBio = userBio;
 	}
 
-	public void post(String postTitle, String postDate, ArrayList<String> postAttachments, String postBody, ArrayList<Skill> skills ) {
-		Post newPost = new Post(this.idGenerator, skills, null, postTitle, postDate, postAttachments, postBody, this);
+	public void post(String postTitle, String postDate, String postBody) {
+		Post newPost = new Post(this.idGenerator, postTitle, postDate, postBody, this);
 		getPosts().add(newPost);
+	}
+
+	@Override
+	public void addSkill(Skill skill) {
+		this.getSkills().add(skill);
+		skill.addViewer(this);
+		
+	}
+	@Override
+	public void addPost(Post post) {
+		this.getPosts().add(post);
+		post.addViewer(this);
+		
+	}
+	
+	public boolean viewAttempt(Page page) {
+		if (page.viewers.contains(this)) {
+			return true;
+		}
+		else {
+			return isPublicallyVisible;
+		}
+	}
+	
+	public boolean editAttempt(Page page) {
+		if (page.editors.contains(this)) {
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
 }
 

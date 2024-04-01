@@ -4,20 +4,22 @@ import java.util.ArrayList;
 public abstract class Page {
 
 	private int pageID;
-	private ArrayList<Skill> skills;
-	private ArrayList<Post> posts;
+	public ArrayList<Skill> skills;
+	public ArrayList<Post> posts;
 	public IDGenerator idGenerator;
-	/**
-	 * @param pageID
-	 * @param skills
-	 * @param posts
-	 */
-	public Page(IDGenerator idGenerator, ArrayList<Skill> skills, ArrayList<Post> posts) {
+	public ArrayList<User> viewers;
+	public ArrayList<User> editors;
+	public boolean isPublicallyVisible;
+	
+	public Page(IDGenerator idGenerator) {
 		super();
-		this.skills = skills;
-		this.posts = posts;
 		this.idGenerator = idGenerator;
+		this.skills = new ArrayList<Skill>();
+		this.posts = new ArrayList<Post>();
 		this.pageID = idGenerator.giveID(this);
+		this.viewers = new ArrayList<User>();
+		this.editors = new ArrayList<User> ();
+		this.isPublicallyVisible = true;
 	}
 	public IDGenerator getIdGenerator() {
 		return idGenerator;
@@ -61,6 +63,21 @@ public abstract class Page {
 	public void setPosts(ArrayList<Post> posts) {
 		this.posts = posts;
 	}
+	
+	public abstract void addSkill(Skill skill);
+	public abstract void addPost(Post post);
+	
+	public void addViewer(User user) {
+		this.viewers.add(user);
+	}
+	
+	// editor automatically has viewer access
+	public void addEditor(User user) {
+		this.editors.add(user);
+		this.viewers.add(user);
+		
+	}
+	
 	
 	
 }

@@ -1,5 +1,4 @@
 package conexion;
-import java.util.ArrayList;
 
 public class Person extends User{
 	private int yearsOfExperience;
@@ -18,10 +17,10 @@ public class Person extends User{
 	 * @param personInstitution
 	 * @param personMajor
 	 */
-	public Person(IDGenerator idGenerator, ArrayList<Skill> skills, ArrayList<Post> posts, String userName, String userPassword,
+	public Person(IDGenerator idGenerator, String userName, String userPassword,
 			String userEmail, String userBio, int yearsOfExperience, String personDegree, String personInstitution,
 			String personMajor) {
-		super(idGenerator, skills, posts, userName, userPassword, userEmail, userBio);
+		super(idGenerator, userName, userPassword, userEmail, userBio);
 		this.yearsOfExperience = yearsOfExperience;
 		this.personDegree = personDegree;
 		this.personInstitution = personInstitution;

@@ -18,17 +18,19 @@ public class Post extends Page{
 	 * @param postBody
 	 * @param postAuthor
 	 */
-	public Post(IDGenerator idGenerator, ArrayList<Skill> skills, ArrayList<Post> posts, String postTitle, String postDate,
-			ArrayList<String> postAttachments, String postBody, User postAuthor) {
-		super(idGenerator, skills, posts);
+	public Post(IDGenerator idGenerator, String postTitle, String postDate,
+			 String postBody, User postAuthor) {
+		super(idGenerator);
 		this.postTitle = postTitle;
 		this.postDate = postDate;
-		this.postAttachments = postAttachments;
+		this.postAttachments = new ArrayList<String>();
 		this.postBody = postBody;
 		this.postAuthor = postAuthor;
 		for (Skill relatedSkill : this.getSkills()) {
 			relatedSkill.getPosts().add(this);
 		}
+		// giving author editor access to their own posts
+		this.addEditor(postAuthor);
 	}
 	/**
 	 * @return the postTitle
@@ -89,6 +91,19 @@ public class Post extends Page{
 	 */
 	public void setPostAuthor(User postAuthor) {
 		this.postAuthor = postAuthor;
+	}
+	
+	@Override
+	public void addSkill(Skill skill) {
+		this.getSkills().add(skill);
+		skill.getPosts().add(this);
+		
+	}
+	@Override
+	public void addPost(Post post) {
+		this.getPosts().add(post);
+		post.getPosts().add(this);
+		
 	}
 	
 	

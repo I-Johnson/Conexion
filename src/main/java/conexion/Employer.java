@@ -1,11 +1,8 @@
 package conexion;
 
-import java.util.ArrayList;
-
 public class Employer extends User{
 
 	private String employerLocation;
-	private ArrayList<Job> jobOpenings;
 	/**
 	 * @param pageID
 	 * @param skills
@@ -17,11 +14,11 @@ public class Employer extends User{
 	 * @param employerLocation
 	 * @param jobOpenings
 	 */
-	public Employer(IDGenerator idGenerator, ArrayList<Skill> skills, ArrayList<Post> posts, String userName, String userPassword,
-			String userEmail, String userBio, String employerLocation, ArrayList<Job> jobOpenings) {
-		super(idGenerator, skills, posts, userName, userPassword, userEmail, userBio);
+	public Employer(IDGenerator idGenerator, String userName, String userPassword,
+			String userEmail, String userBio, String employerLocation) {
+		super(idGenerator, userName, userPassword, userEmail, userBio);
 		this.employerLocation = employerLocation;
-		this.jobOpenings = jobOpenings;
+//		this.jobOpenings = jobOpenings;
 	}
 	/**
 	 * @return the employerLocation
@@ -38,19 +35,10 @@ public class Employer extends User{
 	/**
 	 * @return the jobOpenings
 	 */
-	public ArrayList<Job> getJobOpenings() {
-		return jobOpenings;
-	}
-	/**
-	 * @param jobOpenings the jobOpenings to set
-	 */
-	public void setJobOpenings(ArrayList<Job> jobOpenings) {
-		this.jobOpenings = jobOpenings;
-	}
 	
-	public void postJob(int requiredExperience, String requiredDegree, String requiredMajor, ArrayList<Skill> skills, 
-			String postTitle, String postDate, ArrayList<String> postAttachments, String postBody) {
-		Job newJob = new Job(idGenerator, skills, null, postTitle, postDate, postAttachments, postBody, 
+	public void postJob(int requiredExperience, String requiredDegree, String requiredMajor, 
+			String postTitle, String postDate, String postBody) {
+		Job newJob = new Job(idGenerator, postTitle, postDate, postBody, 
 							this, requiredExperience, requiredDegree, requiredMajor);
 		getPosts().add(newJob);
 	}

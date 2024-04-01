@@ -1,5 +1,4 @@
 package conexion;
- import java.util.ArrayList;
 
 public class Skill extends Page{
 	
@@ -11,14 +10,35 @@ public class Skill extends Page{
 	 * @param posts
 	 * @param skill
 	 */
-	public Skill(IDGenerator idGenerator, ArrayList<Skill> skills, ArrayList<Post> posts, String skill) {
-		super(idGenerator, skills, posts);
-		this.skill = skill;
+	public Skill(IDGenerator idGenerator, String skill) {
+		super(idGenerator);
+
+		this.setSkill(skill);
 		for (Post relatedPost : this.getPosts()) {
 			relatedPost.getSkills().add(this);
 		}
 	}
+
+
+	public String getSkill() {
+		return skill;
+	}
+
+	public void setSkill(String skill) {
+		this.skill = skill;
+	}
 	
-	
+	@Override
+	public void addSkill(Skill skill) {
+		this.getSkills().add(skill);
+		skill.getSkills().add(this);
+		
+	}
+	@Override
+	public void addPost(Post post) {
+		this.getPosts().add(post);
+		post.getSkills().add(this);
+		
+	}
 
 }
