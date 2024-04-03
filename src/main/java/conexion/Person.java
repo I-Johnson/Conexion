@@ -85,13 +85,13 @@ public class Person extends User{
 	            return fail;
 	        }
 		
-		for(Skill requiredSkill : job.getSkills()) {
-			if (!this.getSkills().contains(requiredSkill)) {
+		for(Integer requiredSkillId : job.getSkills()) {
+			if (!this.getSkills().contains(requiredSkillId)) {
 				return fail;
 			}
 		}
 		
-		job.getApplicants().add(this);
+		job.addApplicant((Person)this);
 		return success;
 	}
 

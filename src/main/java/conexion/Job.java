@@ -3,7 +3,7 @@ import java.util.ArrayList;
 
 public class Job extends Post{
 
-	private ArrayList<Person> applicants;
+	private ArrayList<Integer> applicants;
 	private int requiredExperience;
 	private String requiredDegree;
 	private String requiredMajor;
@@ -27,11 +27,11 @@ public class Job extends Post{
 	 * @param skillRequirements
 	 */
 	public Job(IDGenerator idGenerator, String postTitle,
-			String postDate, String postBody, User postAuthor, int requiredExperience, String requiredDegree, String requiredMajor) {
+			String postDate, String postBody, Integer postAuthorId, int requiredExperience, String requiredDegree, String requiredMajor) {
 		
-		super(idGenerator, postTitle, postDate, postBody, postAuthor);
+		super(idGenerator, postTitle, postDate, postBody, postAuthorId);
 		
-		this.applicants = new ArrayList<Person> ();
+		this.applicants = new ArrayList<Integer>();
 		this.postAttachments = new ArrayList<String>();
 		this.requiredExperience = requiredExperience;
 		this.requiredDegree = requiredDegree;
@@ -42,16 +42,10 @@ public class Job extends Post{
 	/**
 	 * @return the applicants
 	 */
-	public ArrayList<Person> getApplicants() {
+	public ArrayList<Integer> getApplicants() {
 		return applicants;
 	}
 
-	/**
-	 * @param applicants the applicants to set
-	 */
-	public void setApplicants(ArrayList<Person> applicants) {
-		this.applicants = applicants;
-	}
 
 	/**
 	 * @return the requiredExperience
@@ -101,6 +95,10 @@ public class Job extends Post{
 	
 	public void addPostAttachment(String string) {
 		this.postAttachments.add(string);
+	}
+	
+	public void addApplicant(User user) {
+		this.applicants.add(getPageID());
 	}
 
 }

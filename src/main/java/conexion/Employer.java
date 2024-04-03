@@ -1,6 +1,6 @@
 package conexion;
 
-public class Employer extends User{
+public class Employer extends User {
 
 	private String employerLocation;
 	/**
@@ -37,10 +37,14 @@ public class Employer extends User{
 	 */
 	
 	public void postJob(int requiredExperience, String requiredDegree, String requiredMajor, 
-			String postTitle, String postDate, String postBody) {
+			String postTitle, String postDate, String postBody, recommendation recommendation) {
 		Job newJob = new Job(idGenerator, postTitle, postDate, postBody, 
-							this, requiredExperience, requiredDegree, requiredMajor);
-		getPosts().add(newJob);
+							this.getPageID(), requiredExperience, requiredDegree, requiredMajor);
+//		getPosts().add(newJob.getPageID());
+		this.addPost(newJob);
+		recommendation.sendRecommendation(this.idGenerator);
 	}
+	
+	
 	
 }

@@ -1,26 +1,37 @@
 package conexion;
 import java.util.ArrayList;
 
+import org.springframework.web.client.RestClient;
+
+
 public abstract class Page {
 
-	private int pageID;
-	public ArrayList<Skill> skills;
-	public ArrayList<Post> posts;
+	private Integer pageID;
+	public ArrayList<Integer> skills;
+	public ArrayList<Integer> posts;
 	public IDGenerator idGenerator;
-	public ArrayList<User> viewers;
-	public ArrayList<User> editors;
+	public ArrayList<Integer> viewers;
+	public ArrayList<Integer> editors;
 	public boolean isPublicallyVisible;
 	
 	public Page(IDGenerator idGenerator) {
 		super();
 		this.idGenerator = idGenerator;
-		this.skills = new ArrayList<Skill>();
-		this.posts = new ArrayList<Post>();
+		this.skills = new ArrayList<Integer>();
+		this.posts = new ArrayList<Integer>();
 		this.pageID = idGenerator.giveID(this);
-		this.viewers = new ArrayList<User>();
-		this.editors = new ArrayList<User> ();
+		this.viewers = new ArrayList<Integer>();
+		this.editors = new ArrayList<Integer> ();
 		this.isPublicallyVisible = true;
 	}
+	
+public record Desc(Integer PageID, ArrayList<Integer> skills, ArrayList<Integer> posts, IDGenerator idGenerator, ArrayList<Integer> viewers, ArrayList<Integer> editors, boolean isPubliclyVisible) {};
+	
+	public record Response(String request, 
+			boolean successful, 
+			String message, 
+			ArrayList<Desc> data) {};
+	
 	public IDGenerator getIdGenerator() {
 		return idGenerator;
 	}
@@ -30,37 +41,37 @@ public abstract class Page {
 	/**
 	 * @return the pageID
 	 */
-	public int getPageID() {
+	public Integer getPageID() {
 		return pageID;
 	}
 	/**
 	 * @param pageID the pageID to set
 	 */
-	public void setPageID(int pageID) {
+	public void setPageID(Integer pageID) {
 		this.pageID = pageID;
 	}
 	/**
 	 * @return the skills
 	 */
-	public ArrayList<Skill> getSkills() {
+	public ArrayList<Integer> getSkills() {
 		return skills;
 	}
 	/**
 	 * @param skills the skills to set
 	 */
-	public void setSkills(ArrayList<Skill> skills) {
+	public void setSkills(ArrayList<Integer> skills) {
 		this.skills = skills;
 	}
 	/**
 	 * @return the posts
 	 */
-	public ArrayList<Post> getPosts() {
+	public ArrayList<Integer> getPosts() {
 		return posts;
 	}
 	/**
 	 * @param posts the posts to set
 	 */
-	public void setPosts(ArrayList<Post> posts) {
+	public void setPosts(ArrayList<Integer> posts) {
 		this.posts = posts;
 	}
 	
@@ -68,16 +79,17 @@ public abstract class Page {
 	public abstract void addPost(Post post);
 	
 	public void addViewer(User user) {
-		this.viewers.add(user);
+		this.viewers.add(user.getPageID());
 	}
 	
 	// editor automatically has viewer access
 	public void addEditor(User user) {
-		this.editors.add(user);
-		this.viewers.add(user);
+		this.editors.add(user.getPageID());
+		this.viewers.add(user.getPageID());
 		
 	}
 	
+
 	
 	
 }

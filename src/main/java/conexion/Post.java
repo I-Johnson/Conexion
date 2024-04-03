@@ -7,7 +7,7 @@ public class Post extends Page{
 	private String postDate;
 	private ArrayList<String> postAttachments;
 	private String postBody;
-	private User postAuthor;
+	private Integer postAuthorId;
 	/**
 	 * @param pageID
 	 * @param skills
@@ -19,18 +19,18 @@ public class Post extends Page{
 	 * @param postAuthor
 	 */
 	public Post(IDGenerator idGenerator, String postTitle, String postDate,
-			 String postBody, User postAuthor) {
+			 String postBody, Integer postAuthorId) {
 		super(idGenerator);
 		this.postTitle = postTitle;
 		this.postDate = postDate;
 		this.postAttachments = new ArrayList<String>();
 		this.postBody = postBody;
-		this.postAuthor = postAuthor;
-		for (Skill relatedSkill : this.getSkills()) {
-			relatedSkill.getPosts().add(this);
-		}
+		this.postAuthorId = postAuthorId;
+//		for (Skill relatedSkill : this.getSkills()) {
+//			relatedSkill.getPosts().add(this);
+//		}
 		// giving author editor access to their own posts
-		this.addEditor(postAuthor);
+		this.addEditor((User)idGenerator.getPageById(postAuthorId));
 	}
 	/**
 	 * @return the postTitle
@@ -83,26 +83,26 @@ public class Post extends Page{
 	/**
 	 * @return the postAuthor
 	 */
-	public User getPostAuthor() {
-		return postAuthor;
+	public Integer getPostAuthorId() {
+		return postAuthorId;
 	}
 	/**
 	 * @param postAuthor the postAuthor to set
 	 */
-	public void setPostAuthor(User postAuthor) {
-		this.postAuthor = postAuthor;
+	public void setPostAuthorId(Integer postAuthorId) {
+		this.postAuthorId = postAuthorId;
 	}
 	
 	@Override
 	public void addSkill(Skill skill) {
-		this.getSkills().add(skill);
-		skill.getPosts().add(this);
+		this.getSkills().add(skill.getPageID());
+		skill.getPosts().add(this.getPageID());
 		
 	}
 	@Override
 	public void addPost(Post post) {
-		this.getPosts().add(post);
-		post.getPosts().add(this);
+		this.getPosts().add(post.getPageID());
+		post.getPosts().add(this.getPageID());
 		
 	}
 	
