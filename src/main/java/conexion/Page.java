@@ -3,9 +3,12 @@ import java.util.ArrayList;
 
 import org.springframework.web.client.RestClient;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 
 public abstract class Page {
-
 	private Integer pageID;
 	public ArrayList<Integer> skills;
 	public ArrayList<Integer> posts;
@@ -15,26 +18,24 @@ public abstract class Page {
 	public boolean isPublicallyVisible;
 	
 	public Page(IDGenerator idGenerator) {
-		super();
 		this.idGenerator = idGenerator;
 		this.skills = new ArrayList<Integer>();
 		this.posts = new ArrayList<Integer>();
 		this.pageID = idGenerator.giveID(this);
+		
 		this.viewers = new ArrayList<Integer>();
 		this.editors = new ArrayList<Integer> ();
 		this.isPublicallyVisible = true;
 	}
 	
-public record Desc(Integer PageID, ArrayList<Integer> skills, ArrayList<Integer> posts, IDGenerator idGenerator, ArrayList<Integer> viewers, ArrayList<Integer> editors, boolean isPubliclyVisible) {};
+
 	
-	public record Response(String request, 
-			boolean successful, 
-			String message, 
-			ArrayList<Desc> data) {};
-	
+	@JsonIgnore
 	public IDGenerator getIdGenerator() {
 		return idGenerator;
 	}
+
+	@JsonProperty
 	public void setIdGenerator(IDGenerator idGenerator) {
 		this.idGenerator = idGenerator;
 	}
@@ -65,6 +66,7 @@ public record Desc(Integer PageID, ArrayList<Integer> skills, ArrayList<Integer>
 	/**
 	 * @return the posts
 	 */
+	
 	public ArrayList<Integer> getPosts() {
 		return posts;
 	}

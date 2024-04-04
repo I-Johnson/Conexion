@@ -1,30 +1,121 @@
 package conexion;
 
+import org.springframework.http.MediaType;
 import org.springframework.web.client.RestClient;
+
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 public class RestMain {
 
-	RestClient client = RestClient.create();
-    String uriBase = "http://localhost:3500";
+	public record Desc(String name, String description, String location) {};
 	
-    public static void main(String[] args) {
-        
-//
-        IDGenerator idGenerator = new IDGenerator(); // Initialize IDGenerator
+	Desc myDesc;
+	
+	RestClient client;
+    String uriBase = "http://localhost:9000/v1/";
 
-        // Creating a Skill
-        Skill skill = new Skill(idGenerator, uriBase);
+    
+	public RestMain() {
+		 client = RestClient.create();
+		 myDesc = new Desc("Conexion", "pages", "myloc");
+	}
+	
 
-        // Now you can interact with the skill similar to what you did with pages
-        // For example:
-        String response = client.post()
-                .uri(uriBase + "/page/skill")
-                .body(skill.getDesc()) // Assuming getDesc() returns the description
+	// Clear existing data when running. 
+	public void clearCache() {
+		client.delete()
+			.uri(uriBase + myDesc.name)
+			.retrieve();
+	}
+	
+	
+	//Create a Description folder 'Conexion' 
+	public String makeDesc() {
+		String response = client.post()
+                .uri(uriBase + myDesc.name) 
+                .contentType(MediaType.APPLICATION_JSON) 
+                .body(myDesc) 
                 .retrieve()
                 .body(String.class);
-        System.out.println(response);
 
-        // Similarly, you can perform operations on other pages or skills
-    }
+      return response;
+	}
+	
+	//creates a folder for all the classes
+	
+	public String makeClass(String className) {
+		className = className.substring(0, 1).toUpperCase() + className.substring(1).toLowerCase();
+		
+		String response = client.post()
+				.uri(uriBase + myDesc.name + "/" + className)
+				.contentType(MediaType.APPLICATION_JSON)
+				.body(new Desc(className, "My Class is " + className, ""))
+				.retrieve()
+				.body(String.class);
+		
+		return response;
+	}
+	
+	// POST method
+	
+	@JsonCreator
+	public String addPage(Page page) {
+		//return the type of the class we are using. 
+		Class<? extends Page> pageClass = page.getClass();
+		
+		String response = client.post()
+//				.uri(uriBase + "/page/" + page.getPageID())
+				.uri(uriBase +  myDesc.name + "/" + page.getClass().getSimpleName() 
+						+ "/" + page.getClass().getSimpleName() +  Integer.toString(page.getPageID()))
+				.contentType(MediaType.APPLICATION_JSON)
+				.body(page)
+				.retrieve()
+				.body(String.class);
+		
+		return response;
+	}	
+	
+	
+    // GET method
+	
+	public void getPage(Page page) {
+		//return the type of the class we are using.
+		Class<? extends Page> pageClass = page.getClass();
+		
+		Page response = client.get()
+				.uri(uriBase +  myDesc.name + "/" + page.getClass().getSimpleName() 
+						+ "/" + page.getClass().getSimpleName() +  Integer.toString(page.getPageID()))
+				.retrieve()
+				.body(pageClass);
+	}
+	
+	
+	// DELETE Method
+	public void removePage(Page page) {
+		Class<? extends Page> pageClass = page.getClass();
+		client.delete()
+	 
+		.uri(uriBase +  myDesc.name + "/" + page.getClass().getSimpleName() 
+				+ "/" + page.getClass().getSimpleName() +  Integer.toString(page.getPageID()))
+		 .retrieve();
+		
+	}
+	
+	
+	// UPDATE Method
+	
+	public Page updatePage(Page page) {
+		Class<? extends Page> pageClass = page.getClass();
+		
+		Page response = client.put()
+				.uri(uriBase +  myDesc.name + "/" + page.getClass().getSimpleName() 
+						+ "/" + page.getClass().getSimpleName() +  Integer.toString(page.getPageID()))
+				.contentType(MediaType.APPLICATION_JSON)
+				.body(page)
+				.retrieve()
+				.body(pageClass);
+		return response;
+	}
+	
 }
 

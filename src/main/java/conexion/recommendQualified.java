@@ -8,7 +8,7 @@ public class recommendQualified implements recommendation{
 	}
 
 	@Override
-	public void sendRecommendation(IDGenerator idGenerator) {
+	public void sendRecommendation(w) {
 		// TODO Auto-generated method stub
 		
 	}

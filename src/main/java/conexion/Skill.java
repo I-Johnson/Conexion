@@ -43,9 +43,11 @@ public class Skill extends Page{
 	}
 
 
-	public Body getDesc() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+//	public Body getDesc() {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
+	
+	
 
 }

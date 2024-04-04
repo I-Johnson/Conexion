@@ -1,11 +1,14 @@
 package conexion;
 import java.util.Hashtable;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 public class IDGenerator {
 	private static IDGenerator instance = null;
 	private Hashtable<Integer, Page> pageIDs; //attributes
 	
 	//constructor
+	@JsonIgnore
 	public IDGenerator() {
 		pageIDs = new Hashtable<> ();
 	}
@@ -21,10 +24,10 @@ public class IDGenerator {
 	{
 		return pageIDs.size() + 1;
 	}
-	
+	@JsonIgnore
 	public Integer giveID(Page page) {
 		Integer id = makeID();
-		pageIDs.put(id, page);
+//		pageIDs.put(id, page);
 		page.setPageID(id);
 		return id;
 	}
