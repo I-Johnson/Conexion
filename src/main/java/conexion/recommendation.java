@@ -2,5 +2,5 @@ package conexion;
 
 public interface recommendation {
 
-	public void sendRecommendation(IDGenerator idGenerator);
+	public void sendRecommendation(Job job);
 }

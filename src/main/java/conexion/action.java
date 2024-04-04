@@ -2,5 +2,5 @@ package conexion;
 
 public interface action {
 
-	public void doAction();
+	void doAction(Job job);
 }

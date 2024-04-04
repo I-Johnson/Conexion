@@ -1,9 +1,6 @@
 package conexion;
 import java.util.ArrayList;
 
-import org.springframework.web.client.RestClient;
-
-import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -90,9 +87,6 @@ public abstract class Page {
 		this.viewers.add(user.getPageID());
 		
 	}
-	
-
-	
 	
 }
 

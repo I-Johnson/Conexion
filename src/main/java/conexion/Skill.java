@@ -1,7 +1,5 @@
 package conexion;
 
-import org.springframework.http.StreamingHttpOutputMessage.Body;
-
 public class Skill extends Page{
 	
 	private String skill;

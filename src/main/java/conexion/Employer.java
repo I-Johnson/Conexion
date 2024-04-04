@@ -42,7 +42,7 @@ public class Employer extends User {
 							this.getPageID(), requiredExperience, requiredDegree, requiredMajor);
 //		getPosts().add(newJob.getPageID());
 		this.addPost(newJob);
-		recommendation.sendRecommendation(this.idGenerator);
+		recommendation.sendRecommendation(newJob);
 	}
 	
 	

@@ -8,9 +8,12 @@ public class recommendSpecific implements recommendation{
 	}
 
 	@Override
-	public void sendRecommendation(IDGenerator idGenerator) {
+	public void sendRecommendation(Job job) {
 		// TODO Auto-generated method stub
-		
+		Person person; 
+		IDGenerator idGenerator = job.idGenerator;
+		person = (Person)idGenerator.getPageById(targetId);
+		person.addRecommendation(job);
 	}
 
 }
