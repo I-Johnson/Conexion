@@ -35,9 +35,9 @@ public class Person extends User{
 	/**
 	 * @param yearsOfExperience the yearsOfExperience to set
 	 */
-	public void setYearsOfExperience(int yearsOfExperience) {
-		this.yearsOfExperience = yearsOfExperience;
-	}
+//	public void setYearsOfExperience(int yearsOfExperience) {
+//		this.yearsOfExperience = yearsOfExperience;
+//	}
 	/**
 	 * @return the personDegree
 	 */
@@ -59,29 +59,22 @@ public class Person extends User{
 	/**
 	 * @param personInstitution the personInstitution to set
 	 */
-	public void setPersonInstitution(String personInstitution) {
-		this.personInstitution = personInstitution;
-	}
+//	public void setPersonInstitution(String personInstitution) {
+//		this.personInstitution = personInstitution;
+//	}
 	/**
 	 * @return the personMajor
 	 */
 	public String getPersonMajor() {
 		return personMajor;
 	}
-	/**
-	 * @param personMajor the personMajor to set
-	 */
-	public void setPersonMajor(String personMajor) {
-		this.personMajor = personMajor;
-	}
-	
+	 
 	public String apply(Job job) {
 		String success = "Your application has been submitted.";
 		String fail = "Unable to submit! You don't meet the requirements";
 		
 	    if (this.yearsOfExperience < job.getRequiredExperience() || 
-	            !this.personDegree.equals(job.getRequiredDegree()) || 
-	            !this.personMajor.equals(job.getRequiredMajor())) {
+	            !this.personDegree.equals(job.getRequiredDegree())) {
 	            return fail;
 	        }
 		

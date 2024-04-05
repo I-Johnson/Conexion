@@ -24,15 +24,16 @@ public class Skill extends Page{
 		return skill;
 	}
 
-	public void setSkill(String skill) {
+	public void setSkill(String skill) { 
 		this.skill = skill;
 	}
 	
 	@Override
 	public void addSkill(Skill skill) {
 		this.getSkills().add(skill);
-		skill.getSkills().add(this);
-		
+		if (skill != this) {
+			skill.getSkills().add(this);
+		}
 	}
 	@Override
 	public void addPost(Post post) {

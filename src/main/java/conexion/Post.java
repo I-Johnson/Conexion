@@ -101,9 +101,10 @@ public class Post extends Page{
 	}
 	@Override
 	public void addPost(Post post) {
-		this.getPosts().add(post);
-		post.getPosts().add(this);
-		
+		this.getPosts().add(post); 
+		if (this != post) {
+			post.getPosts().add(this);
+		}
 	}
 	
 	

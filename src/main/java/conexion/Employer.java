@@ -18,7 +18,6 @@ public class Employer extends User{
 			String userEmail, String userBio, String employerLocation) {
 		super(idGenerator, userName, userPassword, userEmail, userBio);
 		this.employerLocation = employerLocation;
-//		this.jobOpenings = jobOpenings;
 	}
 	/**
 	 * @return the employerLocation
@@ -29,9 +28,9 @@ public class Employer extends User{
 	/**
 	 * @param employerLocation the employerLocation to set
 	 */
-	public void setEmployerLocation(String employerLocation) {
-		this.employerLocation = employerLocation;
-	}
+//	public void setEmployerLocation(String employerLocation) {
+//		this.employerLocation = employerLocation;
+//	}
 	/**
 	 * @return the jobOpenings
 	 */

@@ -49,9 +49,9 @@ public class Job extends Post{
 	/**
 	 * @param applicants the applicants to set
 	 */
-	public void setApplicants(ArrayList<Person> applicants) {
-		this.applicants = applicants;
-	}
+//	public void setApplicants(ArrayList<Person> applicants) {
+//		this.applicants = applicants;
+//	}
 
 	/**
 	 * @return the requiredExperience
@@ -63,9 +63,9 @@ public class Job extends Post{
 	/**
 	 * @param requiredExperience the requiredExperience to set
 	 */
-	public void setRequiredExperience(int requiredExperience) {
-		this.requiredExperience = requiredExperience;
-	}
+//	public void setRequiredExperience(int requiredExperience) {
+//		this.requiredExperience = requiredExperience;
+//	}
 
 	/**
 	 * @return the requiredDegree
@@ -77,9 +77,9 @@ public class Job extends Post{
 	/**
 	 * @param requiredDegree the requiredDegree to set
 	 */
-	public void setRequiredDegree(String requiredDegree) {
-		this.requiredDegree = requiredDegree;
-	}
+//	public void setRequiredDegree(String requiredDegree) {
+//		this.requiredDegree = requiredDegree;
+//	}
 
 	/**
 	 * @return the requiredMajor
@@ -91,9 +91,9 @@ public class Job extends Post{
 	/**
 	 * @param requiredMajor the requiredMajor to set
 	 */
-	public void setRequiredMajor(String requiredMajor) {
-		this.requiredMajor = requiredMajor;
-	}
+//	public void setRequiredMajor(String requiredMajor) {
+//		this.requiredMajor = requiredMajor;
+//	}
 
 	public ArrayList<String> getPostAttachments() {
 		return postAttachments;

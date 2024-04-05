@@ -89,7 +89,7 @@ public class User extends Page{
 	public void addPost(Post post) {
 		this.getPosts().add(post);
 		post.addViewer(this);
-		
+		 
 	}
 	
 	public boolean viewAttempt(Page page) {
