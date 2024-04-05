@@ -10,6 +10,8 @@ class RestMainTest {
 	
 	public IDGenerator idGenerator;
 	
+	public Page page;
+	
 	public Skill cloudComputing;
 	public Skill springMVC;
 	public Skill mern;
@@ -57,13 +59,56 @@ class RestMainTest {
 		 
 		 Netflix = new Employer(idGenerator, "Netflix", "No Sharing", "careers@netflix.com", "Finest Software Engineering", "Headquarters");
 	     
-		 
-		 
-	     
-	     
 	     
 	     System.out.println(server.addPage(mern));
 	     
 	}
+	
+//	@Test
+//    void testGetUsers() {
+//        // Perform the HTTP request
+//        String response = given()
+//                .get("http://localhost:8080/users")
+//                .then()
+//                .statusCode(200)
+//                .extract()
+//                .body()
+//                .asString();
+//
+//        // Assert the response
+//        assertThat(response, equalTo("[{\"id\": 1, \"name\": \"John Doe\"}, {\"id\": 2, \"name\": \"Jane Doe\"}]"));
+//    }
+	
+    void testMakeDesc() {
+        server.clearCache();
+        String response = server.makeDesc();
+        assertEquals("OK", response); // Assuming the server returns "OK" upon successful creation
+    }
+
+    @Test
+    void testMakeClass() {
+        server.clearCache();
+        server.makeDesc(); // Assuming the description is created before creating a class
+
+        String className = "Page"; // Assuming "Page" is a valid class name
+        String response = server.makeClass(className);
+        assertEquals("OK", response); // Assuming the server returns "OK" upon successful creation
+    }
+//
+//    @Test
+//    void testAddPage() {
+//        server.clearCache();
+//        server.makeDesc(); // Assuming the description is created before adding a page
+//
+//        Page page = new Page(1); // Assuming Page class has a constructor that accepts pageID
+//        String response = server.addPage(page);
+//        assertEquals("OK", response); // Assuming the server returns "OK" upon successful addition
+//
+//        // Retrieve the added page and check if it matches the original page
+//        Page retrievedPage = server.getPage(page);
+//        assertNotNull(retrievedPage);
+//        assertEquals(page.getPageID(), retrievedPage.getPageID()); // Assuming Page class has getPageID() method
+//        // Add more assertions to check other attributes if necessary
+//    }
 
 }
