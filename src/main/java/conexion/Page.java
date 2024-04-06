@@ -9,6 +9,7 @@ public abstract class Page {
 	private Integer pageID;
 	public ArrayList<Integer> skills;
 	public ArrayList<Integer> posts;
+	@JsonIgnore
 	public IDGenerator idGenerator;
 	public ArrayList<Integer> viewers;
 	public ArrayList<Integer> editors;
@@ -16,6 +17,9 @@ public abstract class Page {
 	
 	public Page(IDGenerator idGenerator) {
 		this.idGenerator = idGenerator;
+//		if (idGenerator.getInstance() == null) {
+//			idGenerator = new IDGenerator();
+//		}
 		this.skills = new ArrayList<Integer>();
 		this.posts = new ArrayList<Integer>();
 		this.pageID = idGenerator.giveID(this);

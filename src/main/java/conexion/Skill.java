@@ -1,5 +1,7 @@
 package conexion;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 public class Skill extends Page{
 	
 	private String skill;

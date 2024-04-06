@@ -57,8 +57,18 @@ class RestMainTest {
 		 
 		 Netflix = new Employer(idGenerator, "Netflix", "No Sharing", "careers@netflix.com", "Finest Software Engineering", "Headquarters");
 	     
-	     
+//		 server.addPage(KMiles);
+//		 server.getPage(KMiles);
+//	     assertEquals(server.addPage(mern), server.getPage(mern));
+		 
 	     System.out.println(server.addPage(mern));
+	     System.out.println(server.getPage(mern));
+	     
+	     
+	     mern.addEditor(KMiles);
+	     
+	     server.updatePage(mern);
+	     server.removePage(mern);
 	     
 	}
 	

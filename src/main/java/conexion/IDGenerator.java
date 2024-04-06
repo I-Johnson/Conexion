@@ -4,6 +4,7 @@ import java.util.Hashtable;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class IDGenerator {
+	@JsonIgnore
 	private static IDGenerator instance = null;
 	private Hashtable<Integer, Page> pageIDs; //attributes
 	
@@ -12,7 +13,7 @@ public class IDGenerator {
 	public IDGenerator() {
 		pageIDs = new Hashtable<> ();
 	}
-	
+	@JsonIgnore
 	public static synchronized IDGenerator getInstance() {
 		if (instance == null) {
 			instance = new IDGenerator();
@@ -27,7 +28,7 @@ public class IDGenerator {
 	@JsonIgnore
 	public Integer giveID(Page page) {
 		Integer id = makeID();
-//		pageIDs.put(id, page);
+		pageIDs.put(id, page);
 		page.setPageID(id);
 		return id;
 	}

@@ -75,18 +75,50 @@ public class RestMain {
 		return response;
 	}	
 	
+//	public String addPage(Page page) {
+//		//return the type of the class we are using. 
+//		Class<? extends Page> pageClass = page.getClass();
+//		
+//		String response = client.post()
+////				.uri(uriBase + "/page/" + page.getPageID())
+//				.uri(uriBase +  myDesc.name + "/" + page.getClass().getSimpleName() 
+//						+ "/" + page.getClass().getSimpleName() +  Integer.toString(page.getPageID()))
+//				.contentType(MediaType.APPLICATION_JSON)
+//				.body(page)
+//				.retrieve()
+//				.body(String.class);
+//		
+//		return response;
+//	}	
+	
 	
     // GET method
 	
-	public void getPage(Page page) {
+//	public Page getPage(Page page) {
+//		//return the type of the class we are using.
+//		Class<? extends Page> pageClass = page.getClass();
+//		
+//		Page response = client.get()
+//				.uri(uriBase +  myDesc.name + "/" + page.getClass().getSimpleName() 
+//						+ "/" + page.getClass().getSimpleName() +  Integer.toString(page.getPageID()))
+//				.accept(MediaType.APPLICATION_JSON)
+//				.retrieve()
+//				.body(pageClass);
+//		
+//		return response;
+//	}
+	public String getPage(Page page) {
 		//return the type of the class we are using.
 		Class<? extends Page> pageClass = page.getClass();
 		
-		Page response = client.get()
+		String response = client.get()
 				.uri(uriBase +  myDesc.name + "/" + page.getClass().getSimpleName() 
 						+ "/" + page.getClass().getSimpleName() +  Integer.toString(page.getPageID()))
+				.accept(MediaType.APPLICATION_JSON)
 				.retrieve()
-				.body(pageClass);
+				.body(String.class);
+		
+		return response;
 	}
 	
 	
@@ -104,16 +136,16 @@ public class RestMain {
 	
 	// UPDATE Method
 	
-	public Page updatePage(Page page) {
+	public String updatePage(Page page) {
 		Class<? extends Page> pageClass = page.getClass();
 		
-		Page response = client.put()
+		String response = client.put()
 				.uri(uriBase +  myDesc.name + "/" + page.getClass().getSimpleName() 
 						+ "/" + page.getClass().getSimpleName() +  Integer.toString(page.getPageID()))
 				.contentType(MediaType.APPLICATION_JSON)
 				.body(page)
 				.retrieve()
-				.body(pageClass);
+				.body(String.class);
 		return response;
 	}
 	
