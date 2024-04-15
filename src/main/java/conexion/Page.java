@@ -9,14 +9,15 @@ public abstract class Page {
 	private Integer pageID;
 	public ArrayList<Integer> skills;
 	public ArrayList<Integer> posts;
-	@JsonIgnore
-	public IDGenerator idGenerator;
+	
+//	@JsonIgnore
+//	public IDGenerator idGenerator;
 	public ArrayList<Integer> viewers;
 	public ArrayList<Integer> editors;
 	public boolean isPublicallyVisible;
 	
 	public Page(IDGenerator idGenerator) {
-		this.idGenerator = idGenerator;
+//		this.idGenerator = idGenerator;
 //		if (idGenerator.getInstance() == null) {
 //			idGenerator = new IDGenerator();
 //		}
@@ -31,15 +32,15 @@ public abstract class Page {
 	
 
 	
-	@JsonIgnore
-	public IDGenerator getIdGenerator() {
-		return idGenerator;
-	}
-
-	@JsonProperty
-	public void setIdGenerator(IDGenerator idGenerator) {
-		this.idGenerator = idGenerator;
-	}
+//	@JsonIgnore
+//	public IDGenerator getIdGenerator() {
+//		return idGenerator;
+//	}
+//
+//	@JsonProperty
+//	public void setIdGenerator(IDGenerator idGenerator) {
+//		this.idGenerator = idGenerator;
+//	}
 	/**
 	 * @return the pageID
 	 */

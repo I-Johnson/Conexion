@@ -62,6 +62,7 @@ class RestMainTest {
 //	     assertEquals(server.addPage(mern), server.getPage(mern));
 		 
 	     System.out.println(server.addPage(mern));
+	     
 	     System.out.println(server.getPage(mern));
 	     
 	     

@@ -58,23 +58,7 @@ public class RestMain {
 	
 	// POST method
 	
-	@JsonCreator
-	public String addPage(Page page) {
-		//return the type of the class we are using. 
-		Class<? extends Page> pageClass = page.getClass();
-		
-		String response = client.post()
-//				.uri(uriBase + "/page/" + page.getPageID())
-				.uri(uriBase +  myDesc.name + "/" + page.getClass().getSimpleName() 
-						+ "/" + page.getClass().getSimpleName() +  Integer.toString(page.getPageID()))
-				.contentType(MediaType.APPLICATION_JSON)
-				.body(page)
-				.retrieve()
-				.body(String.class);
-		
-		return response;
-	}	
-	
+//	@JsonCreator
 //	public String addPage(Page page) {
 //		//return the type of the class we are using. 
 //		Class<? extends Page> pageClass = page.getClass();
@@ -91,35 +75,51 @@ public class RestMain {
 //		return response;
 //	}	
 	
-	
-    // GET method
-	
-//	public Page getPage(Page page) {
-//		//return the type of the class we are using.
-//		Class<? extends Page> pageClass = page.getClass();
-//		
-//		Page response = client.get()
-//				.uri(uriBase +  myDesc.name + "/" + page.getClass().getSimpleName() 
-//						+ "/" + page.getClass().getSimpleName() +  Integer.toString(page.getPageID()))
-//				.accept(MediaType.APPLICATION_JSON)
-//				.retrieve()
-//				.body(pageClass);
-//		
-//		return response;
-//	}
-	public String getPage(Page page) {
-		//return the type of the class we are using.
+	public String addPage(Page page) {
+		//return the type of the class we are using. 
 		Class<? extends Page> pageClass = page.getClass();
 		
-		String response = client.get()
+		String response = client.post()
+//				.uri(uriBase + "/page/" + page.getPageID())
 				.uri(uriBase +  myDesc.name + "/" + page.getClass().getSimpleName() 
 						+ "/" + page.getClass().getSimpleName() +  Integer.toString(page.getPageID()))
-				.accept(MediaType.APPLICATION_JSON)
+				.contentType(MediaType.APPLICATION_JSON)
+				.body(page)
 				.retrieve()
 				.body(String.class);
 		
 		return response;
+	}	
+	
+	
+    // GET method
+	
+	public Page getPage(Page page) {
+		//return the type of the class we are using.
+		Class<? extends Page> pageClass = page.getClass();
+		
+		Page response = client.get()
+				.uri(uriBase +  myDesc.name + "/" + page.getClass().getSimpleName() 
+						+ "/" + page.getClass().getSimpleName() +  Integer.toString(page.getPageID()))
+				.accept(MediaType.APPLICATION_JSON)
+				.retrieve()
+				.body(pageClass);
+		
+		return response;
 	}
+//	public String getPage(Page page) {
+//		//return the type of the class we are using.
+//		Class<? extends Page> pageClass = page.getClass();
+//		
+//		String response = client.get()
+//				.uri(uriBase +  myDesc.name + "/" + page.getClass().getSimpleName() 
+//						+ "/" + page.getClass().getSimpleName() +  Integer.toString(page.getPageID()))
+//				.accept(MediaType.APPLICATION_JSON)
+//				.retrieve()
+//				.body(String.class);
+//		
+//		return response;
+//	}
 	
 	
 	// DELETE Method
