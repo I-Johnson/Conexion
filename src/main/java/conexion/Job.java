@@ -27,7 +27,7 @@ public class Job extends Post{
 	 * @param skillRequirements
 	 */
 	public Job(IDGenerator idGenerator, String postTitle,
-			String postDate, String postBody, User postAuthor, int requiredExperience, String requiredDegree, String requiredMajor) {
+			String postDate, String postBody, Integer postAuthor, int requiredExperience, String requiredDegree, String requiredMajor) {
 		
 		super(idGenerator, postTitle, postDate, postBody, postAuthor);
 		
@@ -39,6 +39,18 @@ public class Job extends Post{
 //		this.skillRequirements = skillRequirements;
 	}
 
+	public Job() {
+		
+		super();
+		
+		this.applicants = new ArrayList<Person> ();
+		this.postAttachments = new ArrayList<String>();
+		this.requiredExperience = 0;
+		this.requiredDegree = null;
+		this.requiredMajor = null;
+//		this.skillRequirements = skillRequirements;
+	}
+	
 	/**
 	 * @return the applicants
 	 */
@@ -99,8 +111,9 @@ public class Job extends Post{
 		return postAttachments;
 	}
 	
-	public void addPostAttachment(String string) {
-		this.postAttachments.add(string);
-	}
+//	public void addPostAttachment(String string) {
+//		this.postAttachments.add(string);
+//	}
+	
 
 }

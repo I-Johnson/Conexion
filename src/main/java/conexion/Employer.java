@@ -19,27 +19,34 @@ public class Employer extends User{
 		super(idGenerator, userName, userPassword, userEmail, userBio);
 		this.employerLocation = employerLocation;
 	}
+	
+	public Employer() {
+		super();
+		this.employerLocation = null;
+	}
 	/**
 	 * @return the employerLocation
 	 */
 	public String getEmployerLocation() {
 		return employerLocation;
 	}
-	/**
-	 * @param employerLocation the employerLocation to set
-	 */
-//	public void setEmployerLocation(String employerLocation) {
-//		this.employerLocation = employerLocation;
-//	}
-	/**
-	 * @return the jobOpenings
-	 */
+
 	
-	public void postJob(int requiredExperience, String requiredDegree, String requiredMajor, 
-			String postTitle, String postDate, String postBody) {
+//	public void postJob(int requiredExperience, String requiredDegree, String requiredMajor, 
+//			String postTitle, String postDate, String postBody) {
+//		Job newJob = new Job(idGenerator, postTitle, postDate, postBody, 
+//							this, requiredExperience, requiredDegree, requiredMajor);
+//		getPosts().add(newJob);
+//	}
+
+	public Job postJob(Integer requiredExperience, String requiredDegree, String requiredMajor, 
+			String postTitle, String postDate, String postBody) {//, recommendation recommendation) {
 		Job newJob = new Job(idGenerator, postTitle, postDate, postBody, 
-							this, requiredExperience, requiredDegree, requiredMajor);
-		getPosts().add(newJob);
+							this.getPageID(), requiredExperience, requiredDegree, requiredMajor);
+//		getPosts().add(newJob.getPageID());
+		this.addPost(newJob);
+//		recommendation.sendRecommendation(newJob);
+		return newJob;
 	}
 	
 }

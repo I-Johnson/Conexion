@@ -3,7 +3,7 @@ import java.util.Hashtable;
 
 public class IDGenerator {
 	private static IDGenerator instance = null;
-	private Hashtable<Page, Integer> pageIDs; //attributes
+	private Hashtable<Integer, Page> pageIDs; //attributes
 	
 	//constructor
 	public IDGenerator() {
@@ -17,19 +17,16 @@ public class IDGenerator {
 		return instance;
 	}
 	
-	public int makeID()
+	public Integer makeID()
 	{
 		return pageIDs.size() + 1;
 	}
 	
-	public int giveID(Page page) {
-		if (pageIDs.containsKey(page) == false) {
+	public Integer giveID(Page page) {
 			int id = makeID();
-			pageIDs.put(page,  id);
+			pageIDs.put(id, page);
 			page.setPageID(id);
 			return id;
-		}
-		return pageIDs.get(page);
 	}
 	
 	public static void main (String[] args) {
@@ -39,14 +36,14 @@ public class IDGenerator {
 	/**
 	 * @return the pageIDs
 	 */
-	public Hashtable<Page, Integer> getPageIDs() {
+	public Hashtable<Integer, Page> getPageIDs() {
 		return pageIDs;
 	}
 
 	/**
 	 * @param pageIDs the pageIDs to set
 	 */
-	public void setPageIDs(Hashtable<Page, Integer> pageIDs) {
+	public void setPageIDs(Hashtable<Integer, Page> pageIDs) {
 		this.pageIDs = pageIDs;
 	}
 
@@ -55,6 +52,10 @@ public class IDGenerator {
 	 */
 	public static void setInstance(IDGenerator instance) {
 		IDGenerator.instance = instance;
+	}
+	
+	public Page getPageByID(Integer id) {
+		return pageIDs.get(id);
 	}
 
 }

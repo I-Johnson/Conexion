@@ -1,5 +1,7 @@
 package conexion;
 
+import java.util.ArrayList;
+
 public class Person extends User{
 	private int yearsOfExperience;
 	private String personDegree;
@@ -25,6 +27,14 @@ public class Person extends User{
 		this.personDegree = personDegree;
 		this.personInstitution = personInstitution;
 		this.personMajor = personMajor;
+	}
+	
+	public Person() {
+		super();
+		this.yearsOfExperience = 0;
+		this.personDegree = null;
+		this.personInstitution = null;
+		this.personMajor = null;
 	}
 	/**
 	 * @return the yearsOfExperience
@@ -78,7 +88,7 @@ public class Person extends User{
 	            return fail;
 	        }
 		
-		for(Skill requiredSkill : job.getSkills()) {
+		for(Integer requiredSkill : job.getSkills()) {
 			if (!this.getSkills().contains(requiredSkill)) {
 				return fail;
 			}
@@ -87,5 +97,20 @@ public class Person extends User{
 		job.getApplicants().add(this);
 		return success;
 	}
+	public void addRecommendation(Integer job) {
+		// TODO Auto-generated method stub
+		this.getRecommendedJobs().add(job);
+		
+	}
+	private ArrayList<Integer> getRecommendedJobs() {
+		// TODO Auto-generated method stub
+		return this.getRecommendedJobs();
+	}
+	public void removeRecommendation(Integer job) {
+		// TODO Auto-generated method stub
+		this.getRecommendedJobs().remove(Integer.valueOf((int)job));
+		
+	}
+	
 
 }

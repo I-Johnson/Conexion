@@ -23,7 +23,17 @@ public class User extends Page{
 		this.userBio = userBio;
 		
 		// giving user permission to edit their own page
-		this.addEditor(this);
+		this.addEditor(this.getPageID());
+	}
+	public User() {
+		super();
+		this.userName = null;
+		this.userPassword = null;
+		this.userEmail = null;
+		this.userBio = null;
+		
+		// giving user permission to edit their own page
+		this.addEditor(this.getPageID());
 	}
 	/**
 	 * @return the userName
@@ -74,26 +84,28 @@ public class User extends Page{
 		this.userBio = userBio;
 	}
 
-	public void post(String postTitle, String postDate, String postBody) {
-		Post newPost = new Post(this.idGenerator, postTitle, postDate, postBody, this);
-		getPosts().add(newPost);
+	public Post post(String postTitle, String postDate, String postBody) {
+		Post newPost = new Post(this.idGenerator, postTitle, postDate, postBody, this.getPageID());
+//		getPosts().add(newPost);
+		this.addPost(newPost);
+		return newPost;
 	}
 
 	@Override
 	public void addSkill(Skill skill) {
-		this.getSkills().add(skill);
+		this.getSkills().add(skill.getPageID());
 		skill.addViewer(this);
 		
 	}
 	@Override
 	public void addPost(Post post) {
-		this.getPosts().add(post);
+		this.getPosts().add(post.getPageID());
 		post.addViewer(this);
 		 
 	}
 	
 	public boolean viewAttempt(Page page) {
-		if (page.viewers.contains(this)) {
+		if (page.viewers.contains(this.getPageID())) {
 			return true;
 		}
 		else {
@@ -102,7 +114,7 @@ public class User extends Page{
 	}
 	
 	public boolean editAttempt(Page page) {
-		if (page.editors.contains(this)) {
+		if (page.editors.contains(this.getPageID())) {
 			return true;
 		}
 		else {

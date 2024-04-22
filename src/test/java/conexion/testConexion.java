@@ -21,6 +21,12 @@ class testConexion {
 	public Job SWEAssociate_Job;
 	public Post SWESenior_Job_Article;
 	
+	public Post RWilliamsPost1;
+	
+	public Job NetflixJob1;
+	public Job NetflixJob2;
+	
+	
 	@BeforeEach
 	void setUp() throws Exception {
 		
@@ -33,38 +39,38 @@ class testConexion {
 		RWilliams = new Person(idGenerator, "Robin", "Williams", "robin@princeton.edu", "GreatestActor", 4, 
 				"Masters", "PrincetonU", "Computer Science");
 		
-		RWilliams.getSkills().add(springMVC);
-		RWilliams.getSkills().add(cloudComputing);
+		RWilliams.getSkills().add(springMVC.getPageID());
+		RWilliams.getSkills().add(cloudComputing.getPageID());
 		RWilliams.addSkill(mern);
 		
-//		RW
-		Post SWESenior_Job_Article = new Post(idGenerator, "SWE Job Article", "March 31", "BODY", KMiles);
+		RWilliamsPost1 = RWilliams.post("Centre College Good", "March 31st", "no_body_available");
 		
-		RWilliams.post("Centre College Good", "March 31st", "no_body_available");
+		
 //		KMiles.posts.addPost(SWESenior_Job_Article);
 		
 		KMiles = new Person(idGenerator, "Ken Miles", "FordIsBest", "Miles@ford.com", "Best Driver", 1, 
 		"Bachelors", "Centre University", "Computer Science");
 
-		KMiles.getSkills().add(springMVC);
+		KMiles.getSkills().add(springMVC.getPageID());
 		KMiles.addSkill(cloudComputing);
 		
-		SWEAssociate_Job = new Job(idGenerator, "Software Engineering Associate", "April 1", "JobDesc", Netflix, 2, "Bachelors", "Computer Science");
+		SWESenior_Job_Article = new Post(idGenerator, "SWE Job Article", "March 31", "BODY", KMiles.getPageID());
 		
 		Netflix = new Employer(idGenerator, "Netflix", "No Sharing", "careers@netflix.com", "Finest Software Engineering", "Headquarters");
 		
-		Netflix.postJob(3, "Masters", "Computer Science", "SWE Senior", "April1", "job Description");
-		Netflix.getPosts().get(0).addSkill(cloudComputing);
-		Netflix.getPosts().get(0).addSkill(mern);
-		Netflix.getPosts().get(0).addSkill(springMVC);
+		SWEAssociate_Job = new Job(idGenerator, "Software Engineering Associate", "April 1", "JobDesc", Netflix.getPageID(), 2, "Bachelors", "Computer Science");
 		
-		Netflix.postJob(1, "Bachelors", "Computer Science", "SWE Associate", "May 20", "job Description");
-		Netflix.getPosts().get(1).addSkill(springMVC);
+		NetflixJob1 = Netflix.postJob(3, "Masters", "Computer Science", "SWE Senior", "April1", "job Description");
+		NetflixJob1.addSkill(cloudComputing);
+		NetflixJob1.addSkill(mern);
+		NetflixJob1.addSkill(springMVC);
+		
+		NetflixJob2 = Netflix.postJob(1, "Bachelors", "Computer Science", "SWE Associate", "May 20", "job Description");
+		NetflixJob2.addSkill(springMVC);
 		
 		Netflix.addPost(SWEAssociate_Job);
-		Netflix.getPosts().get(0).addPost(SWESenior_Job_Article); 
 		
-		cloudComputing.addSkill(cloudComputing);
+		Netflix.addPost(SWESenior_Job_Article); 
 		
 		cloudComputing.addPost(SWESenior_Job_Article);
 	
@@ -94,11 +100,12 @@ class testConexion {
 		assertEquals(1, RWilliams.getPosts().size());
 		assertEquals(3, RWilliams.getSkills().size());
 		 
-		//Checking the skill value is present after we added it
-		assertEquals("Cloud Computing", RWilliams.getSkills().get(1).getSkill());
-		assertEquals("Spring MVC", RWilliams.getSkills().get(0).getSkill());
+		//Checking the skill value is present after we add it
+		assertEquals(cloudComputing.getPageID(), RWilliams.getSkills().get(1));
+		assertEquals(springMVC.getPageID(), RWilliams.getSkills().get(0));
+		
 		//Checking the skill value is increased after we use addSkill
-		assertEquals("MERN", RWilliams.getSkills().get(2).getSkill());
+		assertEquals(mern.getPageID(), RWilliams.getSkills().get(2));
 //		assertEquals(2, KMiles.getSkills().size());
 		
 		assertEquals(1, cloudComputing.getSkills().size());
@@ -107,24 +114,22 @@ class testConexion {
 		assertEquals(2, cloudComputing.getPosts().size());
 		
 		
-		assertEquals("Netflix", Netflix.getPosts().get(0).getPostAuthor().getUserName());
+		assertEquals(KMiles.getPageID(), SWESenior_Job_Article.getPostAuthor());
 		
 		
 	 
 		String success = "Your application has been submitted.";
 		String fail = "Unable to submit! You don't meet the requirements";
-		assertEquals("Centre College Good", RWilliams.getPosts().get(0).getPostTitle());
-		assertEquals("March 31st", RWilliams.getPosts().get(0).getPostDate());
-		assertEquals("no_body_available", RWilliams.getPosts().get(0).getPostBody());
-		assertEquals("Robin", RWilliams.getPosts().get(0).getPostAuthor().getUserName());
+//		
+		assertEquals(RWilliamsPost1.getPageID(), RWilliams.getPosts().get(0));
 		
 //		assertEquals() 
 		
-		assertEquals(success, RWilliams.apply((Job) Netflix.getPosts().get(0)));
-		assertEquals(fail, RWilliams.apply((Job) Netflix.getPosts().get(1)));
+		assertEquals(success, RWilliams.apply(NetflixJob1));
+		assertEquals(fail, RWilliams.apply(NetflixJob2));
 		
-		assertEquals(success, KMiles.apply((Job) Netflix.getPosts().get(1)));
-		assertEquals(fail, KMiles.apply((Job) Netflix.getPosts().get(0)));
+		assertEquals(success, KMiles.apply(NetflixJob2));
+		assertEquals(fail, KMiles.apply(NetflixJob1));
 		
 		assertEquals("Computer Science", SWEAssociate_Job.getRequiredMajor());
 		assertEquals("Bachelors", SWEAssociate_Job.getRequiredDegree());
@@ -138,14 +143,18 @@ class testConexion {
 		assertEquals(true, RWilliams.editAttempt(RWilliams));
 		assertEquals(false, RWilliams.editAttempt(KMiles));
 		
-		assertEquals(true, RWilliams.editAttempt(RWilliams.getPosts().get(0)));
-		assertEquals(false, KMiles.editAttempt(RWilliams.getPosts().get(0)));
+		assertEquals(true, RWilliams.editAttempt(RWilliamsPost1));
+		assertEquals(false, KMiles.editAttempt(RWilliamsPost1));
 		
 		assertEquals(true, RWilliams.viewAttempt(KMiles));
 		assertEquals(false, Netflix.editAttempt(KMiles));
-		assertEquals(true, Netflix.editAttempt(Netflix.getPosts().get(0)));
+		assertEquals(true, Netflix.editAttempt(SWEAssociate_Job));
 		assertEquals(true, KMiles.viewAttempt(Netflix));
 		assertEquals(true, KMiles.viewAttempt(KMiles)); 
+		
+	}
+	
+	public void RecommendationTest(){
 		
 	}
 

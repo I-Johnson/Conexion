@@ -7,7 +7,7 @@ public class Post extends Page{
 	private String postDate;
 	private ArrayList<String> postAttachments;
 	private String postBody;
-	private User postAuthor;
+	private Integer postAuthor;
 	/**
 	 * @param pageID
 	 * @param skills
@@ -19,19 +19,29 @@ public class Post extends Page{
 	 * @param postAuthor
 	 */
 	public Post(IDGenerator idGenerator, String postTitle, String postDate,
-			 String postBody, User postAuthor) {
+			 String postBody, Integer postAuthor) {
 		super(idGenerator);
 		this.postTitle = postTitle;
 		this.postDate = postDate;
 		this.postAttachments = new ArrayList<String>();
 		this.postBody = postBody;
 		this.postAuthor = postAuthor;
-		for (Skill relatedSkill : this.getSkills()) {
-			relatedSkill.getPosts().add(this);
-		}
+//		for (Skill relatedSkill : this.getSkills()) {
+//			relatedSkill.getPosts().add(this);
+//		}
 		// giving author editor access to their own posts
 		this.addEditor(postAuthor);
 	}
+	
+	public Post() {
+		super(); 
+		this.postTitle = null;
+		this.postDate = null;
+		this.postAttachments = new ArrayList<String>();
+		this.postBody = null;
+		this.postAuthor = null;
+	}
+	
 	/**
 	 * @return the postTitle
 	 */
@@ -83,30 +93,35 @@ public class Post extends Page{
 	/**
 	 * @return the postAuthor
 	 */
-	public User getPostAuthor() {
+	public Integer getPostAuthor() {
 		return postAuthor;
 	}
 	/**
 	 * @param postAuthor the postAuthor to set
 	 */
-	public void setPostAuthor(User postAuthor) {
+	public void setPostAuthor(Integer postAuthor) {
 		this.postAuthor = postAuthor;
 	}
 	
 	@Override
 	public void addSkill(Skill skill) {
-		this.getSkills().add(skill);
-		skill.getPosts().add(this);
+		this.getSkills().add(skill.getPageID());
+		skill.getPosts().add(this.getPageID());
 		
 	}
 	@Override
 	public void addPost(Post post) {
-		this.getPosts().add(post); 
-		if (this != post) {
-			post.getPosts().add(this);
+		if(this != post) {
+			this.getPosts().add(post.getPageID());
 		}
+		post.getPosts().add(this.getPageID());
+		
 	}
 	
+	public String addPostAttachment(String string ) {
+		this.postAttachments.add(string);
+		return string;
+	}
 	
 
 }
