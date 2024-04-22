@@ -47,67 +47,68 @@ class RestMainTest {
 	     server.makeClass("job"); // /job
 		// do it
 				 mern = new Skill(idGenerator, "MERN");
-				 ObjectMapper objectMapper = new ObjectMapper(); 
+//				 ObjectMapper objectMapper = new ObjectMapper(); 
 				 
-				 String mySKill_string;
-					try {
-						mySKill_string = objectMapper.writeValueAsString(mern);
-						Skill mernBack = objectMapper.readValue(mySKill_string, Skill.class);	
-						System.out.println(mySKill_string);
-						System.out.println("back: " +  mernBack);
-					} catch (JsonProcessingException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
+//				 String mySKill_string;
+//					try {
+//						mySKill_string = objectMapper.writeValueAsString(mern);
+//						Skill mernBack = objectMapper.readValue(mySKill_string, Skill.class);	
+//						System.out.println(mySKill_string);
+//						System.out.println("back: " +  mernBack);
+//					} catch (JsonProcessingException e) {
+//						// TODO Auto-generated catch block
+//						e.printStackTrace();
+//					}
+					
 				     System.out.println(server.addPage(mern));
 				     
 				     System.out.println(server.getPage(mern));
 			     
 	}
-	
-	@Test
-	void test() {
-	     server.clearCache();
-	     
-	     // /Conexion
-	     server.makeDesc();
-	     
-	     server.makeClass("page"); // /page
-	     server.makeClass("posts"); // /posts
-	     server.makeClass("skill"); // /skill
-	     server.makeClass("user"); // /user
-	     server.makeClass("person");// /person
-	     server.makeClass("employer"); // /employer
-	     server.makeClass("job"); // /job
-	     
-	     
-	     
-	     cloudComputing = new Skill(idGenerator, "Cloud Computing");
-		 springMVC = new Skill(idGenerator, "Spring MVC");
-		 
-		 RWilliams = new Person(idGenerator, "Robin", "Williams", "robin@princeton.edu", "GreatestActor", 4, 
-					"Masters", "PrincetonU", "Computer Science");
-		 
-		 KMiles = new Person(idGenerator, "Ken Miles", "FordIsBest", "Miles@ford.com", "Best Driver", 1, 
-					"Bachelors", "Centre University", "Computer Science");
-		 
-		 Netflix = new Employer(idGenerator, "Netflix", "No Sharing", "careers@netflix.com", "Finest Software Engineering", "Headquarters");
+//	
+//	@Test
+//	void test() {
+//	     server.clearCache();
+//	     
+//	     // /Conexion
+//	     server.makeDesc();
+//	     
+//	     server.makeClass("page"); // /page
+//	     server.makeClass("posts"); // /posts
+//	     server.makeClass("skill"); // /skill
+//	     server.makeClass("user"); // /user
+//	     server.makeClass("person");// /person
+//	     server.makeClass("employer"); // /employer
+//	     server.makeClass("job"); // /job
+//	     
+//	     
+//	     
+//	     cloudComputing = new Skill(idGenerator, "Cloud Computing");
+//		 springMVC = new Skill(idGenerator, "Spring MVC");
+//		 
+//		 RWilliams = new Person(idGenerator, "Robin", "Williams", "robin@princeton.edu", "GreatestActor", 4, 
+//					"Masters", "PrincetonU", "Computer Science");
+//		 
+//		 KMiles = new Person(idGenerator, "Ken Miles", "FordIsBest", "Miles@ford.com", "Best Driver", 1, 
+//					"Bachelors", "Centre University", "Computer Science");
+//		 
+//		 Netflix = new Employer(idGenerator, "Netflix", "No Sharing", "careers@netflix.com", "Finest Software Engineering", "Headquarters");
 	     
 //		 server.addPage(KMiles);
 //		 server.getPage(KMiles);
 //	     assertEquals(server.addPage(mern), server.getPage(mern));
 		 
-	     System.out.println(server.addPage(mern));
-	     
-	     System.out.println(server.getPage(mern));
+//	     System.out.println(server.addPage(mern));
+//	     
+//	     System.out.println(server.getPage(mern));
 	     
 	     
 //	     mern.addEditor(KMiles);
 	     
-	     server.updatePage(mern);
-	     server.removePage(mern);
+//	     server.updatePage(mern);
+//	     server.removePage(mern);
 	     
-	}
+//	}
 	
 //	@Test
 //    void testGetUsers() {

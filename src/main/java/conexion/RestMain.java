@@ -3,6 +3,9 @@ package conexion;
 import org.springframework.http.MediaType;
 import org.springframework.web.client.RestClient;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 public class RestMain {
 
 	public record Desc(String name, String description, String location) {};
@@ -12,6 +15,8 @@ public class RestMain {
 	RestClient client;
     String uriBase = "http://localhost:9000/v1/";
 
+    
+    ObjectMapper objectMapper = new ObjectMapper(); 
     
 	public RestMain() {
 		 client = RestClient.create();
@@ -55,8 +60,33 @@ public class RestMain {
 	}
 	
 	// POST method
-	
+//	
+//	public String addPage(Page page) {
+//		//return the type of the class we are using. 
+//		Class<? extends Page> pageClass = page.getClass();
+//		
+//		String response = client.post()
+////				.uri(uriBase + "/page/" + page.getPageID())
+//				.uri(uriBase +  myDesc.name + "/" + page.getClass().getSimpleName() 
+//						+ "/" + page.getClass().getSimpleName() +  Integer.toString(page.getPageID()))
+//				.contentType(MediaType.APPLICATION_JSON)
+//				.body(page)
+//				.retrieve()
+//				.body(String.class);
+//		
+//		return response;
+//	}	
+
 	public String addPage(Page page) {
+		//Serialize the page object using ObjectMapper
+		String pageJson; 
+		try {
+			pageJson = objectMapper.writeValueAsString(page);
+		} catch(JsonProcessingException e) {
+			e.printStackTrace(); //Handling the exception
+			return "Failed to serialize page object";
+		}
+		
 		//return the type of the class we are using. 
 		Class<? extends Page> pageClass = page.getClass();
 		
@@ -65,10 +95,10 @@ public class RestMain {
 				.uri(uriBase +  myDesc.name + "/" + page.getClass().getSimpleName() 
 						+ "/" + page.getClass().getSimpleName() +  Integer.toString(page.getPageID()))
 				.contentType(MediaType.APPLICATION_JSON)
-				.body(page)
+				.body(pageJson)
 				.retrieve()
 				.body(String.class);
-		
+				System.out.println(pageJson);
 		return response;
 	}	
 	
