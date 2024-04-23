@@ -5,9 +5,6 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
 class RestMainTest {
 	RestMain server;
 	
@@ -28,13 +25,15 @@ class RestMainTest {
 	@BeforeEach
 	void beforeEach() {
 		server = new RestMain();
-		idGenerator = new IDGenerator();
+//		idGenerator = new IDGenerator();
+		
 	}
 
 	@Test
 	void Test() {
+
+		idGenerator = new IDGenerator();
 	     server.clearCache();
-	     
 	     // /Conexion
 	     server.makeDesc();
 	     
@@ -59,12 +58,26 @@ class RestMainTest {
 //						// TODO Auto-generated catch block
 //						e.printStackTrace();
 //					}
-					
+//					
 				     System.out.println(server.addPage(mern));
 				     
 				     System.out.println(server.getPage(mern));
+//				     
+//
+				     this.cloudComputing = new Skill(idGenerator, "Cloud");
+				     System.out.println(server.addPage(cloudComputing));
 			     
 	}
+	@Test 
+	void test2() {
+
+		idGenerator = new IDGenerator();
+		cloudComputing = new Skill(idGenerator, "Cloud");
+		System.out.print(cloudComputing.getPageID());
+		System.out.println(server.addPage(cloudComputing));
+	}
+	
+
 //	
 //	@Test
 //	void test() {

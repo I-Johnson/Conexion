@@ -14,14 +14,78 @@ public class RestMain {
 	
 	RestClient client;
     String uriBase = "http://localhost:9000/v1/";
-
+    
     
     ObjectMapper objectMapper = new ObjectMapper(); 
+    
+//    public void updatePageCounter() {
+//		String response = client.get()
+//				.uri(uriBase + "/Conexion/pageCounter")
+//				.accept(MediaType.APPLICATION_JSON)
+//				.retrieve()
+//				.body(String.class);
+//		if (response.contains("\"successful\" : false")) {
+//			System.out.print("request Failed \n");
+//			PageCounter pageCounter = new PageCounter();
+//			String pageJson; 
+//			try {
+//				pageJson = objectMapper.writeValueAsString(pageCounter);
+//				String postResponse = client.post()
+//						.uri(uriBase + "/Conexion/pageCounter" )
+//						.contentType(MediaType.APPLICATION_JSON)
+//						.body(pageJson)
+//						.retrieve()
+//						.body(String.class);
+//						System.out.println(postResponse);
+//			} catch(JsonProcessingException e) {
+//				e.printStackTrace(); //Handling the exception
+//				System.out.println("Failed to serialize pageCounter object");
+//			}
+//			
+//		} else {
+////			System.out.println(response);
+////			try {
+////				PageCounter pageCounterBack = objectMapper.readValue(response, PageCounter.class);
+////				pageCounterBack.setPageCount(pageCounterBack.getPageCount() + 1);
+////				String pageJsonBack = objectMapper.writeValueAsString(pageCounterBack);
+////				client.post()
+////				.uri(uriBase + "/Conexion/pageCounter" )
+////				.contentType(MediaType.APPLICATION_JSON)
+////				.body(pageJsonBack)
+////				.retrieve()
+////				.body(String.class);
+////				System.out.println(pageJsonBack);
+////			} catch (JsonProcessingException e) {
+////				e.printStackTrace();
+////			}
+////			
+////			
+//		}
+////		System.out.println(response);
+//		
+////		return response;
+//	}
+    
+//	public String getPage(Page page) {
+//	//return the type of the class we are using.
+//	Class<? extends Page> pageClass = page.getClass();
+//	
+//	String response = client.get()
+//			.uri(uriBase +  myDesc.name + "/" + page.getClass().getSimpleName() 
+//					+ "/" + page.getClass().getSimpleName() +  Integer.toString(page.getPageID()))
+//			.accept(MediaType.APPLICATION_JSON)
+//			.retrieve()
+//			.body(String.class);
+//	
+//	return response;
+//}
+    
     
 	public RestMain() {
 		 client = RestClient.create();
 		 myDesc = new Desc("Conexion", "pages", "myloc");
 	}
+	
 	
 
 	// Clear existing data when running. 
@@ -134,19 +198,7 @@ public class RestMain {
 		
 		return response;
 	}
-//	public String getPage(Page page) {
-//		//return the type of the class we are using.
-//		Class<? extends Page> pageClass = page.getClass();
-//		
-//		String response = client.get()
-//				.uri(uriBase +  myDesc.name + "/" + page.getClass().getSimpleName() 
-//						+ "/" + page.getClass().getSimpleName() +  Integer.toString(page.getPageID()))
-//				.accept(MediaType.APPLICATION_JSON)
-//				.retrieve()
-//				.body(String.class);
-//		
-//		return response;
-//	}
+
 	
 	
 	// DELETE Method
