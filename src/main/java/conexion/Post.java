@@ -7,7 +7,7 @@ public class Post extends Page{
 	private String postDate;
 	private ArrayList<String> postAttachments;
 	private String postBody;
-	private Integer postAuthor;
+	private String postAuthor;
 	/**
 	 * @param pageID
 	 * @param skills
@@ -19,7 +19,7 @@ public class Post extends Page{
 	 * @param postAuthor
 	 */
 	public Post(IDGenerator idGenerator, String postTitle, String postDate,
-			 String postBody, Integer postAuthor) {
+			 String postBody, String postAuthor) {
 		super(idGenerator);
 		this.postTitle = postTitle;
 		this.postDate = postDate;
@@ -93,13 +93,13 @@ public class Post extends Page{
 	/**
 	 * @return the postAuthor
 	 */
-	public Integer getPostAuthor() {
+	public String getPostAuthor() {
 		return postAuthor;
 	}
 	/**
 	 * @param postAuthor the postAuthor to set
 	 */
-	public void setPostAuthor(Integer postAuthor) {
+	public void setPostAuthor(String postAuthor) {
 		this.postAuthor = postAuthor;
 	}
 	
@@ -122,6 +122,13 @@ public class Post extends Page{
 		this.postAttachments.add(string);
 		return string;
 	}
+
+	@Override
+	public String toString() {
+		return "Post [postTitle=" + postTitle + ", postDate=" + postDate + ", postAttachments=" + postAttachments
+				+ ", postBody=" + postBody + ", postAuthor=" + postAuthor + "]";
+	}
+	
 	
 
 }

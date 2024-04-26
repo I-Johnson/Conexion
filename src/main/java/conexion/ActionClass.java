@@ -1,11 +1,13 @@
 package conexion;
 
 public abstract class ActionClass implements Action {
-	public Integer actorID;
+	public String actorID;
 	public IDGenerator idGenerator; 
+	public RestMain server;
 	
-	public ActionClass(Integer actorID) {
+	public ActionClass(String actorID) {
 		this.actorID = actorID;
+		this.server = RestMain.getInstance(); 
 	}
 	
 	

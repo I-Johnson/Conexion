@@ -16,6 +16,11 @@ public class PageCounter {
 	public void setPageCount(Integer pageCount) {
 		this.pageCount = pageCount;
 	}
-	
+	public void increment() {
+		pageCount += 1;
+	}
+	public void decrement() {
+		pageCount -= 1;
+	}
 	
 }

@@ -7,6 +7,7 @@ public class Person extends User{
 	private String personDegree;
 	private String personInstitution;
 	private String personMajor;
+	private ArrayList<String> recommendedJobs;
 	/**
 	 * @param pageID
 	 * @param skills
@@ -27,6 +28,7 @@ public class Person extends User{
 		this.personDegree = personDegree;
 		this.personInstitution = personInstitution;
 		this.personMajor = personMajor;
+		this.recommendedJobs = new ArrayList<String>();
 	}
 	
 	public Person() {
@@ -35,6 +37,7 @@ public class Person extends User{
 		this.personDegree = null;
 		this.personInstitution = null;
 		this.personMajor = null;
+		this.recommendedJobs = new ArrayList<String>();
 	}
 	/**
 	 * @return the yearsOfExperience
@@ -82,34 +85,53 @@ public class Person extends User{
 	public String apply(Job job) {
 		String success = "Your application has been submitted.";
 		String fail = "Unable to submit! You don't meet the requirements";
+		RestMain server = RestMain.getInstance();
 		
 	    if (this.yearsOfExperience < job.getRequiredExperience() || 
 	            !this.personDegree.equals(job.getRequiredDegree())) {
+	    		server.updatePage(job);
 	            return fail;
 	        }
 		
-		for(Integer requiredSkill : job.getSkills()) {
+		for(String requiredSkill : job.getSkills()) {
 			if (!this.getSkills().contains(requiredSkill)) {
 				return fail;
-			}
+			} 
 		}
 		
-		job.getApplicants().add(this);
+		job.getApplicants().add(this.getPageID());
 		return success;
 	}
-	public void addRecommendation(Integer job) {
+	
+
+	public void addRecommendation(String job) {
 		// TODO Auto-generated method stub
 		this.getRecommendedJobs().add(job);
 		
 	}
-	private ArrayList<Integer> getRecommendedJobs() {
-		// TODO Auto-generated method stub
-		return this.getRecommendedJobs();
+//	public void addRecommendation(Job job) {
+//	// TODO Auto-generated method stub
+//	this.getRecommendedJobs().add(job.getPageID());
+//	
+//}
+	public ArrayList<String> getRecommendedJobs() {
+		return recommendedJobs;
+	} 
+	
+	public void setRecommendedJobs(ArrayList<String> recommendedJobs) {
+		this.recommendedJobs = recommendedJobs;
 	}
-	public void removeRecommendation(Integer job) {
+
+	public void removeRecommendation(String job) {
 		// TODO Auto-generated method stub
-		this.getRecommendedJobs().remove(Integer.valueOf((int)job));
+		this.getRecommendedJobs().remove(job);
 		
+	}
+
+	@Override
+	public String toString() {
+		return "Person [yearsOfExperience=" + yearsOfExperience + ", personDegree=" + personDegree
+				+ ", personInstitution=" + personInstitution + ", personMajor=" + personMajor + "]";
 	}
 	
 

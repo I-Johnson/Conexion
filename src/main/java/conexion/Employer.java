@@ -2,6 +2,12 @@ package conexion;
 
 public class Employer extends User{
 
+	@Override
+	public String toString() {
+		return "Employer [employerLocation=" + employerLocation + "]";
+	}
+
+
 	private String employerLocation;
 	/**
 	 * @param pageID
@@ -18,7 +24,7 @@ public class Employer extends User{
 			String userEmail, String userBio, String employerLocation) {
 		super(idGenerator, userName, userPassword, userEmail, userBio);
 		this.employerLocation = employerLocation;
-	}
+	} 
 	
 	public Employer() {
 		super();
@@ -31,13 +37,6 @@ public class Employer extends User{
 		return employerLocation;
 	}
 
-	
-//	public void postJob(int requiredExperience, String requiredDegree, String requiredMajor, 
-//			String postTitle, String postDate, String postBody) {
-//		Job newJob = new Job(idGenerator, postTitle, postDate, postBody, 
-//							this, requiredExperience, requiredDegree, requiredMajor);
-//		getPosts().add(newJob);
-//	}
 
 	public Job postJob(Integer requiredExperience, String requiredDegree, String requiredMajor, 
 			String postTitle, String postDate, String postBody) {//, recommendation recommendation) {
@@ -45,8 +44,8 @@ public class Employer extends User{
 							this.getPageID(), requiredExperience, requiredDegree, requiredMajor);
 //		getPosts().add(newJob.getPageID());
 		this.addPost(newJob);
-//		recommendation.sendRecommendation(newJob);
 		return newJob;
 	}
+	
 	
 }

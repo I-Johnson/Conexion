@@ -1,25 +1,47 @@
 package conexion;
 
+import org.springframework.web.client.RestClientException;
+
 public class RecommendSkilled implements Recommendation {
 
 	@Override
 	public void sendRecommendation(Job job) {
-		// TODO Auto-generated method stub
 		Page page;
-		IDGenerator idGenerator = job.idGenerator;
+		RestMain client = RestMain.getInstance();
+		IDGenerator idGenerator = IDGenerator.getInstance();
 		
-		for (int i = 1; i <idGenerator.getPageIDs().size(); i ++) {
-			page = idGenerator.getPageByID(i);
-			
-			if (page instanceof Person) {
-				for(int j = 1; j < idGenerator.getPageIDs().size(); i++) {
-					if (page.getSkills().contains(job.getSkills().get(j))) {
-						((Person) page).addRecommendation(job.getPageID());
+		Integer numberOfPages = (Integer) idGenerator.getNumberOfPages();
+		for (int i = 1; i <= numberOfPages; i++) { 
+			try { 
+				boolean acceptable = true; 
+				page = client.getPerson("/Person/"+ ((Integer)i).toString()).data();
+				for(int j = 1; j < job.getSkills().size(); j+=1) {
+					if (!((Person) page).getSkills().contains(job.getSkills().get(j))) {
+						acceptable = false;
 					}
 				}
+					if(acceptable == true) {
+						((Person) page).addRecommendation(job.getPageID());
+						client.updatePage(page);
+//					}
 			}
-		}
+			} catch (RestClientException e){
+				System.out.print("");
+			}
+			 
+		} 
+//		for (int i = 1; i <= idGenerator.getNumberOfPages(); i++) {
+//			try {
+//				
+//				page = client.getPerson("Person/" + ((Integer)i).toString()).data();
+//				
+//				if(((Person)page).isQualified(job)) {
+//					((Person) page).addRecommendation(job.getPageID());
+//				}
+//			} catch(RestClientException e) {
+//				System.out.print("");
+//			}
+//		}
 
 	}
-
-}
+} 

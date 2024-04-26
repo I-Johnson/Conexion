@@ -1,15 +1,20 @@
 package conexion;
 import java.util.Hashtable;
 
+import org.springframework.http.MediaType;
+import org.springframework.web.client.RestClient;
+
 public class IDGenerator {
+	public record pageCounterRequestDescription(String request, 
+			boolean successful, String message, PageCounter data) {};
 	private static IDGenerator instance = null;
 	private Hashtable<Integer, Page> pageIDs; //attributes
 	
+	
 	//constructor
 	public IDGenerator() {
-		pageIDs = new Hashtable<> ();
 	}
-	
+	 
 	public static synchronized IDGenerator getInstance() {
 		if (instance == null) {
 			instance = new IDGenerator();
@@ -22,29 +27,43 @@ public class IDGenerator {
 		return pageIDs.size() + 1;
 	}
 	
-	public Integer giveID(Page page) {
-			int id = makeID();
-			pageIDs.put(id, page);
-			page.setPageID(id);
-			return id;
+	public Integer postID() {
+		RestClient client;
+		client = RestClient.create();
+		String uriBase = "http://localhost:9000/v1/Conexion/pageCounter/1";
+		
+		pageCounterRequestDescription getResponse = client.get()
+							.uri(uriBase)
+							.accept(MediaType.APPLICATION_JSON)
+							.retrieve()
+							.body(pageCounterRequestDescription.class);
+		
+		getResponse.data.increment(); 
+		
+		String postResponse = client.put().uri(uriBase)
+				.contentType(MediaType.APPLICATION_JSON)
+				.body(getResponse.data())
+				.retrieve().body(String.class);
+		
+		return getResponse.data.getPageCount();
+		
+		
+	}
+	
+	public int getNumberOfPages() {
+		RestClient client;
+		client = RestClient.create();
+		String uriBase = "http://localhost:9000/v1/Conexion/pageCounter/1";
+		pageCounterRequestDescription getResponse = client.get().uri(uriBase)
+				.accept(MediaType.APPLICATION_JSON)
+				.retrieve()
+				.body(pageCounterRequestDescription.class);
+		int numberOfPages = getResponse.data().getPageCount();
+		return numberOfPages;
 	}
 	
 	public static void main (String[] args) {
 		
-	}
-
-	/**
-	 * @return the pageIDs
-	 */
-	public Hashtable<Integer, Page> getPageIDs() {
-		return pageIDs;
-	}
-
-	/**
-	 * @param pageIDs the pageIDs to set
-	 */
-	public void setPageIDs(Hashtable<Integer, Page> pageIDs) {
-		this.pageIDs = pageIDs;
 	}
 
 	/**
@@ -53,11 +72,6 @@ public class IDGenerator {
 	public static void setInstance(IDGenerator instance) {
 		IDGenerator.instance = instance;
 	}
-	
-	public Page getPageByID(Integer id) {
-		return pageIDs.get(id);
-	}
-
 }
 
 

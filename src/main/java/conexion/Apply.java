@@ -2,7 +2,7 @@ package conexion;
 
 public class Apply extends ActionClass implements Action {
 	
-	public Apply(Integer actorID) {
+	public Apply(String actorID) {
 		super(actorID);
 	}
 	
@@ -10,13 +10,15 @@ public class Apply extends ActionClass implements Action {
 	@Override
 	public void doAction(Job job) {
 		// TODO Auto-generated method stub
-		IDGenerator idGenerator = job.getIdGenerator();
-		Person person = (Person)(idGenerator.getPageByID(actorID));
+		Person person = (Person)(server.getPerson(actorID).data());
 		person.apply(job);
 		person.removeRecommendation(job.getPageID());
 		
+		server.updatePage(person);
+		server.updatePage(job);
+		 
 	}
 
 	
-	
+	 
 }

@@ -4,140 +4,284 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.http.MediaType;
+import org.springframework.web.client.RestClient;
+import org.springframework.web.client.RestClientException;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 class RestMainTest {
 	RestMain server;
-	
 	public IDGenerator idGenerator;
 	
 	public Skill cloudComputing;
 	public Skill springMVC;
 	public Skill mern;
-	
+	 
 	public Person KMiles;
 	public Person RWilliams;
+	public Person Sundar;
 	
 	public Employer Netflix;
 	
 	public Job SWEAssociate_Job;
-	public Job SWESenior_Job;
+	
+	public Post SWESenior_Job_Article;
+	
+	public Post RWilliamsPost1;
+	public Post SWE_Principles_Post;
+	
+	public Job NetflixJob1;
+	public Job NetflixJob2;
+	public Job NetflixJob3;
+	
+	public RecommendAll recommendAll;
+	public RecommendBest recommendBest;
+	public RecommendSkilled recommendSkilled;
+
 	
 	@BeforeEach
-	void beforeEach() {
-		server = new RestMain();
-//		idGenerator = new IDGenerator();
+	void setUp() throws Exception{
+		server = new RestMain(); 
+		idGenerator = new IDGenerator();
 		
+
 	}
+	
+	public void testPageRemoval(String id, RestMain server) {
+		boolean pageRemoved = false;
+		try {
+			server.getSkill(id);
+			pageRemoved = false;
+		}
+		catch(RestClientException e) {
+			pageRemoved = true;
+		}
+		try {
+			server.getPost(id);
+			pageRemoved = false;
+		}
+		catch(RestClientException e) {
+			pageRemoved = true;
+		}
+		try {
+			server.getEmployer(id);
+			pageRemoved = false;
+		}
+		catch(RestClientException e) {
+			pageRemoved = true;
+		}
+		try {
+			server.getJob(id);
+			pageRemoved = false;
+		}
+		catch(RestClientException e) {
+			pageRemoved = true;
+		}
+		try {
+			server.getPerson(id);
+			pageRemoved = false;
+		}
+		catch(RestClientException e) {
+			pageRemoved = true;
+		}
+		
+		assertEquals(true, pageRemoved);
+	}
+	
+
 
 	@Test
 	void Test() {
 
-		idGenerator = new IDGenerator();
 	     server.clearCache();
-	     // /Conexion
 	     server.makeDesc();
+	     server.makeClass("Page"); // /page
+	     server.makeClass("Post"); // /posts
+	     server.makeClass("Skill"); // /skill
+	     server.makeClass("User"); // /user
+	     server.makeClass("Person");// /person
+	     server.makeClass("Employer"); // /employer
+	     server.makeClass("Job"); // /job
+	     server.makeClass("pageCounter");
 	     
-	     server.makeClass("page"); // /page
-	     server.makeClass("posts"); // /posts
-	     server.makeClass("skill"); // /skill
-	     server.makeClass("user"); // /user
-	     server.makeClass("person");// /person
-	     server.makeClass("employer"); // /employer
-	     server.makeClass("job"); // /job
+	     RestClient client = RestClient.create();
+	     
+	     PageCounter contedorDePaginasTest = new PageCounter();
+
+	     String contedorDePaginasTestJson;
+	     ObjectMapper objectMapper = new ObjectMapper();
+	     
+	     
+	     try {
+				contedorDePaginasTestJson = objectMapper.writeValueAsString(contedorDePaginasTest);
+				String response = client.post()
+						.uri("http://localhost:9000/v1/Conexion/pageCounter/1")
+						.contentType(MediaType.APPLICATION_JSON)
+						.body(contedorDePaginasTestJson)
+						.retrieve()
+						.body(String.class);
+//				System.out.println(response);
+				
+			} catch (JsonProcessingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	     
+			cloudComputing = new Skill(idGenerator, "Cloud Computing");
+			springMVC = new Skill(idGenerator, "Spring MVC");
+			mern = new Skill(idGenerator, "MERN");
+			
+			RWilliams = new Person(idGenerator, "Robin", "Williams", "robin@princeton.edu", "GreatestActor", 4, 
+					"Masters", "PrincetonU", "Computer Science");
+			
+			
+			RWilliams.addSkill(cloudComputing);
+			RWilliams.addSkill(mern);
+			RWilliams.addSkill(springMVC);
+			
+			 
+			RWilliamsPost1 = RWilliams.post("Centre College Good", "March 31st", "no_body_available");
+			
+			
+//			KMiles.posts.addPost(SWESenior_Job_Article);
+			
+			KMiles = new Person(idGenerator, "Ken Miles", "FordIsBest", "Miles@ford.com", "Best Driver", 1, 
+			"Bachelors", "Centre University", "Computer Science");
+
+			KMiles.getSkills().add(springMVC.getPageID());
+			KMiles.addSkill(cloudComputing);
+			
+			SWESenior_Job_Article = new Post(idGenerator, "SWE Job Article", "March 31", "BODY", KMiles.getPageID());
+			
+			Netflix = new Employer(idGenerator, "Netflix", "No Sharing", "careers@netflix.com", "Finest Software Engineering", "Headquarters");
+			
+			SWEAssociate_Job = new Job(idGenerator, "Software Engineering Associate", "April 1", "JobDesc", Netflix.getPageID(), 2, "Bachelors", "Computer Science");
+			
+			NetflixJob1 = Netflix.postJob(3, "Masters", "Computer Science", "SWE Senior", "April1", "job Description");
+			NetflixJob1.addSkill(cloudComputing);
+			NetflixJob1.addSkill(mern);
+			NetflixJob1.addSkill(springMVC);
+			
+			
+			NetflixJob2 = Netflix.postJob(1, "Bachelors", "Computer Science", "SWE Associate", "May 20", "job Description");
+			NetflixJob2.addSkill(springMVC);
+			
+			NetflixJob3 = Netflix.postJob(4, "Masters", "Computer Science", "SWE Principal", "April 18", "job Description");
+			NetflixJob3.addSkill(cloudComputing);
+			NetflixJob3.addSkill(mern);
+			
+			Netflix.addPost(SWEAssociate_Job);
+			
+			Netflix.addPost(SWESenior_Job_Article); 
+			
+			cloudComputing.addPost(SWESenior_Job_Article);
 		// do it
 				 mern = new Skill(idGenerator, "MERN");
-//				 ObjectMapper objectMapper = new ObjectMapper(); 
+				 Sundar = new Person(idGenerator, "Sundar", "sundar@google.com", "1234", "CEO", 21, "Centre College", "Masters", "Computer Science");
+				 Netflix = new Employer(idGenerator, "Netflix", "No Sharing", "careers@netflix.com", "Finest Software Engineering", "Headquarters");
+				 //Job
+				 SWEAssociate_Job = new Job(idGenerator, "Software Engineering Associate", "April 1", "JobDesc", Netflix.getPageID(), 2, "Bachelors", "Computer Science");
+				 SWE_Principles_Post = new Post(idGenerator, "SWE Job Article", "March 31", "BODY", Sundar.getPageID());
 				 
-//				 String mySKill_string;
-//					try {
-//						mySKill_string = objectMapper.writeValueAsString(mern);
-//						Skill mernBack = objectMapper.readValue(mySKill_string, Skill.class);	
-//						System.out.println(mySKill_string);
-//						System.out.println("back: " +  mernBack);
-//					} catch (JsonProcessingException e) {
-//						// TODO Auto-generated catch block
-//						e.printStackTrace();
-//					}
+		 server.addPage(mern);
+		 server.addPage(Sundar); 
+		 server.addPage(Netflix);
+		 server.addPage(SWEAssociate_Job);
+		 server.addPage(SWE_Principles_Post);
+		 server.addPage(KMiles);
+		server.addPage(RWilliams);
+		server.addPage(Netflix);
+		server.addPage(SWEAssociate_Job);
+		server.addPage(NetflixJob1);
+		server.addPage(NetflixJob2);
+		server.addPage(NetflixJob3);
+		server.addPage(cloudComputing);
+		server.updatePage(RWilliams);
+		server.updatePage(NetflixJob1);
+		server.updatePage(SWEAssociate_Job);
+				 
+				 //Test all the GET METHOD is working for all the classes. 
+				 assertEquals(mern.getPageID(), server.getSkill(mern.getPageID()).data().getPageID());
+				 assertEquals(Sundar.getPageID(), server.getPerson(Sundar.getPageID()).data().getPageID());
+				 assertEquals(Netflix.getPageID(), server.getEmployer(Netflix.getPageID()).data().getPageID());
+				 assertEquals(SWEAssociate_Job.getPageID(), server.getJob(SWEAssociate_Job.getPageID()).data().getPageID());
+				 assertEquals(SWE_Principles_Post.getPageID(), server.getPost(SWE_Principles_Post.getPageID()).data().getPageID());
+				 
+				 
+				 // Remove mern and test it worked
+				 server.removePage(mern.getPageID());
+				 testPageRemoval(mern.getPageID(), server);
+				 
+				 
+//				 Put Test
+				 // change username
+				 Sundar.setUserName("Sundar222");
+				 server.updatePage(Sundar);
+				 assertEquals(Sundar.getUserName(), server.getPerson(Sundar.getPageID()).data().getUserName());
+				 
+//				 
+				 	recommendAll = new RecommendAll();
+					recommendAll.sendRecommendation(SWEAssociate_Job);
+					
+					KMiles = server.getPerson(KMiles.getPageID()).data();
+					RWilliams = server.getPerson(RWilliams.getPageID()).data();
+					
+					
+					assertTrue(KMiles.getRecommendedJobs().contains(SWEAssociate_Job.getPageID()));
+					assertTrue(RWilliams.getRecommendedJobs().contains(SWEAssociate_Job.getPageID()));
+					
+					//RecommendSkilled
+					recommendSkilled = new RecommendSkilled();
+					recommendSkilled.sendRecommendation(NetflixJob1);
+					
+					KMiles = server.getPerson(KMiles.getPageID()).data();
+					RWilliams = server.getPerson(RWilliams.getPageID()).data();
 //					
-				     System.out.println(server.addPage(mern));
-				     
-				     System.out.println(server.getPage(mern));
-//				     
-//
-				     this.cloudComputing = new Skill(idGenerator, "Cloud");
-				     System.out.println(server.addPage(cloudComputing));
-			     
-	}
-	@Test 
-	void test2() {
-
-		idGenerator = new IDGenerator();
-		cloudComputing = new Skill(idGenerator, "Cloud");
-		System.out.print(cloudComputing.getPageID());
-		System.out.println(server.addPage(cloudComputing));
-	}
-	
-
-//	
-//	@Test
-//	void test() {
-//	     server.clearCache();
-//	     
-//	     // /Conexion
-//	     server.makeDesc();
-//	     
-//	     server.makeClass("page"); // /page
-//	     server.makeClass("posts"); // /posts
-//	     server.makeClass("skill"); // /skill
-//	     server.makeClass("user"); // /user
-//	     server.makeClass("person");// /person
-//	     server.makeClass("employer"); // /employer
-//	     server.makeClass("job"); // /job
-//	     
-//	     
-//	     
-//	     cloudComputing = new Skill(idGenerator, "Cloud Computing");
-//		 springMVC = new Skill(idGenerator, "Spring MVC");
-//		 
-//		 RWilliams = new Person(idGenerator, "Robin", "Williams", "robin@princeton.edu", "GreatestActor", 4, 
-//					"Masters", "PrincetonU", "Computer Science");
-//		 
-//		 KMiles = new Person(idGenerator, "Ken Miles", "FordIsBest", "Miles@ford.com", "Best Driver", 1, 
-//					"Bachelors", "Centre University", "Computer Science");
-//		 
-//		 Netflix = new Employer(idGenerator, "Netflix", "No Sharing", "careers@netflix.com", "Finest Software Engineering", "Headquarters");
-	     
-//		 server.addPage(KMiles);
-//		 server.getPage(KMiles);
-//	     assertEquals(server.addPage(mern), server.getPage(mern));
-		 
-//	     System.out.println(server.addPage(mern));
-//	     
-//	     System.out.println(server.getPage(mern));
-	     
-	     
-//	     mern.addEditor(KMiles);
-	     
-//	     server.updatePage(mern);
-//	     server.removePage(mern);
-	     
-//	}
-	
-//	@Test
-//    void testGetUsers() {
-//        // Perform the HTTP request
-//        String response = given()
-//                .get("http://localhost:8080/users")
-//                .then()
-//                .statusCode(200)
-//                .extract()
-//                .body()
-//                .asString();
-//
-//        // Assert the response
-//        assertThat(response, equalTo("[{\"id\": 1, \"name\": \"John Doe\"}, {\"id\": 2, \"name\": \"Jane Doe\"}]"));
-//    }
-	
-	
+					assertFalse(KMiles.getRecommendedJobs().contains(NetflixJob1.getPageID()));
+					assertTrue(RWilliams.getRecommendedJobs().contains(NetflixJob1.getPageID()));
+//					
+					//RecommendBest
+					recommendBest = new RecommendBest();
+					recommendBest.sendRecommendation(NetflixJob3);
+					
+					KMiles = server.getPerson(KMiles.getPageID()).data();
+					RWilliams = server.getPerson(RWilliams.getPageID()).data();
+					Sundar = server.getPerson(Sundar.getPageID()).data();
+					
+					assertFalse(KMiles.getRecommendedJobs().contains(NetflixJob3.getPageID()));
+					assertFalse(RWilliams.getRecommendedJobs().contains(NetflixJob3.getPageID()));
+					assertTrue(Sundar.getRecommendedJobs().contains(NetflixJob3.getPageID()));
+					
+//					System.out.println(NetflixJob3.getPageID());
+//					System.out.println(Sundar.getPageID());
+//					System.out.println(SWEAssociate_Job.getPageID());
+					
+					
+					
+					// Test apply and Reject: 
+					Reject KMilesReject = new Reject(KMiles.getPageID());
+					Apply RWilliamsAccept = new Apply(RWilliams.getPageID());
+					
+					KMilesReject.doAction(NetflixJob1);
+					RWilliamsAccept.doAction(NetflixJob1);
+//					
+					KMiles = server.getPerson(KMiles.getPageID()).data();
+					RWilliams = server.getPerson(RWilliams.getPageID()).data();
+					NetflixJob1 = server.getJob(NetflixJob1.getPageID()).data();
+				
+					System.out.println(RWilliams.getRecommendedJobs());
+					System.out.println(RWilliams.getPageID() + "<- got, netflix has "+NetflixJob1.getPageID());
+					
+					
+					
+//					assertFalse(KMiles.getRecommendedJobs().contains(NetflixJob1.getPageID()));
+//					assertTrue(RWilliams.getRecommendedJobs().contains(NetflixJob1.getPageID()));
+					
+					assertFalse(NetflixJob1.getApplicants().contains(KMiles.getPageID()));
+					assertTrue(NetflixJob1.getApplicants().contains(RWilliams.getPageID()));
+					
+	}	
 
 }

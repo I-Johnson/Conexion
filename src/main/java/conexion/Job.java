@@ -3,7 +3,7 @@ import java.util.ArrayList;
 
 public class Job extends Post{
 
-	private ArrayList<Person> applicants;
+	private ArrayList<String> applicants;
 	private int requiredExperience;
 	private String requiredDegree;
 	private String requiredMajor;
@@ -27,11 +27,13 @@ public class Job extends Post{
 	 * @param skillRequirements
 	 */
 	public Job(IDGenerator idGenerator, String postTitle,
-			String postDate, String postBody, Integer postAuthor, int requiredExperience, String requiredDegree, String requiredMajor) {
+			String postDate, String postBody, String postAuthor, int requiredExperience, 
+			String requiredDegree, String requiredMajor) {
 		
 		super(idGenerator, postTitle, postDate, postBody, postAuthor);
 		
-		this.applicants = new ArrayList<Person> ();
+//		this.applicants = new ArrayList<Person> ();
+		this.applicants = new ArrayList<String>();
 		this.postAttachments = new ArrayList<String>();
 		this.requiredExperience = requiredExperience;
 		this.requiredDegree = requiredDegree;
@@ -39,11 +41,17 @@ public class Job extends Post{
 //		this.skillRequirements = skillRequirements;
 	}
 
+	@Override
+	public String toString() {
+		return "Job [applicants=" + applicants + ", requiredExperience=" + requiredExperience + ", requiredDegree="
+				+ requiredDegree + ", requiredMajor=" + requiredMajor + ", postAttachments=" + postAttachments + "]";
+	}
+
 	public Job() {
 		
 		super();
 		
-		this.applicants = new ArrayList<Person> ();
+		this.applicants = new ArrayList<String> ();
 		this.postAttachments = new ArrayList<String>();
 		this.requiredExperience = 0;
 		this.requiredDegree = null;
@@ -54,10 +62,13 @@ public class Job extends Post{
 	/**
 	 * @return the applicants
 	 */
-	public ArrayList<Person> getApplicants() {
+	public ArrayList<String> getApplicants() {
 		return applicants;
 	}
 
+//	public String getApplicants_s() {
+//		return 
+//	}
 	/**
 	 * @param applicants the applicants to set
 	 */

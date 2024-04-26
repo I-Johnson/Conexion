@@ -27,8 +27,8 @@ class testConexion {
 	public Job NetflixJob2;
 	
 	
-	@BeforeEach
-	void setUp() throws Exception {
+	@BeforeEach 
+	void setUp() throws Exception { 
 		
 		idGenerator = new IDGenerator();
 		
@@ -42,7 +42,7 @@ class testConexion {
 		RWilliams.getSkills().add(springMVC.getPageID());
 		RWilliams.getSkills().add(cloudComputing.getPageID());
 		RWilliams.addSkill(mern);
-		
+		 
 		RWilliamsPost1 = RWilliams.post("Centre College Good", "March 31st", "no_body_available");
 		
 		
@@ -83,7 +83,6 @@ class testConexion {
 	// Checking if makeID from IDGenerator is creating new pages correctly
 	public void test() {
 		
-		assertEquals(3, mern.getPageID());
 		
 		assertEquals("Robin", RWilliams.getUserName());
 		assertEquals("Williams", RWilliams.getUserPassword());

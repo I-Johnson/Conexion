@@ -49,4 +49,9 @@ public class Skill extends Page{
 		
 	}
 
+	@Override
+	public String toString() {
+		return "Skill [skillName=" + skillName + "]";
+	}
+
 }

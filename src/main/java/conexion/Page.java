@@ -5,13 +5,13 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public abstract class Page {
 
-	private Integer pageID;
-	public ArrayList<Integer> skills;
-	public ArrayList<Integer> posts;
+	private String pageID;
+	public ArrayList<String> skills;
+	public ArrayList<String> posts;
 	@JsonIgnore
 	public IDGenerator idGenerator;
-	public ArrayList<Integer> viewers;
-	public ArrayList<Integer> editors;
+	public ArrayList<String> viewers;
+	public ArrayList<String> editors;
 	public boolean isPublicallyVisible;
 	
 	public Page(IDGenerator idGenerator) {
@@ -19,23 +19,23 @@ public abstract class Page {
 //		if (idGenerator.getInstance() == null) {
 //			idGenerator = new IDGenerator();
 //		}
-		this.skills = new ArrayList<Integer>();
-		this.posts = new ArrayList<Integer>();
-		this.pageID = idGenerator.giveID(this);
-		this.viewers = new ArrayList<Integer>();
-		this.editors = new ArrayList<Integer> ();
+		this.skills = new ArrayList<String>();
+		this.posts = new ArrayList<String>();
+		this.pageID = this.getClass().getSimpleName() + "/" + idGenerator.postID().toString();
+		this.viewers = new ArrayList<String>();
+		this.editors = new ArrayList<String> ();
 		this.isPublicallyVisible = true;
 	}
 	
 	//defualt constructor so that json stops with all its crap
 	public Page() {
 		this.idGenerator=null;
-		this.posts = new ArrayList<Integer>();
+		this.posts = new ArrayList<String>();
 		this.pageID = null;
-		this.viewers = new ArrayList<Integer>();
-		this.editors = new ArrayList<Integer>();
+		this.viewers = new ArrayList<String>();
+		this.editors = new ArrayList<String>();
 		this.isPublicallyVisible = true;
-		this.skills = new ArrayList<Integer>();
+		this.skills = new ArrayList<String>();
 	}
 	
 	public IDGenerator getIdGenerator() {
@@ -47,37 +47,37 @@ public abstract class Page {
 	/**
 	 * @return the pageID
 	 */
-	public Integer getPageID() {
+	public String getPageID() {
 		return pageID;
 	}
 	/**
 	 * @param pageID the pageID to set
 	 */
-	public void setPageID(int pageID) {
+	public void setPageID(String pageID) {
 		this.pageID = pageID;
 	}
 	/**
 	 * @return the skills
 	 */
-	public ArrayList<Integer> getSkills() {
+	public ArrayList<String> getSkills() {
 		return skills;
 	}
 	/**
 	 * @param skills the skills to set
 	 */
-	public void setSkills(ArrayList<Integer> skills) {
+	public void setSkills(ArrayList<String> skills) {
 		this.skills = skills;
 	}
 	/**
 	 * @return the posts
 	 */
-	public ArrayList<Integer> getPosts() {
+	public ArrayList<String> getPosts() {
 		return posts;
 	}
 	/**
 	 * @param posts the posts to set
 	 */
-	public void setPosts(ArrayList<Integer> posts) {
+	public void setPosts(ArrayList<String> posts) {
 		this.posts = posts;
 	}
 	
@@ -88,8 +88,15 @@ public abstract class Page {
 		this.viewers.add(user.getPageID());
 	}
 	
+	@Override
+	public String toString() {
+		return "Page [pageID=" + pageID + ", skills=" + skills + ", posts=" + posts + ", idGenerator=" + idGenerator
+				+ ", viewers=" + viewers + ", editors=" + editors + ", isPublicallyVisible=" + isPublicallyVisible
+				+ "]";
+	}
+
 	// editor automatically has viewer access
-	public void addEditor(Integer user) {
+	public void addEditor(String user) {
 		this.editors.add(user);
 		this.viewers.add(user);
 		

@@ -1,6 +1,6 @@
 package conexion;
 
-public class User extends Page{
+public abstract class User extends Page{
 	private String userName;
 	private String userPassword;
 	private String userEmail;
@@ -58,6 +58,11 @@ public class User extends Page{
 	 */
 	public void setUserPassword(String userPassword) {
 		this.userPassword = userPassword;
+	}
+	@Override
+	public String toString() {
+		return "User [userName=" + userName + ", userPassword=" + userPassword + ", userEmail=" + userEmail
+				+ ", userBio=" + userBio + "]";
 	}
 	/**
 	 * @return the userEmail
