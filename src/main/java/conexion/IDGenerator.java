@@ -40,11 +40,11 @@ public class IDGenerator {
 		
 		getResponse.data.increment(); 
 		
+		@SuppressWarnings("unused")
 		String postResponse = client.put().uri(uriBase)
 				.contentType(MediaType.APPLICATION_JSON)
 				.body(getResponse.data())
 				.retrieve().body(String.class);
-		
 		return getResponse.data.getPageCount();
 		
 		

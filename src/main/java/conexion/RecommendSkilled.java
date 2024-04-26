@@ -30,18 +30,6 @@ public class RecommendSkilled implements Recommendation {
 			}
 			 
 		} 
-//		for (int i = 1; i <= idGenerator.getNumberOfPages(); i++) {
-//			try {
-//				
-//				page = client.getPerson("Person/" + ((Integer)i).toString()).data();
-//				
-//				if(((Person)page).isQualified(job)) {
-//					((Person) page).addRecommendation(job.getPageID());
-//				}
-//			} catch(RestClientException e) {
-//				System.out.print("");
-//			}
-//		}
 
 	}
 } 

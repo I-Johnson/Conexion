@@ -62,7 +62,7 @@ public class RestMain {
 	//creates a folder for all the classes
 	
 	public String makeClass(String className) {
-		className = className;
+//		className = className;
 		
 		String response = client.post()
 				.uri(uriBase + myDesc.name + "/" + className)

@@ -116,6 +116,7 @@ class RestMainTest {
 	     
 	     try {
 				contedorDePaginasTestJson = objectMapper.writeValueAsString(contedorDePaginasTest);
+				@SuppressWarnings("unused")
 				String response = client.post()
 						.uri("http://localhost:9000/v1/Conexion/pageCounter/1")
 						.contentType(MediaType.APPLICATION_JSON)
@@ -178,19 +179,19 @@ class RestMainTest {
 			
 			cloudComputing.addPost(SWESenior_Job_Article);
 		// do it
-				 mern = new Skill(idGenerator, "MERN");
-				 Sundar = new Person(idGenerator, "Sundar", "sundar@google.com", "1234", "CEO", 21, "Centre College", "Masters", "Computer Science");
-				 Netflix = new Employer(idGenerator, "Netflix", "No Sharing", "careers@netflix.com", "Finest Software Engineering", "Headquarters");
-				 //Job
-				 SWEAssociate_Job = new Job(idGenerator, "Software Engineering Associate", "April 1", "JobDesc", Netflix.getPageID(), 2, "Bachelors", "Computer Science");
-				 SWE_Principles_Post = new Post(idGenerator, "SWE Job Article", "March 31", "BODY", Sundar.getPageID());
+		 mern = new Skill(idGenerator, "MERN");
+		 Sundar = new Person(idGenerator, "Sundar", "sundar@google.com", "1234", "CEO", 21, "Centre College", "Masters", "Computer Science");
+		 Netflix = new Employer(idGenerator, "Netflix", "No Sharing", "careers@netflix.com", "Finest Software Engineering", "Headquarters");
+		 //Job
+		 SWEAssociate_Job = new Job(idGenerator, "Software Engineering Associate", "April 1", "JobDesc", Netflix.getPageID(), 2, "Bachelors", "Computer Science");
+		 SWE_Principles_Post = new Post(idGenerator, "SWE Job Article", "March 31", "BODY", Sundar.getPageID());
 				 
-		 server.addPage(mern);
-		 server.addPage(Sundar); 
-		 server.addPage(Netflix);
-		 server.addPage(SWEAssociate_Job);
-		 server.addPage(SWE_Principles_Post);
-		 server.addPage(KMiles);
+		server.addPage(mern);
+		server.addPage(Sundar); 
+		server.addPage(Netflix);
+		server.addPage(SWEAssociate_Job);
+		server.addPage(SWE_Principles_Post);
+		server.addPage(KMiles);
 		server.addPage(RWilliams);
 		server.addPage(Netflix);
 		server.addPage(SWEAssociate_Job);
@@ -202,85 +203,80 @@ class RestMainTest {
 		server.updatePage(NetflixJob1);
 		server.updatePage(SWEAssociate_Job);
 				 
-				 //Test all the GET METHOD is working for all the classes. 
-				 assertEquals(mern.getPageID(), server.getSkill(mern.getPageID()).data().getPageID());
-				 assertEquals(Sundar.getPageID(), server.getPerson(Sundar.getPageID()).data().getPageID());
-				 assertEquals(Netflix.getPageID(), server.getEmployer(Netflix.getPageID()).data().getPageID());
-				 assertEquals(SWEAssociate_Job.getPageID(), server.getJob(SWEAssociate_Job.getPageID()).data().getPageID());
-				 assertEquals(SWE_Principles_Post.getPageID(), server.getPost(SWE_Principles_Post.getPageID()).data().getPageID());
-				 
-				 
-				 // Remove mern and test it worked
-				 server.removePage(mern.getPageID());
-				 testPageRemoval(mern.getPageID(), server);
-				 
-				 
+		 //Test all the GET METHOD is working for all the classes. 
+		 assertEquals(mern.getPageID(), server.getSkill(mern.getPageID()).data().getPageID());
+		 assertEquals(Sundar.getPageID(), server.getPerson(Sundar.getPageID()).data().getPageID());
+		 assertEquals(Netflix.getPageID(), server.getEmployer(Netflix.getPageID()).data().getPageID());
+		 assertEquals(SWEAssociate_Job.getPageID(), server.getJob(SWEAssociate_Job.getPageID()).data().getPageID());
+		 assertEquals(SWE_Principles_Post.getPageID(), server.getPost(SWE_Principles_Post.getPageID()).data().getPageID());
+		 
+		 
+		 // Remove mern and test it worked
+		 server.removePage(mern.getPageID());
+		 testPageRemoval(mern.getPageID(), server);
+		 
+		 
 //				 Put Test
-				 // change username
-				 Sundar.setUserName("Sundar222");
-				 server.updatePage(Sundar);
-				 assertEquals(Sundar.getUserName(), server.getPerson(Sundar.getPageID()).data().getUserName());
-				 
-//				 
-				 	recommendAll = new RecommendAll();
-					recommendAll.sendRecommendation(SWEAssociate_Job);
-					
-					KMiles = server.getPerson(KMiles.getPageID()).data();
-					RWilliams = server.getPerson(RWilliams.getPageID()).data();
-					
-					
-					assertTrue(KMiles.getRecommendedJobs().contains(SWEAssociate_Job.getPageID()));
-					assertTrue(RWilliams.getRecommendedJobs().contains(SWEAssociate_Job.getPageID()));
-					
-					//RecommendSkilled
-					recommendSkilled = new RecommendSkilled();
-					recommendSkilled.sendRecommendation(NetflixJob1);
-					
-					KMiles = server.getPerson(KMiles.getPageID()).data();
-					RWilliams = server.getPerson(RWilliams.getPageID()).data();
-//					
-					assertFalse(KMiles.getRecommendedJobs().contains(NetflixJob1.getPageID()));
-					assertTrue(RWilliams.getRecommendedJobs().contains(NetflixJob1.getPageID()));
-//					
-					//RecommendBest
-					recommendBest = new RecommendBest();
-					recommendBest.sendRecommendation(NetflixJob3);
-					
-					KMiles = server.getPerson(KMiles.getPageID()).data();
-					RWilliams = server.getPerson(RWilliams.getPageID()).data();
-					Sundar = server.getPerson(Sundar.getPageID()).data();
-					
-					assertFalse(KMiles.getRecommendedJobs().contains(NetflixJob3.getPageID()));
-					assertFalse(RWilliams.getRecommendedJobs().contains(NetflixJob3.getPageID()));
-					assertTrue(Sundar.getRecommendedJobs().contains(NetflixJob3.getPageID()));
-					
-//					System.out.println(NetflixJob3.getPageID());
-//					System.out.println(Sundar.getPageID());
-//					System.out.println(SWEAssociate_Job.getPageID());
-					
-					
-					
-					// Test apply and Reject: 
-					Reject KMilesReject = new Reject(KMiles.getPageID());
-					Apply RWilliamsAccept = new Apply(RWilliams.getPageID());
-					
-					KMilesReject.doAction(NetflixJob1);
-					RWilliamsAccept.doAction(NetflixJob1);
-//					
-					KMiles = server.getPerson(KMiles.getPageID()).data();
-					RWilliams = server.getPerson(RWilliams.getPageID()).data();
-					NetflixJob1 = server.getJob(NetflixJob1.getPageID()).data();
-				
-					System.out.println(RWilliams.getRecommendedJobs());
-					System.out.println(RWilliams.getPageID() + "<- got, netflix has "+NetflixJob1.getPageID());
-					
-					
-					
-//					assertFalse(KMiles.getRecommendedJobs().contains(NetflixJob1.getPageID()));
-//					assertTrue(RWilliams.getRecommendedJobs().contains(NetflixJob1.getPageID()));
-					
-					assertFalse(NetflixJob1.getApplicants().contains(KMiles.getPageID()));
-					assertTrue(NetflixJob1.getApplicants().contains(RWilliams.getPageID()));
+		 // change username
+		 Sundar.setUserName("Sundar222");
+		 server.updatePage(Sundar);
+		 assertEquals(Sundar.getUserName(), server.getPerson(Sundar.getPageID()).data().getUserName());
+		 
+		 
+		 // Recommendation Test Start here
+
+		 	recommendAll = new RecommendAll();
+			recommendAll.sendRecommendation(SWEAssociate_Job);
+			
+			KMiles = server.getPerson(KMiles.getPageID()).data();
+			RWilliams = server.getPerson(RWilliams.getPageID()).data();
+			
+			
+			assertTrue(KMiles.getRecommendedJobs().contains(SWEAssociate_Job.getPageID()));
+			assertTrue(RWilliams.getRecommendedJobs().contains(SWEAssociate_Job.getPageID()));
+			
+			//RecommendSkilled
+			recommendSkilled = new RecommendSkilled();
+			recommendSkilled.sendRecommendation(NetflixJob1);
+			
+			KMiles = server.getPerson(KMiles.getPageID()).data();
+			RWilliams = server.getPerson(RWilliams.getPageID()).data();
+
+			assertFalse(KMiles.getRecommendedJobs().contains(NetflixJob1.getPageID()));
+			assertTrue(RWilliams.getRecommendedJobs().contains(NetflixJob1.getPageID()));
+
+			//RecommendBest
+			recommendBest = new RecommendBest();
+			recommendBest.sendRecommendation(NetflixJob3);
+			
+			KMiles = server.getPerson(KMiles.getPageID()).data();
+			RWilliams = server.getPerson(RWilliams.getPageID()).data();
+			Sundar = server.getPerson(Sundar.getPageID()).data();
+			
+			assertFalse(KMiles.getRecommendedJobs().contains(NetflixJob3.getPageID()));
+			assertFalse(RWilliams.getRecommendedJobs().contains(NetflixJob3.getPageID()));
+			assertTrue(Sundar.getRecommendedJobs().contains(NetflixJob3.getPageID()));
+			
+			
+			// Test apply and Reject: 
+			Reject KMilesReject = new Reject(KMiles.getPageID());
+			Apply RWilliamsAccept = new Apply(RWilliams.getPageID());
+			
+			KMilesReject.doAction(SWEAssociate_Job);
+			RWilliamsAccept.doAction(NetflixJob1);
+			
+			
+			KMiles = server.getPerson(KMiles.getPageID()).data();
+			RWilliams = server.getPerson(RWilliams.getPageID()).data();
+			NetflixJob1 = server.getJob(NetflixJob1.getPageID()).data();
+			
+			// Making sure KMiles rejected the job he was recommended
+			assertFalse(SWEAssociate_Job.getApplicants().contains(KMiles.getPageID()));
+			
+			//Making sure RWilliams applied to the job he was recommended
+			assertTrue(NetflixJob1.getApplicants().contains(RWilliams.getPageID()));
+			
+			System.out.println("Success");
 					
 	}	
 
