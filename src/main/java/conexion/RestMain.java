@@ -1,7 +1,10 @@
 package conexion;
 
+import java.util.ArrayList;
+
 import org.springframework.http.MediaType;
 import org.springframework.web.client.RestClient;
+import org.springframework.web.client.RestClientException;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -30,6 +33,7 @@ public class RestMain {
     
     
     ObjectMapper objectMapper = new ObjectMapper();  
+    IDGenerator idGenerator = IDGenerator.getInstance();
     
     
 	public RestMain() {
@@ -173,4 +177,85 @@ public class RestMain {
 		return response;
 	}
 	
+	// ------- Get all entities  ------: 
+	
+	// Skills
+	public ArrayList<String> getAllSkills() {
+		Page page;
+		ArrayList<String> skills = new ArrayList<String> ();
+		for(int i = 1; i <= idGenerator.getNumberOfPages(); i++) {
+			try {
+				page = getSkill("/Skill/" + ((Integer) i).toString()).data();
+				skills.add(page.getPageID());
+			}
+			catch(RestClientException e) {
+				System.out.print("");
+			}
+		}
+		return skills;
+	}
+	
+	// Post
+	public ArrayList<String> getAllPost() {
+		Page page;
+		ArrayList<String> posts = new ArrayList<String> ();
+		for(int i = 1; i <= idGenerator.getNumberOfPages(); i++) {
+			try {
+				page = getPost("/Post/" + ((Integer) i).toString()).data();
+				posts.add(page.getPageID());
+			}
+			catch(RestClientException e) {
+				System.out.print("");
+			}
+		}
+		return posts;
+	}
+	
+	// Jobs
+	public ArrayList<String> getAllJobs() {
+		Page page;
+		ArrayList<String> jobs = new ArrayList<String> ();
+		for(int i = 1; i <= idGenerator.getNumberOfPages(); i++) {
+			try {
+				page = getJob("/Job/" + ((Integer) i).toString()).data();
+				jobs.add(page.getPageID());
+			}
+			catch(RestClientException e) {
+				System.out.print("");
+			}
+		}
+		return jobs;
+	}
+	
+	// Employers
+	public ArrayList<String> getAllEmployers() {
+		Page page;
+		ArrayList<String> employers = new ArrayList<String> ();
+		for(int i = 1; i <= idGenerator.getNumberOfPages(); i++) {
+			try {
+				page = getEmployer("/Employer/" + ((Integer) i).toString()).data();
+				employers.add(page.getPageID());
+			}
+			catch(RestClientException e) {
+				System.out.print("");
+			}
+		}
+		return employers;
+	}
+	
+	// Person
+	public ArrayList<String> getAllPersons() {
+		Page page;
+		ArrayList<String> persons = new ArrayList<String> ();
+		for(int i = 1; i <= idGenerator.getNumberOfPages(); i++) {
+			try {
+				page = getPerson("/Person/" + ((Integer) i).toString()).data();
+				persons.add(page.getPageID());
+			}
+			catch(RestClientException e) {
+				System.out.print("");
+			}
+		}
+		return persons;
+	}
 }

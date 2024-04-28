@@ -1,5 +1,6 @@
 package conexion;
 import java.util.ArrayList;
+import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -37,6 +38,8 @@ public abstract class Page {
 		this.isPublicallyVisible = true;
 		this.skills = new ArrayList<String>();
 	}
+	
+	
 	
 	public IDGenerator getIdGenerator() {
 		return idGenerator;
@@ -100,6 +103,25 @@ public abstract class Page {
 		this.editors.add(user);
 		this.viewers.add(user);
 		
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(editors, isPublicallyVisible, pageID, posts, skills, viewers);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Page other = (Page) obj;
+		return Objects.equals(editors, other.editors) && isPublicallyVisible == other.isPublicallyVisible
+				&& Objects.equals(pageID, other.pageID) && Objects.equals(posts, other.posts)
+				&& Objects.equals(skills, other.skills) && Objects.equals(viewers, other.viewers);
 	}
 	
 	

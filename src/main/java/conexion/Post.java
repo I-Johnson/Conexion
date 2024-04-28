@@ -1,5 +1,6 @@
 package conexion;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Post extends Page{
 	
@@ -128,7 +129,29 @@ public class Post extends Page{
 		return "Post [postTitle=" + postTitle + ", postDate=" + postDate + ", postAttachments=" + postAttachments
 				+ ", postBody=" + postBody + ", postAuthor=" + postAuthor + "]";
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + Objects.hash(postAttachments, postAuthor, postBody, postDate, postTitle);
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Post other = (Post) obj;
+		return Objects.equals(postAttachments, other.postAttachments) && Objects.equals(postAuthor, other.postAuthor)
+				&& Objects.equals(postBody, other.postBody) && Objects.equals(postDate, other.postDate)
+				&& Objects.equals(postTitle, other.postTitle);
+	}
 	
-	
+		
 
 }

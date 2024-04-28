@@ -1,5 +1,7 @@
 package conexion;
 
+import java.util.Objects;
+
 public abstract class User extends Page{
 	private String userName;
 	private String userPassword;
@@ -126,6 +128,27 @@ public abstract class User extends Page{
 			return false;
 		}
 	}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + Objects.hash(userBio, userEmail, userName, userPassword);
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		User other = (User) obj;
+		return Objects.equals(userBio, other.userBio) && Objects.equals(userEmail, other.userEmail)
+				&& Objects.equals(userName, other.userName) && Objects.equals(userPassword, other.userPassword);
+	}
+	
+	
 }
 
 

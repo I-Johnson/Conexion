@@ -1,5 +1,7 @@
 package conexion;
 
+import java.util.Objects;
+
 public class Skill extends Page{
 	
 	private String skillName;
@@ -54,4 +56,28 @@ public class Skill extends Page{
 		return "Skill [skillName=" + skillName + "]";
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + Objects.hash(skillName);
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Skill other = (Skill) obj;
+		return Objects.equals(skillName, other.skillName);
+	}
+	
+	
+	
+	
+	
 }

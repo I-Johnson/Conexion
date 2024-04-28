@@ -1,5 +1,6 @@
 package conexion;
 
+import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -204,7 +205,7 @@ class RestMainTest {
 		server.updatePage(SWEAssociate_Job);
 				 
 		 //Test all the GET METHOD is working for all the classes. 
-		 assertEquals(mern.getPageID(), server.getSkill(mern.getPageID()).data().getPageID());
+		 assertTrue(mern.equals(server.getSkill(mern.getPageID()).data()));
 		 assertEquals(Sundar.getPageID(), server.getPerson(Sundar.getPageID()).data().getPageID());
 		 assertEquals(Netflix.getPageID(), server.getEmployer(Netflix.getPageID()).data().getPageID());
 		 assertEquals(SWEAssociate_Job.getPageID(), server.getJob(SWEAssociate_Job.getPageID()).data().getPageID());
