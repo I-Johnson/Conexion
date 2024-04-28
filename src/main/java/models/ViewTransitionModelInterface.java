@@ -9,7 +9,7 @@ public interface ViewTransitionModelInterface {
 //	public void showAllUsers();
 //	public void showAllSkills();
 //	public void showAllPosts();
-//	public void showPrivateProfile();
+	public void showPrivateProfile();
 	public void login(String username, String password);
 	//Edit Pages 
 	

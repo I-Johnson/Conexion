@@ -1,5 +1,7 @@
 package Views;
 
+import conexion.Post;
+import conexion.Skill;
 import conexion.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -16,7 +18,15 @@ public class privateProfileController {
 	
 	User user;
 
-    @FXML
+    public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	@FXML
     private Button editPrivateProfile;
 
     @FXML
@@ -24,12 +34,13 @@ public class privateProfileController {
 
     @FXML
     private Label profileName;
-//
-//    @FXML
-//    private ListView<Post> profileRecentPost;
-//
-//    @FXML
-//    private ListView<Skill> profileSkills;
+
+    @FXML
+    private ListView<String> profileRecentPost;
+
+    @FXML
+    private ListView<String> profileSkills;
+    
 
     @FXML
     private Button signOut;
@@ -37,24 +48,29 @@ public class privateProfileController {
     public void setViewModel(ViewTransitionalModel viewModel)
     {
     	this.viewModel = viewModel;
+    	this.user = viewModel.getLoggedIn();
+    	profileName.setText(user.getUserName());
+    	profileBio.setText(user.getUserBio());
+    	
     }
     
-//    @FXML
-//    void onClickEditButton(ActionEvent event) {
+    @FXML
+    void onClickEditButton(ActionEvent event) {
+    	System.out.println("clicked edit");
 //    	viewModel.changetoEditView();
-////    	if (viewModel != null) {
-////             // Call changetoEditView() on the viewModel instance
-////    		break;
-////        } else {
-////            System.err.println("ViewModel is not initialized.");
-////        }
-//    
-//    }
+//    	if (viewModel != null) {
+//             // Call changetoEditView() on the viewModel instance
+//    		break;
+//        } else {
+//            System.err.println("ViewModel is not initialized.");
+//        }
+    
+    }
 
     @FXML
     void onClickSignOut(ActionEvent event) {
+    	viewModel.setLoggedIn(null);
     	viewModel.changetoLoginView();
-//    	model.changetoLoginView();
 
     }
 
