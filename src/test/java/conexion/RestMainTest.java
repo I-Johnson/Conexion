@@ -206,10 +206,10 @@ class RestMainTest {
 				 
 		 //Test all the GET METHOD is working for all the classes. 
 		 assertTrue(mern.equals(server.getSkill(mern.getPageID()).data()));
-		 assertEquals(Sundar.getPageID(), server.getPerson(Sundar.getPageID()).data().getPageID());
-		 assertEquals(Netflix.getPageID(), server.getEmployer(Netflix.getPageID()).data().getPageID());
-		 assertEquals(SWEAssociate_Job.getPageID(), server.getJob(SWEAssociate_Job.getPageID()).data().getPageID());
-		 assertEquals(SWE_Principles_Post.getPageID(), server.getPost(SWE_Principles_Post.getPageID()).data().getPageID());
+		 assertTrue(Sundar.equals(server.getPerson(Sundar.getPageID()).data()));
+		 assertTrue(Netflix.equals(server.getEmployer(Netflix.getPageID()).data()));
+		 assertTrue(SWEAssociate_Job.equals(server.getJob(SWEAssociate_Job.getPageID()).data()));
+		 assertTrue(SWE_Principles_Post.equals(server.getPost(SWE_Principles_Post.getPageID()).data()));
 		 
 		 
 		 // Remove mern and test it worked
