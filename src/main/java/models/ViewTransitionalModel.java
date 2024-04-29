@@ -207,8 +207,8 @@ public class ViewTransitionalModel implements ViewTransitionModelInterface {
 		Person person;
 		Employer employer;
 		
-		ArrayList<String> persons = client.getAllPersons();
-		ArrayList<String> employers = client.getAllEmployers();
+		ArrayList<Person> persons = client.getAllPersons();
+		ArrayList<Employer> employers = client.getAllEmployers();
 		
 		
 		for(String id: persons) {

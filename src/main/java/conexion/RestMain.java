@@ -180,13 +180,13 @@ public class RestMain {
 	// ------- Get all entities  ------: 
 	
 	// Skills
-	public ArrayList<String> getAllSkills() {
-		Page page;
-		ArrayList<String> skills = new ArrayList<String> ();
+	public ArrayList<Skill> getAllSkills() {
+		Skill page;
+		ArrayList<Skill> skills = new ArrayList<Skill> ();
 		for(int i = 1; i <= idGenerator.getNumberOfPages(); i++) {
 			try {
 				page = getSkill("/Skill/" + ((Integer) i).toString()).data();
-				skills.add(page.getPageID());
+				skills.add(page);
 			}
 			catch(RestClientException e) {
 				System.out.print("");
@@ -196,13 +196,13 @@ public class RestMain {
 	}
 	
 	// Post
-	public ArrayList<String> getAllPost() {
-		Page page;
-		ArrayList<String> posts = new ArrayList<String> ();
+	public ArrayList<Post> getAllPost() {
+		Post page;
+		ArrayList<Post> posts = new ArrayList<Post> ();
 		for(int i = 1; i <= idGenerator.getNumberOfPages(); i++) {
 			try {
 				page = getPost("/Post/" + ((Integer) i).toString()).data();
-				posts.add(page.getPageID());
+				posts.add(page);
 			}
 			catch(RestClientException e) {
 				System.out.print("");
@@ -212,13 +212,13 @@ public class RestMain {
 	}
 	
 	// Jobs
-	public ArrayList<String> getAllJobs() {
-		Page page;
-		ArrayList<String> jobs = new ArrayList<String> ();
+	public ArrayList<Job> getAllJobs() {
+		Job page;
+		ArrayList<Job> jobs = new ArrayList<Job> ();
 		for(int i = 1; i <= idGenerator.getNumberOfPages(); i++) {
 			try {
 				page = getJob("/Job/" + ((Integer) i).toString()).data();
-				jobs.add(page.getPageID());
+				jobs.add(page);
 			}
 			catch(RestClientException e) {
 				System.out.print("");
@@ -228,13 +228,13 @@ public class RestMain {
 	}
 	
 	// Employers
-	public ArrayList<String> getAllEmployers() {
-		Page page;
-		ArrayList<String> employers = new ArrayList<String> ();
+	public ArrayList<Employer> getAllEmployers() {
+		Employer page;
+		ArrayList<Employer> employers = new ArrayList<Employer> ();
 		for(int i = 1; i <= idGenerator.getNumberOfPages(); i++) {
 			try {
 				page = getEmployer("/Employer/" + ((Integer) i).toString()).data();
-				employers.add(page.getPageID());
+				employers.add(page);
 			}
 			catch(RestClientException e) {
 				System.out.print("");
@@ -244,13 +244,13 @@ public class RestMain {
 	}
 	
 	// Person
-	public ArrayList<String> getAllPersons() {
-		Page page;
-		ArrayList<String> persons = new ArrayList<String> ();
+	public ArrayList<Person> getAllPersons() {
+		Person page;
+		ArrayList<Person> persons = new ArrayList<Person> ();
 		for(int i = 1; i <= idGenerator.getNumberOfPages(); i++) {
 			try {
 				page = getPerson("/Person/" + ((Integer) i).toString()).data();
-				persons.add(page.getPageID());
+				persons.add(page);
 			}
 			catch(RestClientException e) {
 				System.out.print("");
