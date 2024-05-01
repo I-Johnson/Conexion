@@ -1,7 +1,6 @@
 package conexion;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class Person extends User{
 	private int yearsOfExperience;
@@ -134,32 +133,6 @@ public class Person extends User{
 		return "Person [yearsOfExperience=" + yearsOfExperience + ", personDegree=" + personDegree
 				+ ", personInstitution=" + personInstitution + ", personMajor=" + personMajor + "]";
 	}
+	
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = super.hashCode();
-		result = prime * result
-				+ Objects.hash(personDegree, personInstitution, personMajor, recommendedJobs, yearsOfExperience);
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (!super.equals(obj))
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Person other = (Person) obj;
-		return Objects.equals(personDegree, other.personDegree)
-				&& Objects.equals(personInstitution, other.personInstitution)
-				&& Objects.equals(personMajor, other.personMajor)
-				&& Objects.equals(recommendedJobs, other.recommendedJobs)
-				&& yearsOfExperience == other.yearsOfExperience;
-	}
-	
-	
-	
 }
