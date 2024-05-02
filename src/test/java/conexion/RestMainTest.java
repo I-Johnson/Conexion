@@ -1,6 +1,9 @@
 package conexion;
 
+import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.ArrayList;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -18,6 +21,7 @@ class RestMainTest {
 	public Skill cloudComputing;
 	public Skill springMVC;
 	public Skill mern;
+	public Skill someSkill;
 	 
 	public Person KMiles;
 	public Person RWilliams;
@@ -133,6 +137,7 @@ class RestMainTest {
 			cloudComputing = new Skill(idGenerator, "Cloud Computing");
 			springMVC = new Skill(idGenerator, "Spring MVC");
 			mern = new Skill(idGenerator, "MERN");
+			someSkill = new Skill(idGenerator, "SomeSkill");
 			
 			RWilliams = new Person(idGenerator, "Robin", "Williams", "robin@princeton.edu", "GreatestActor", 4, 
 					"Masters", "PrincetonU", "Computer Science");
@@ -194,6 +199,7 @@ class RestMainTest {
 		server.addPage(KMiles);
 		server.addPage(RWilliams);
 		server.addPage(Netflix);
+		server.addPage(springMVC);
 		server.addPage(SWEAssociate_Job);
 		server.addPage(NetflixJob1);
 		server.addPage(NetflixJob2);
@@ -204,16 +210,13 @@ class RestMainTest {
 		server.updatePage(SWEAssociate_Job);
 				 
 		 //Test all the GET METHOD is working for all the classes. 
-		 assertEquals(mern.getPageID(), server.getSkill(mern.getPageID()).data().getPageID());
-		 assertEquals(Sundar.getPageID(), server.getPerson(Sundar.getPageID()).data().getPageID());
-		 assertEquals(Netflix.getPageID(), server.getEmployer(Netflix.getPageID()).data().getPageID());
-		 assertEquals(SWEAssociate_Job.getPageID(), server.getJob(SWEAssociate_Job.getPageID()).data().getPageID());
-		 assertEquals(SWE_Principles_Post.getPageID(), server.getPost(SWE_Principles_Post.getPageID()).data().getPageID());
+		 assertTrue(mern.equals(server.getSkill(mern.getPageID()).data()));
+		 assertTrue(Sundar.equals(server.getPerson(Sundar.getPageID()).data()));
+		 assertTrue(Netflix.equals(server.getEmployer(Netflix.getPageID()).data()));
+		 assertTrue(SWEAssociate_Job.equals(server.getJob(SWEAssociate_Job.getPageID()).data()));
+		 assertTrue(SWE_Principles_Post.equals(server.getPost(SWE_Principles_Post.getPageID()).data()));
 		 
-		 
-		 // Remove mern and test it worked
-		 server.removePage(mern.getPageID());
-		 testPageRemoval(mern.getPageID(), server);
+	
 		 
 		 
 //				 Put Test
@@ -221,6 +224,48 @@ class RestMainTest {
 		 Sundar.setUserName("Sundar222");
 		 server.updatePage(Sundar);
 		 assertEquals(Sundar.getUserName(), server.getPerson(Sundar.getPageID()).data().getUserName());
+		 
+		 
+		 //Test get all methods
+		 ArrayList<Skill> allSkills = server.getAllSkills();
+		 ArrayList<Post> allPosts = server.getAllPost();
+		 ArrayList<Employer> allEmployers = server.getAllEmployers();
+		 ArrayList<Person> allPersons = server.getAllPersons();
+		 ArrayList<Job> allJobs = server.getAllJobs();
+		 
+		 //Skills --
+		 mern = server.getSkill(mern.getPageID()).data();
+		 cloudComputing = server.getSkill(cloudComputing.getPageID()).data();
+		 springMVC = server.getSkill(springMVC.getPageID()).data();
+//		 someSkill = server.getSkill(someSkill.getPageID()).data();
+//		 assertFalse(allSkills.contains(someSkill));
+		 assertTrue(allSkills.contains(mern));
+		 assertTrue(allSkills.contains(cloudComputing));
+		 assertTrue(allSkills.contains(springMVC));
+		 
+		 //Person
+		 RWilliams = server.getPerson(RWilliams.getPageID()).data();
+		 KMiles = server.getPerson(KMiles.getPageID()).data();
+		 Sundar = server.getPerson(Sundar.getPageID()).data();
+		 assertTrue(allPersons.contains(RWilliams));
+		 assertTrue(allPersons.contains(KMiles));
+		 assertTrue(allPersons.contains(Sundar));
+		 
+		 // Posts
+		 SWE_Principles_Post = server.getPost(SWE_Principles_Post.getPageID()).data();
+		 assertTrue(allPosts.contains(SWE_Principles_Post));
+		 
+		 // Employer
+		 Netflix = server.getEmployer(Netflix.getPageID()).data();
+		 assertTrue(allEmployers.contains(Netflix));
+		 
+		 //Job
+		 NetflixJob1 = server.getJob(NetflixJob1.getPageID()).data();
+		 NetflixJob2 = server.getJob(NetflixJob2.getPageID()).data();
+		 NetflixJob3 = server.getJob(NetflixJob3.getPageID()).data();
+		 assertTrue(allJobs.contains(NetflixJob1));
+		 assertTrue(allJobs.contains(NetflixJob2));
+		 assertTrue(allJobs.contains(NetflixJob3));
 		 
 		 
 		 // Recommendation Test Start here
@@ -275,6 +320,14 @@ class RestMainTest {
 			
 			//Making sure RWilliams applied to the job he was recommended
 			assertTrue(NetflixJob1.getApplicants().contains(RWilliams.getPageID()));
+			
+			 
+			 // Remove mern and test it worked
+			 server.removePage(someSkill.getPageID());
+			 testPageRemoval(someSkill.getPageID(), server);
+			 
+			 allSkills = server.getAllSkills();
+			 assertFalse(allSkills.contains(someSkill));
 			
 			System.out.println("Success");
 					
