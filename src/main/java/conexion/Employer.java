@@ -1,5 +1,7 @@
 package conexion;
 
+import java.util.Objects;
+
 public class Employer extends User{
 
 	@Override
@@ -46,6 +48,27 @@ public class Employer extends User{
 		this.addPost(newJob);
 		return newJob;
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + Objects.hash(employerLocation);
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Employer other = (Employer) obj;
+		return Objects.equals(employerLocation, other.employerLocation);
+	}
+	
 	
 	
 }

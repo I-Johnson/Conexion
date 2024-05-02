@@ -1,6 +1,7 @@
 package conexion;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.http.MediaType;
 import org.springframework.web.client.RestClient;
@@ -258,4 +259,8 @@ public class RestMain {
 		}
 		return persons;
 	}
+	
+//	public Skill updateLocal(Skill page) {
+//		
+//	}
 }

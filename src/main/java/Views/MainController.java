@@ -14,7 +14,7 @@ public class MainController {
 
     @FXML
     void onClickEmployers(ActionEvent event) {
-//    	model.showAllEmployers();
+    	model.showAllEmployers();
     	System.out.println("clicked employers");
 
     }
@@ -27,13 +27,13 @@ public class MainController {
 
     @FXML
     void onClickJobs(ActionEvent event) {
-//    	model.showAllJobs();
+    	model.showAllJobs();
     	System.out.println("clicked jobs");
     }
 
     @FXML
     void onClickMyProfile(ActionEvent event) {
-//    	model.showPrivateProfile();
+    	model.showPrivateProfile();
     	System.out.println("clicked my profile");
     }
 
@@ -45,13 +45,13 @@ public class MainController {
 
     @FXML
     void onClickSkills(ActionEvent event) {
-//    	model.showAllSkills();
+    	model.showAllSkills();
     	System.out.println("clicked skilla");
     }
 
     @FXML
     void onClickUsers(ActionEvent event) {
-//    	model.showAllUsers();
+    	model.showAllPersons();
     	System.out.println("clicked users");
     }
 

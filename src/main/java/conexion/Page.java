@@ -1,5 +1,6 @@
 package conexion;
 import java.util.ArrayList;
+import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -13,6 +14,9 @@ public abstract class Page {
 	public ArrayList<String> viewers;
 	public ArrayList<String> editors;
 	public boolean isPublicallyVisible;
+	private ArrayList<String> jobs;
+	private ArrayList<String> employers;
+	private ArrayList<String> persons;
 	
 	public Page(IDGenerator idGenerator) {
 		this.idGenerator = idGenerator;
@@ -25,6 +29,10 @@ public abstract class Page {
 		this.viewers = new ArrayList<String>();
 		this.editors = new ArrayList<String> ();
 		this.isPublicallyVisible = true;
+		this.jobs = new ArrayList<String> ();
+		this.employers = new ArrayList<String> ();
+		this.persons = new ArrayList<String> ();
+		
 	}
 	
 	//defualt constructor so that json stops with all its crap
@@ -36,8 +44,61 @@ public abstract class Page {
 		this.editors = new ArrayList<String>();
 		this.isPublicallyVisible = true;
 		this.skills = new ArrayList<String>();
+		this.jobs = new ArrayList<String> ();
+		this.employers = new ArrayList<String> ();
+		this.persons = new ArrayList<String> ();
 	}
 	
+	
+	
+	public ArrayList<String> getPersons() {
+		return persons;
+	}
+
+	public void setPersons(ArrayList<String> persons) {
+		this.persons = persons;
+	}
+
+	public ArrayList<String> getViewers() {
+		return viewers;
+	}
+
+	public void setViewers(ArrayList<String> viewers) {
+		this.viewers = viewers;
+	}
+
+	public ArrayList<String> getEditors() {
+		return editors;
+	}
+
+	public void setEditors(ArrayList<String> editors) {
+		this.editors = editors;
+	}
+
+	public boolean isPublicallyVisible() {
+		return isPublicallyVisible;
+	}
+
+	public void setPublicallyVisible(boolean isPublicallyVisible) {
+		this.isPublicallyVisible = isPublicallyVisible;
+	}
+
+	public ArrayList<String> getJobs() {
+		return jobs;
+	}
+
+	public void setJobs(ArrayList<String> jobs) {
+		this.jobs = jobs;
+	}
+
+	public ArrayList<String> getEmployers() {
+		return employers;
+	}
+
+	public void setEmployers(ArrayList<String> employers) {
+		this.employers = employers;
+	}
+
 	public IDGenerator getIdGenerator() {
 		return idGenerator;
 	}
@@ -101,9 +162,26 @@ public abstract class Page {
 		this.viewers.add(user);
 		
 	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(editors, isPublicallyVisible, pageID, posts, skills, viewers);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Page other = (Page) obj;
+		return Objects.equals(editors, other.editors) && isPublicallyVisible == other.isPublicallyVisible
+				&& Objects.equals(pageID, other.pageID) && Objects.equals(posts, other.posts)
+				&& Objects.equals(skills, other.skills) && Objects.equals(viewers, other.viewers);
+	}
 	
 	
 	
 }
-
-

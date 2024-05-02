@@ -13,7 +13,6 @@
          <children>
             <ButtonBar prefHeight="100.0" prefWidth="200.0">
               <buttons>
-                  <Button mnemonicParsing="false" onAction="#onClickHome" text="Home" />
                 <Button mnemonicParsing="false" onAction="#onClickMyProfile" text="My Profile" />
                   <Button mnemonicParsing="false" onAction="#onClickJobs" text="Jobs" />
                   <Button mnemonicParsing="false" onAction="#onClickEmployers" text="Employers" />

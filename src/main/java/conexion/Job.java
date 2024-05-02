@@ -1,5 +1,6 @@
 package conexion;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Job extends Post{
 
@@ -121,10 +122,35 @@ public class Job extends Post{
 	public ArrayList<String> getPostAttachments() {
 		return postAttachments;
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result
+				+ Objects.hash(applicants, postAttachments, requiredDegree, requiredExperience, requiredMajor);
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Job other = (Job) obj;
+		return Objects.equals(applicants, other.applicants) && Objects.equals(postAttachments, other.postAttachments)
+				&& Objects.equals(requiredDegree, other.requiredDegree)
+				&& requiredExperience == other.requiredExperience && Objects.equals(requiredMajor, other.requiredMajor);
+	}
 	
 //	public void addPostAttachment(String string) {
 //		this.postAttachments.add(string);
 //	}
+	
+	
 	
 
 }

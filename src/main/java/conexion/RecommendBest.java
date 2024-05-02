@@ -10,7 +10,7 @@ public class RecommendBest implements Recommendation {
 		// TODO Auto-generated method stub
 		Page page;
 		RestMain client = RestMain.getInstance(); 
-		IDGenerator idGenerator = job.idGenerator;
+		IDGenerator idGenerator = IDGenerator.getInstance();
 		
 		Integer numberOfPages = (Integer) idGenerator.getNumberOfPages();
 		 
