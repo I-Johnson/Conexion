@@ -151,7 +151,6 @@ class RestMainTest {
 			RWilliamsPost1 = RWilliams.post("Centre College Good", "March 31st", "no_body_available");
 			
 			
-//			KMiles.posts.addPost(SWESenior_Job_Article);
 			
 			KMiles = new Person(idGenerator, "Ken Miles", "FordIsBest", "Miles@ford.com", "Best Driver", 1, 
 			"Bachelors", "Centre University", "Computer Science");
@@ -234,35 +233,22 @@ class RestMainTest {
 		 ArrayList<Job> allJobs = server.getAllJobs();
 		 
 		 //Skills --
-		 mern = server.getSkill(mern.getPageID()).data();
-		 cloudComputing = server.getSkill(cloudComputing.getPageID()).data();
-		 springMVC = server.getSkill(springMVC.getPageID()).data();
-//		 someSkill = server.getSkill(someSkill.getPageID()).data();
-//		 assertFalse(allSkills.contains(someSkill));
 		 assertTrue(allSkills.contains(mern));
 		 assertTrue(allSkills.contains(cloudComputing));
 		 assertTrue(allSkills.contains(springMVC));
 		 
 		 //Person
-		 RWilliams = server.getPerson(RWilliams.getPageID()).data();
-		 KMiles = server.getPerson(KMiles.getPageID()).data();
-		 Sundar = server.getPerson(Sundar.getPageID()).data();
 		 assertTrue(allPersons.contains(RWilliams));
 		 assertTrue(allPersons.contains(KMiles));
 		 assertTrue(allPersons.contains(Sundar));
 		 
 		 // Posts
-		 SWE_Principles_Post = server.getPost(SWE_Principles_Post.getPageID()).data();
 		 assertTrue(allPosts.contains(SWE_Principles_Post));
 		 
 		 // Employer
-		 Netflix = server.getEmployer(Netflix.getPageID()).data();
 		 assertTrue(allEmployers.contains(Netflix));
 		 
 		 //Job
-		 NetflixJob1 = server.getJob(NetflixJob1.getPageID()).data();
-		 NetflixJob2 = server.getJob(NetflixJob2.getPageID()).data();
-		 NetflixJob3 = server.getJob(NetflixJob3.getPageID()).data();
 		 assertTrue(allJobs.contains(NetflixJob1));
 		 assertTrue(allJobs.contains(NetflixJob2));
 		 assertTrue(allJobs.contains(NetflixJob3));
