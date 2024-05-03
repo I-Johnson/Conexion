@@ -1,7 +1,6 @@
 package Views;
 import java.util.ArrayList;
 
-import conexion.Job;
 import conexion.RestMain;
 import conexion.Skill;
 import javafx.collections.FXCollections;
@@ -26,7 +25,6 @@ public class AllSkillsViewController {
     @FXML 
 	private Button mySkillsButton;
 	
-	@SuppressWarnings("unchecked")
 	@FXML
 	void onClickShowOnlyMySkills(ActionEvent event) {
 		if(vm.getLoggedIn() != null) {

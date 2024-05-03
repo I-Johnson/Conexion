@@ -39,7 +39,7 @@ public class MainController {
 
     @FXML
     void onClickPosts(ActionEvent event) {
-//    	model.showAllPosts();
+    	model.showAllPosts();
     	System.out.println("clicked posts");
     }
 

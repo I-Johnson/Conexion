@@ -10,6 +10,7 @@ import org.springframework.web.client.RestClientException;
 import Views.AllEmployersViewController;
 import Views.AllJobsViewController;
 import Views.AllPersonsViewController;
+import Views.AllPostsViewController;
 import Views.AllSkillsViewController;
 import Views.LoginViewController;
 import Views.privateProfileController;
@@ -121,6 +122,26 @@ public class ViewTransitionalModel implements ViewTransitionModelInterface {
 		}
 
 	}
+	
+	@Override
+	public void showAllPosts() {
+		// TODO Auto-generated method stub
+		FXMLLoader loader = new FXMLLoader();
+		//System.out.println((loader.getController())==null);
+		loader.setLocation(ViewTransitionalModel.class.getResource("/Views/allPosts.fxml"));
+		try {
+			Node view = loader.load();
+			mainview.setCenter(view);
+			AllPostsViewController cont = loader.getController();
+			//System.out.println(cont==null);
+			cont.setModel(this);
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		
+		}
+	}
 
 
 	@Override
@@ -146,13 +167,6 @@ public class ViewTransitionalModel implements ViewTransitionModelInterface {
 		}
 	}
 
-
-//	@Override
-//	public void showAllPosts() {
-//		// TODO Auto-generated method stub
-//		
-//	}
-//
 
 //	@Override
 //	public void changetoEditView() {
@@ -201,6 +215,7 @@ public class ViewTransitionalModel implements ViewTransitionModelInterface {
 		}
 	
 		}
+	
 	@Override
 	public void login(String email, String password) {
 		IDGenerator idGenerator = IDGenerator.getInstance();

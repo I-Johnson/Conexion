@@ -13,6 +13,7 @@ import javafx.scene.control.ListView;
 import models.ViewTransitionalModel;
 
 public class AllPersonsViewController {
+	
 	ViewTransitionalModel vm;
 	public void setModel(ViewTransitionalModel vm) {
 		this.vm = vm;

@@ -3,7 +3,6 @@ package Views;
 import java.util.ArrayList;
 
 import conexion.Employer;
-import conexion.Job;
 import conexion.RestMain;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -28,7 +27,6 @@ public class AllEmployersViewController {
 	@FXML 
 	private Button myEmployerButton;
 	
-	@SuppressWarnings("unchecked")
 	@FXML
 	void onClickShowOnlyMyEmployers(ActionEvent event) {
 		if(vm.getLoggedIn() != null) {
@@ -38,8 +36,8 @@ public class AllEmployersViewController {
 					myEmployer.add(employer);
 				}
 			}
-			ObservableList<Employer> myObservableJobs = FXCollections.observableList(myEmployer);
-			allEmployersList.setItems(myObservableJobs);
+			ObservableList<Employer> myObservableEmployers = FXCollections.observableList(myEmployer);
+			allEmployersList.setItems(myObservableEmployers);
 		}
 	}
 }

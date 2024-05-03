@@ -10,7 +10,7 @@ public interface ViewTransitionModelInterface {
 	public void showAllEmployers();
 	public void showAllJobs();
 	public void showAllSkills();
-//	public void showAllPosts();
+	public void showAllPosts();
 	public void showPrivateProfile();
 	public void login(String username, String password);
 	//Edit Pages 

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.BorderPane?>
@@ -16,11 +17,14 @@
                   <Font name="Courier New Bold" size="22.0" />
                </font>
             </Label>
-            <ListView fx:id="allUsersList" prefHeight="200.0" prefWidth="200.0" />
+            <ListView fx:id="allPersonsList" prefHeight="200.0" prefWidth="200.0" />
          </children>
          <padding>
             <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
          </padding>
       </VBox>
    </center>
+   <bottom>
+      <Button fx:id="showFollowedUsersButton" mnemonicParsing="false" onAction="#onClickShowOnlyMyPersons" text="Show Only Followed Users" BorderPane.alignment="CENTER" />
+   </bottom>
 </BorderPane>

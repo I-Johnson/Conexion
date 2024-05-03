@@ -197,7 +197,7 @@ public class RestMain {
 	}
 	
 	// Post
-	public ArrayList<Post> getAllPost() {
+	public ArrayList<Post> getAllPosts() {
 		Post page;
 		ArrayList<Post> posts = new ArrayList<Post> ();
 		for(int i = 1; i <= idGenerator.getNumberOfPages(); i++) {
