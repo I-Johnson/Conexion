@@ -70,6 +70,10 @@ public abstract class Page {
 	public ArrayList<String> getEditors() {
 		return editors;
 	}
+	
+	public boolean has_permission(User user) {
+		return editors.contains(user.getPageID());
+	}
 
 	public void setEditors(ArrayList<String> editors) {
 		this.editors = editors;

@@ -18,5 +18,11 @@ public interface ViewTransitionModelInterface {
 //	public void changetoEditView();
 	public void changetoLoginView();
 	void showAllPersons();
+	void showSingleJob(String id);
+	void showEditJob(String id);
+	void showSinglePost(String id);
+	void showEditPost(String id);
+	void showSingleSkill(String id);
+	void showEditSkill(String id);
 
 }
