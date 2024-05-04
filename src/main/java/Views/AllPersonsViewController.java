@@ -9,18 +9,56 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.util.Callback;
+import models.ItemPersonCell;
+import models.Text;
 import models.ViewTransitionalModel;
 
 public class AllPersonsViewController {
 	
 	ViewTransitionalModel vm;
-	public void setModel(ViewTransitionalModel vm) {
-		this.vm = vm;
-		RestMain client = RestMain.getInstance();
-		ObservableList<Person> observablePerson = FXCollections.observableList(client.getAllPersons());
-		allPersonsList.setItems(observablePerson);
+	ListPerson listPerson;
+	Person person;
+	Text info;
+	
+	public Text getInfo() {
+		return info;
 	}
+
+
+
+	public void setInfo(Text info) {
+		this.info = info;
+	}
+	
+	public Person getPerson() {
+		return person;
+	}
+
+
+
+	public void setPerson(Person person) {
+		this.person = person;
+	}
+	
+	public void setPersonName() {
+		personTitle.textProperty().bind(this.info.getPersonName());
+		this.info.getPersonName().set(person.getUserName());
+	}
+	
+	public void setPersonDescriptionName() {
+		personDescriptionLabel.textProperty().bind(this.info.getPersonDescription());
+		this.info.getPersonDescription().set(person.getUserBio());
+	}
+	
+	public void setPersonViewModel(ViewTransitionalModel vm) {
+		this.vm = vm;
+	}
+	
+	
     @FXML
     private ListView<Person> allPersonsList;
     
@@ -41,4 +79,64 @@ public class AllPersonsViewController {
 			allPersonsList.setItems(myObservablePerson);
 		}
 	}
+	
+    @FXML
+    private Label personDescriptionLabel;
+
+
+    @FXML
+    private Label personTitle;
+
+
+	
+	public void showPersonItem(Person item) {
+		vm.showSinglePerson(item.getPageID());
+	}
+	
+	private final AllPersonsViewController itemShower;
+	
+    public AllPersonsViewController()
+    {
+    	itemShower=this;
+//    	loggedIn = null;
+    }
+    
+    public void setPersonModel(ListPerson model)
+    {
+    	this.listPerson = model;
+    	
+    	allPersonsList.setCellFactory(new Callback<ListView<Person>, ListCell<Person>>()
+		  {
+
+			@Override
+			public ListCell<Person> call(ListView<Person> lv)
+			{
+				return new ItemPersonCell(lv,itemShower);
+			}
+		  });
+    	
+    	allPersonsList.setItems(model.getItems());
+    	
+    	
+    }
+	
+	//Edit Skill
+//
+//    @FXML
+//    private Button skillEditSave;
+//
+//    @FXML
+//    private TextField skillNameTextField;
+//
+//    @FXML
+//    void onClickSkillEditSave(ActionEvent event) {
+////    	setEditInfo();
+//    	String skillName = skillNameTextField.textProperty().get();
+//    	
+//    	skill.setSkillName(skillName);
+//    	RestMain client = RestMain.getInstance();
+//    	client.updatePage(skill);
+//    	vm.showSingleSkill(skill.getPageID());
+//    	
+//    }
 }

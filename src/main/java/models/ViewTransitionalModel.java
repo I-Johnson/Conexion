@@ -13,6 +13,8 @@ import Views.AllSkillsViewController;
 import Views.ListJob;
 import Views.ListPost;
 import Views.ListSkill;
+import Views.ListEmployer;
+import Views.ListPerson;
 import Views.LoginViewController;
 import Views.privateProfileController;
 import conexion.Employer;
@@ -55,10 +57,15 @@ public class ViewTransitionalModel implements ViewTransitionModelInterface {
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(ViewTransitionalModel.class.getResource("/Views/allEmployers.fxml"));
 		try {
+			ListEmployer listEmployer = new ListEmployer();
+			RestMain client = RestMain.getInstance();
+			ObservableList<Employer> observableJobs = FXCollections.observableList(client.getAllEmployers());
+			(listEmployer).setItems(observableJobs);
 			Node view = loader.load();
 			mainview.setCenter(view);
 			AllEmployersViewController cont = loader.getController();
-			cont.setModel(this);
+			cont.setEmployerViewModel(this);
+			cont.setEmployerModel(listEmployer);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -168,6 +175,61 @@ public class ViewTransitionalModel implements ViewTransitionModelInterface {
 	}
 	
 	@Override
+	public void showSingleEmployer(String id) {
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(ViewTransitionalModel.class.getResource("/Views/singleEmployerPage.fxml"));
+		RestMain client = RestMain.getInstance();
+		Employer myEmployer = client.getEmployer(id).data(); 
+		Text text = new Text();
+		
+		try {
+			Node view = loader.load();
+			mainview.setCenter(view);
+			AllEmployersViewController cont = loader.getController();
+			
+			cont.setEmployer(myEmployer);
+			System.out.println(myEmployer);
+			cont.setEmployerViewModel(this);
+			cont.setInfo(text);
+			
+			cont.setEmployerName();
+//			cont.setEmployerDescriptionName();
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+	
+	@Override
+	public void showSinglePerson(String id) {
+		// TODO Auto-generated method stub
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(ViewTransitionalModel.class.getResource("/Views/singlePersonPage.fxml"));
+		RestMain client = RestMain.getInstance();
+		Person myPerson = client.getPerson(id).data(); // add edit permissions later!!
+		Text text = new Text();
+		
+		try {
+			Node view = loader.load();
+			mainview.setCenter(view);
+			AllPersonsViewController cont = loader.getController();
+			
+			cont.setPerson(myPerson);
+			cont.setPersonViewModel(this);
+			cont.setInfo(text);
+			cont.setPersonName();
+			cont.setPersonDescriptionName();
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+	
+	@Override
 	public void showEditJob(String id) {
 		// TODO Auto-generated method stub
 		FXMLLoader loader = new FXMLLoader();
@@ -247,10 +309,15 @@ public class ViewTransitionalModel implements ViewTransitionModelInterface {
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(ViewTransitionalModel.class.getResource("/Views/allUsers.fxml"));
 		try {
+			ListPerson listPerson = new ListPerson();
+			RestMain client = RestMain.getInstance();
+			ObservableList<Person> observableSkills = FXCollections.observableList(client.getAllPersons());
+			listPerson.setItems(observableSkills);
 			Node view = loader.load();
 			mainview.setCenter(view);
 			AllPersonsViewController cont = loader.getController();
-			cont.setModel(this);
+			cont.setPersonViewModel(this);
+			cont.setPersonModel(listPerson);
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

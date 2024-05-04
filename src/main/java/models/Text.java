@@ -12,6 +12,14 @@ public class Text {
 	StringProperty postDescription = new SimpleStringProperty();
 	
 	StringProperty skillName = new SimpleStringProperty();
+	
+	StringProperty EmployerName = new SimpleStringProperty();
+	StringProperty EmployerDescription = new SimpleStringProperty();
+	
+	StringProperty PersonName = new SimpleStringProperty();
+	StringProperty PersonDescription = new SimpleStringProperty();
+	
+	
 	public StringProperty getSkillName() {
 		return skillName;
 	}
@@ -50,5 +58,30 @@ public class Text {
 	public void setJobDescription(StringProperty jobDescription) {
 		this.jobDescription = jobDescription;
 	}
+	public StringProperty getEmployerName() {
+		return EmployerName;
+	}
+	public void setEmployerName(StringProperty employerName) {
+		EmployerName = employerName;
+	}
+	public StringProperty getEmployerDescription() {
+		return EmployerDescription;
+	}
+	public void setEmployerDescription(StringProperty employerDescription) {
+		EmployerDescription = employerDescription;
+	}
+	public StringProperty getPersonName() {
+		return PersonName;
+	}
+	public void setPersonName(StringProperty personName) {
+		PersonName = personName;
+	}
+	public StringProperty getPersonDescription() {
+		return PersonDescription;
+	}
+	public void setPersonDescription(StringProperty personDescription) {
+		PersonDescription = personDescription;
+	}
+	
 
 }

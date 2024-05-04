@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Views.AllEmployersViewController">
+   <top>
+      <Label fx:id="employerTitle" prefHeight="35.0" prefWidth="245.0" text="Job Name" textAlignment="JUSTIFY" BorderPane.alignment="CENTER">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
+   </top>
+   <center>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="employerDescriptionLabel" layoutX="96.0" layoutY="63.0" prefHeight="126.0" prefWidth="384.0" text="Text" />
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

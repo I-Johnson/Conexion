@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Views.AllSkillsViewController">
+   <top>
+      <Label fx:id="skillTitle" prefHeight="35.0" prefWidth="245.0" text="Skill Name" textAlignment="JUSTIFY" BorderPane.alignment="CENTER">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
+   </top>
+   <center>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            
+            <Button fx:id="skillEditButton" layoutX="487.0" layoutY="14.0" mnemonicParsing="false" onAction="#onClickEditSkillPage" prefHeight="26.0" prefWidth="56.0" text="Edit " />
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

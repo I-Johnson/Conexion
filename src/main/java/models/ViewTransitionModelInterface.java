@@ -24,5 +24,7 @@ public interface ViewTransitionModelInterface {
 	void showEditPost(String id);
 	void showSingleSkill(String id);
 	void showEditSkill(String id);
+	void showSinglePerson(String id);
+	void showSingleEmployer(String id);
 
 }
