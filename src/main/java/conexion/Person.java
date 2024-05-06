@@ -130,8 +130,7 @@ public class Person extends User{
 
 	@Override
 	public String toString() {
-		return "Person [yearsOfExperience=" + yearsOfExperience + ", personDegree=" + personDegree
-				+ ", personInstitution=" + personInstitution + ", personMajor=" + personMajor + "]";
+		return "Person " + this.getUserName();
 	}
 	
 

@@ -130,6 +130,7 @@ public class RestMain {
 	
 	//GET Skill
 	public GetSkillDesc getSkill(String id) {
+//		System.out.println(id);
 		GetSkillDesc response = client.get()
 				.uri(uriBase + myDesc.name + "/" + id)
 				.accept(MediaType.APPLICATION_JSON)

@@ -106,8 +106,17 @@ public class AllPostsViewController
 //    	if (job.getEditors().contains(user)) {
 //            vm.showEditJob(job.getPageID());
 //        }
+    	
+    	System.out.println(vm.getLoggedIn().getPageID());
+    	System.out.print(post.getEditors());
+    	
+//    	String user = loggedIn.getPageID();
+    	if (post.has_permission(vm.getLoggedIn())) {
+    		System.out.print("lkja");
+    		vm.showEditJob(post.getPageID());
+    	}
 //    	System.out.print("print" + user);
-    	vm.showEditPost(post.getPageID());
+//    	vm.showEditPost(post.getPageID());
     	
     }
 	
@@ -165,5 +174,41 @@ public class AllPostsViewController
     	vm.showSinglePost(post.getPageID());
     	
     }
+    
+    
+
+    @FXML
+    private Button relatedEmployer;
+
+    @FXML
+    private Button relatedJob;
+
+    @FXML
+    private Button relatedPerson;
+
+    @FXML
+    private Button relatedSkill;
+
+
+    @FXML
+    void onClickRelatedJob(ActionEvent event) {
+    	vm.showAllJobs(post);
+    }
+    
+    @FXML
+    void onClickRelatedEmployer(ActionEvent event) {
+    	vm.showAllEmployers(post);
+    }
+
+    @FXML
+    void onClickRelatedPerson(ActionEvent event) {
+    	vm.showAllPersons(post);
+    }
+
+    @FXML
+    void onClickRelatedSkill(ActionEvent event) {
+    	vm.showAllSkills(post);
+    }
+
 	
 }

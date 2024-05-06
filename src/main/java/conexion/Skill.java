@@ -41,6 +41,9 @@ public class Skill extends Page{
 		if (skill!=this) {
 			skill.getSkills().add(this.getPageID());
 		}
+		RestMain client = RestMain.getInstance();
+		client.updatePage(this);
+		client.updatePage(skill);
 		
 		
 	}
@@ -48,7 +51,9 @@ public class Skill extends Page{
 	public void addPost(Post post) {
 		this.getPosts().add(post.getPageID());
 		post.getSkills().add(this.getPageID());
-		
+		RestMain client = RestMain.getInstance();
+		client.updatePage(this);
+		client.updatePage(post);
 	}
 
 	@Override

@@ -4,12 +4,12 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Views.AllPersonsViewController">
    <top>
-      <Label fx:id="personTitle" prefHeight="35.0" prefWidth="245.0" text="Job Name" textAlignment="JUSTIFY" BorderPane.alignment="CENTER">
+      <Label fx:id="personTitle" prefHeight="35.0" prefWidth="245.0" text="Person Name" textAlignment="JUSTIFY" BorderPane.alignment="CENTER">
          <font>
             <Font size="19.0" />
          </font>
@@ -18,7 +18,16 @@
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Label fx:id="personDescriptionLabel" layoutX="96.0" layoutY="63.0" prefHeight="126.0" prefWidth="384.0" text="Text" />
+            <Label fx:id="personDescriptionLabel" layoutX="69.0" layoutY="63.0" prefHeight="126.0" prefWidth="384.0" text="Text" />
+            <VBox layoutX="473.0" layoutY="63.0" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Label text="RelatedPages" />
+                  <Button fx:id="relatedJob" mnemonicParsing="false" onAction="#onClickRelatedJobs" text="Job" />
+                  <Button fx:id="relatedSkill" mnemonicParsing="false" onAction="#onClickRelatedSkills" text="Skill" />
+                  <Button fx:id="relatedEmployer" mnemonicParsing="false" onAction="#onClickRelatedEmployer" text="Employer" />
+                  <Button fx:id="relatedPosts" mnemonicParsing="false" onAction="#onClickRelatedPosts" text="Post" />
+               </children>
+            </VBox>
          </children>
       </AnchorPane>
    </center>

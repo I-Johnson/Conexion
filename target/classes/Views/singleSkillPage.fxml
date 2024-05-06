@@ -4,8 +4,8 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Views.AllSkillsViewController">
    <top>
@@ -20,6 +20,15 @@
          <children>
             
             <Button fx:id="skillEditButton" layoutX="487.0" layoutY="14.0" mnemonicParsing="false" onAction="#onClickEditSkillPage" prefHeight="26.0" prefWidth="56.0" text="Edit " />
+            <VBox layoutX="465.0" layoutY="83.0" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Label text="Related Pages" />
+                  <Button fx:id="relatedJobs" mnemonicParsing="false" onAction="#onClickRelatedJob" text="Job" />
+                  <Button fx:id="relatedEmployer" mnemonicParsing="false" onAction="#onClickRelatedEmployer" text="Employer" />
+                  <Button fx:id="relatedPerson" mnemonicParsing="false" onAction="#onClickPerson" text="Person" />
+                  <Button fx:id="relatedPosts" mnemonicParsing="false" onAction="#onClickRelatedPosts" text="Posts" />
+               </children>
+            </VBox>
          </children>
       </AnchorPane>
    </center>

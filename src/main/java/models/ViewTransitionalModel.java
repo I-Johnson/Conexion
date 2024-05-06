@@ -20,6 +20,7 @@ import Views.privateProfileController;
 import conexion.Employer;
 import conexion.IDGenerator;
 import conexion.Job;
+import conexion.Page;
 import conexion.Person;
 import conexion.Post;
 import conexion.RestMain;
@@ -34,7 +35,7 @@ import javafx.scene.layout.BorderPane;
 public class ViewTransitionalModel implements ViewTransitionModelInterface {
 	
 	User loggedIn;
-	
+	RestMain client = RestMain.getInstance();
 	BorderPane  mainview;
 	public ViewTransitionalModel(BorderPane view) {
 		mainview = view;
@@ -72,6 +73,34 @@ public class ViewTransitionalModel implements ViewTransitionModelInterface {
 		}
 		
 	}
+	
+	@Override
+	public void showAllEmployers(Page page) {
+		// TODO Auto-generated method stub
+
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(ViewTransitionalModel.class.getResource("/Views/allEmployers.fxml"));
+		try {
+			ArrayList<Employer> pages = new ArrayList<Employer> ();
+			
+			for (String id: page.getEmployers()) {
+				pages.add(client.getEmployer(id).data());
+				
+			}
+			ListEmployer listEmployer = new ListEmployer();
+			ObservableList<Employer> observableJobs = FXCollections.observableList(pages);
+			(listEmployer).setItems(observableJobs);
+			Node view = loader.load();
+			mainview.setCenter(view);
+			AllEmployersViewController cont = loader.getController();
+			cont.setEmployerViewModel(this);
+			cont.setEmployerModel(listEmployer);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
 
 	@Override
 	public void showAllJobs() {
@@ -80,7 +109,35 @@ public class ViewTransitionalModel implements ViewTransitionModelInterface {
 		loader.setLocation(ViewTransitionalModel.class.getResource("/Views/allJobs.fxml"));
 		try {
 			ListJob listJob = new ListJob();
-			RestMain client = RestMain.getInstance();
+			ObservableList<Job> observableJobs = FXCollections.observableList(client.getAllJobs());
+			(listJob).setItems(observableJobs);
+			Node view = loader.load();
+			mainview.setCenter(view);
+			AllJobsViewController cont = loader.getController();
+			cont.setJobViewModel(this);
+			cont.setJobModel(listJob);
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+	
+	@Override
+	public void showAllJobs(Page page) {
+		// TODO Auto-generated method stub
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(ViewTransitionalModel.class.getResource("/Views/allJobs.fxml"));
+		try {
+			
+			ArrayList<Job> pages = new ArrayList<Job> ();
+			for (String id: page.getJobs()) {
+				pages.add(client.getJob(id).data());
+				
+			}
+			ListJob listJob = new ListJob();
+			
 			ObservableList<Job> observableJobs = FXCollections.observableList(client.getAllJobs());
 			(listJob).setItems(observableJobs);
 			Node view = loader.load();
@@ -325,6 +382,34 @@ public class ViewTransitionalModel implements ViewTransitionModelInterface {
 		}
 
 	}
+	
+	@Override
+	public void showAllPersons(Page page) {
+		// TODO Auto-generated method stub
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(ViewTransitionalModel.class.getResource("/Views/allUsers.fxml"));
+		try {
+			
+			ArrayList<Person> pages = new ArrayList<Person> ();
+			for (String id: page.getPersons()) {
+				pages.add(client.getPerson(id).data());
+				
+			}
+			ListPerson listPerson = new ListPerson();
+			ObservableList<Person> observableSkills = FXCollections.observableList(pages);
+			listPerson.setItems(observableSkills);
+			Node view = loader.load();
+			mainview.setCenter(view);
+			AllPersonsViewController cont = loader.getController();
+			cont.setPersonViewModel(this);
+			cont.setPersonModel(listPerson);
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
 
 	@Override
 	public void showAllSkills() {
@@ -334,7 +419,6 @@ public class ViewTransitionalModel implements ViewTransitionModelInterface {
 		loader.setLocation(ViewTransitionalModel.class.getResource("/Views/allSkills.fxml"));
 		try {
 			ListSkill listSkill = new ListSkill();
-			RestMain client = RestMain.getInstance();
 			ObservableList<Skill> observableSkills = FXCollections.observableList(client.getAllSkills());
 			listSkill.setItems(observableSkills);
 			Node view = loader.load();
@@ -353,6 +437,41 @@ public class ViewTransitionalModel implements ViewTransitionModelInterface {
 	}
 	
 	@Override
+	public void showAllSkills(Page page) {
+		// TODO Auto-generated method stub
+		FXMLLoader loader = new FXMLLoader();
+		//System.out.println((loader.getController())==null);
+		loader.setLocation(ViewTransitionalModel.class.getResource("/Views/allSkills.fxml"));
+		try {
+			
+			ArrayList<Skill> pages = new ArrayList<Skill> ();
+			for (String id: page.getSkills()) {
+				pages.add(client.getSkill(id).data());
+				
+			}
+			ListSkill listSkill = new ListSkill();
+			ObservableList<Skill> observableSkills = FXCollections.observableList(pages);
+			listSkill.setItems(observableSkills);
+			Node view = loader.load();
+			mainview.setCenter(view);
+			AllSkillsViewController cont = loader.getController();
+			//System.out.println(cont==null);
+			cont.setSkillViewModel(this);
+			cont.setSkillModel(listSkill);
+			
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+	
+	
+	
+
+	
+	@Override
 	public void showAllPosts() {
 		// TODO Auto-generated method stub
 		FXMLLoader loader = new FXMLLoader();
@@ -360,7 +479,6 @@ public class ViewTransitionalModel implements ViewTransitionModelInterface {
 		loader.setLocation(ViewTransitionalModel.class.getResource("/Views/allPosts.fxml"));
 		try {
 			ListPost listPost = new ListPost();
-			RestMain client = RestMain.getInstance();
 			ObservableList<Post> observablePosts = FXCollections.observableList(client.getAllPosts());
 			listPost.setItems(observablePosts);
 			Node view = loader.load();
@@ -377,28 +495,33 @@ public class ViewTransitionalModel implements ViewTransitionModelInterface {
 		}
 	}
 	
-//	@Override
-//	public void showAllJobs() {
-//		// TODO Auto-generated method stub
-//		FXMLLoader loader = new FXMLLoader();
-//		loader.setLocation(ViewTransitionalModel.class.getResource("/Views/allJobs.fxml"));
-//		try {
-//			ListJob listJob = new ListJob();
-//			RestMain client = RestMain.getInstance();
-//			ObservableList<Job> observableJobs = FXCollections.observableList(client.getAllJobs());
-//			(listJob).setItems(observableJobs);
-//			Node view = loader.load();
-//			mainview.setCenter(view);
-//			AllJobsViewController cont = loader.getController();
-//			cont.setViewModel(this);
-//			cont.setModel(listJob);
-//			
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//
-//	}
+	@Override
+	public void showAllPosts(Page page) {
+		// TODO Auto-generated method stub
+		FXMLLoader loader = new FXMLLoader();
+		//System.out.println((loader.getController())==null);
+		loader.setLocation(ViewTransitionalModel.class.getResource("/Views/allPosts.fxml"));
+		try {
+			ArrayList<Post> pages = new ArrayList<Post> ();
+			for (String id: page.getPosts()) {
+				pages.add(client.getPost(id).data());
+				
+			}
+			ListPost listPost = new ListPost();
+			ObservableList<Post> observablePosts = FXCollections.observableList(pages);
+			listPost.setItems(observablePosts);
+			Node view = loader.load();
+			mainview.setCenter(view);
+			AllPostsViewController cont = loader.getController();
+			cont.setPostViewModel(this);
+			cont.setPostModel(listPost);
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		
+		}
+	}
+
 
 
 	@Override

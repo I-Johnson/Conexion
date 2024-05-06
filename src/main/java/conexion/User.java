@@ -105,12 +105,31 @@ public abstract class User extends Page{
 	public void addSkill(Skill skill) {
 		this.getSkills().add(skill.getPageID());
 		skill.addViewer(this);
+		if (this instanceof Person) {
+			skill.getPersons().add(this.getPageID());
+		}
+		else {
+			skill.getEmployers().add(this.getPageID());
+		}
+		RestMain client = RestMain.getInstance();
+		client.updatePage(this);
+		client.updatePage(skill);
 		
 	}
 	@Override
 	public void addPost(Post post) {
 		this.getPosts().add(post.getPageID());
 		post.addViewer(this);
+		if (this instanceof Person) {
+			post.getPersons().add(this.getPageID());
+		}
+		else {
+			post.getEmployers().add(this.getPageID());
+		}
+		RestMain client = RestMain.getInstance();
+		client.updatePage(this);
+		client.updatePage(post);
+		
 		 
 	}
 	

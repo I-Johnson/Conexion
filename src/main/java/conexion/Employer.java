@@ -6,7 +6,7 @@ public class Employer extends User{
 
 	@Override
 	public String toString() {
-		return "Employer [employerLocation=" + employerLocation + "]";
+		return "Employer " + this.getUserName();
 	}
 
 

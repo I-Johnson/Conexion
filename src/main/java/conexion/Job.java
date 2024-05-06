@@ -44,8 +44,7 @@ public class Job extends Post{
 
 	@Override
 	public String toString() {
-		return "Job [applicants=" + applicants + ", requiredExperience=" + requiredExperience + ", requiredDegree="
-				+ requiredDegree + ", requiredMajor=" + requiredMajor + ", postAttachments=" + postAttachments + "]";
+		return "Job: " + this.getPostTitle();
 	}
 
 	public Job() {

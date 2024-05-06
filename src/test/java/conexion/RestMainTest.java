@@ -142,7 +142,7 @@ class RestMainTest {
 			RWilliams = new Person(idGenerator, "Robin", "Williams", "robin@princeton.edu", "GreatestActor", 4, 
 					"Masters", "PrincetonU", "Computer Science");
 			
-			
+			System.out.println(mern.getPageID() + " " + cloudComputing.getPageID() + " " +  springMVC.getPageID());
 			RWilliams.addSkill(cloudComputing);
 			RWilliams.addSkill(mern);
 			RWilliams.addSkill(springMVC);
@@ -158,7 +158,9 @@ class RestMainTest {
 			KMiles.getSkills().add(springMVC.getPageID());
 			KMiles.addSkill(cloudComputing);
 			
-			SWESenior_Job_Article = new Post(idGenerator, "SWE Job Article", "March 31", "BODY", KMiles.getPageID());
+			SWESenior_Job_Article = KMiles.post("Have fun in life", "March 31", "BODY");
+//			KMiles.po
+			
 			
 			Netflix = new Employer(idGenerator, "Netflix", "No Sharing", "careers@netflix.com", "Finest Software Engineering", "Headquarters");
 			
@@ -183,14 +185,15 @@ class RestMainTest {
 			
 			cloudComputing.addPost(SWESenior_Job_Article);
 		// do it
-		 mern = new Skill(idGenerator, "MERN");
+//		 mern = new Skill(idGenerator, "MERN");
 		 Sundar = new Person(idGenerator, "Sundar", "sundar@google.com", "1234", "CEO", 21, "Centre College", "Masters", "Computer Science");
 		 Netflix = new Employer(idGenerator, "Netflix", "No Sharing", "careers@netflix.com", "Finest Software Engineering", "Headquarters");
 		 //Job
 		 SWEAssociate_Job = new Job(idGenerator, "Software Engineering Associate", "April 1", "JobDesc", Netflix.getPageID(), 2, "Bachelors", "Computer Science");
-		 SWE_Principles_Post = new Post(idGenerator, "SWE Job Article", "March 31", "BODY", Sundar.getPageID());
+		 SWE_Principles_Post = Sundar.post("SWE Job Article", "March 31", "BODY");
 				 
 		server.addPage(mern);
+		server.addPage(SWESenior_Job_Article);
 		server.addPage(Sundar); 
 		server.addPage(Netflix);
 		server.addPage(SWEAssociate_Job);
@@ -308,12 +311,16 @@ class RestMainTest {
 			assertTrue(NetflixJob1.getApplicants().contains(RWilliams.getPageID()));
 			
 			 
-			 // Remove mern and test it worked
+			 // Remove someSkill and test it worked
 			 server.removePage(someSkill.getPageID());
 			 testPageRemoval(someSkill.getPageID(), server);
 			 
 			 allSkills = server.getAllSkills();
 			 assertFalse(allSkills.contains(someSkill));
+			 
+			KMiles = server.getPerson(KMiles.getPageID()).data();
+			RWilliams = server.getPerson(RWilliams.getPageID()).data();
+			NetflixJob1 = server.getJob(NetflixJob1.getPageID()).data();
 			
 			System.out.println("Success");
 					

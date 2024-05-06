@@ -1,5 +1,6 @@
  package models;
 
+import conexion.Page;
 import conexion.User;
 
 public interface ViewTransitionModelInterface {
@@ -26,5 +27,10 @@ public interface ViewTransitionModelInterface {
 	void showEditSkill(String id);
 	void showSinglePerson(String id);
 	void showSingleEmployer(String id);
+	void showAllJobs(Page page);
+	void showAllSkills(Page page);
+	void showAllPosts(Page page);
+	void showAllEmployers(Page page);
+	void showAllPersons(Page page);
 
 }

@@ -4,8 +4,8 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Views.AllPostsViewController">
    <top>
@@ -18,8 +18,17 @@
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Label fx:id="postDescriptionLabel" layoutX="96.0" layoutY="63.0" prefHeight="126.0" prefWidth="384.0" text="Text" />
+            <Label fx:id="postDescriptionLabel" layoutX="57.0" layoutY="57.0" prefHeight="126.0" prefWidth="384.0" text="Text" />
             <Button fx:id="postEditButton" layoutX="487.0" layoutY="14.0" mnemonicParsing="false" onAction="#onClickEditPostPage" prefHeight="26.0" prefWidth="56.0" text="Edit " />
+            <VBox layoutX="465.0" layoutY="83.0" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Label text="Related Pages" />
+                  <Button fx:id="relatedJob" mnemonicParsing="false" onAction="#onClickRelatedJob" text="Job" />
+                  <Button fx:id="relatedSkill" mnemonicParsing="false" onAction="#onClickRelatedSkill" text="Skill" />
+                  <Button fx:id="relatedPerson" mnemonicParsing="false" onAction="#onClickRelatedPerson" text="Person" />
+                  <Button fx:id="relatedEmployer" mnemonicParsing="false" onAction="#onClickRelatedPerson" text="Employer" />
+               </children>
+            </VBox>
          </children>
       </AnchorPane>
    </center>

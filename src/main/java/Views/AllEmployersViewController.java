@@ -120,6 +120,39 @@ public class AllEmployersViewController {
     	
     	
     }
+    
+
+    @FXML
+    private Button relatedJobButton;
+
+    @FXML
+    private Button relatedPersonButton;
+
+    @FXML
+    private Button relatedPostButton;
+
+    @FXML
+    private Button relatedSkillButton;
+
+    @FXML
+    void onClickRelatedJob(ActionEvent event) {
+    	vm.showAllJobs(employer);
+    }
+
+    @FXML
+    void onClickRelatedPerson(ActionEvent event) {
+    	vm.showAllPersons(employer);
+    }
+
+    @FXML
+    void onClickRelatedPost(ActionEvent event) {
+    	vm.showAllPosts(employer);
+    }
+
+    @FXML
+    void onClickRelatedSkill(ActionEvent event) {
+    	vm.showAllSkills(employer);
+    }
 	
 	//Edit Skill
 //

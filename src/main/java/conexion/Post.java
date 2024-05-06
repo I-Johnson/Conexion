@@ -108,6 +108,9 @@ public class Post extends Page{
 	public void addSkill(Skill skill) {
 		this.getSkills().add(skill.getPageID());
 		skill.getPosts().add(this.getPageID());
+		RestMain client = RestMain.getInstance();
+		client.updatePage(this);
+		client.updatePage(skill);
 		
 	}
 	@Override
@@ -116,6 +119,9 @@ public class Post extends Page{
 			this.getPosts().add(post.getPageID());
 		}
 		post.getPosts().add(this.getPageID());
+		RestMain client = RestMain.getInstance();
+		client.updatePage(this);
+		client.updatePage(post);
 		
 	}
 	
@@ -126,8 +132,7 @@ public class Post extends Page{
 
 	@Override
 	public String toString() {
-		return "Post [postTitle=" + postTitle + ", postDate=" + postDate + ", postAttachments=" + postAttachments
-				+ ", postBody=" + postBody + ", postAuthor=" + postAuthor + "]";
+		return "Post: " + postTitle;
 	}
 
 	@Override

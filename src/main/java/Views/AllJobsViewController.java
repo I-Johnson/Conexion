@@ -54,9 +54,6 @@ public class AllJobsViewController
 
 	public void setJobViewModel(ViewTransitionalModel vm) {
 		this.vm = vm;
-
-		
-		
 	}
     
 
@@ -66,19 +63,53 @@ public class AllJobsViewController
 	@FXML 
 	private Button myJobsButton;
 	
-	@FXML
-	void onClickShowOnlyMyJobs(ActionEvent event) {
-		if(vm.getLoggedIn() != null) {
-			ArrayList<Job> myJobs = new ArrayList<Job> ();
-			for (Job job: allJobsList.getItems()) {
-				if (vm.getLoggedIn().getJobs().contains(job.getPageID())) {
-					myJobs.add(job);
-				}
-			}
-			ObservableList<Job> myObservableJobs = FXCollections.observableList(myJobs);
-			allJobsList.setItems(myObservableJobs);
-		}
-	}
+//	@FXML
+//	void onClickShowOnlyMyJobs(ActionEvent event) {
+//		if(vm.getLoggedIn() != null) {
+//			ArrayList<Job> myJobs = new ArrayList<Job> ();
+//			for (Job job: allJobsList.getItems()) {
+//				if (vm.getLoggedIn().getJobs().contains(job.getPageID())) {
+//					myJobs.add(job);
+//				}
+//			}
+//			ObservableList<Job> myObservableJobs = FXCollections.observableList(myJobs);
+//			allJobsList.setItems(myObservableJobs);
+//		}
+//	}
+	
+
+	    @FXML
+	    private Button relatedEmployerButton;
+
+	    @FXML
+	    private Button relatedPersonButton;
+
+	    @FXML
+	    private Button relatedPostButton;
+
+	    @FXML
+	    private Button relatedSkillButton;
+
+
+	    @FXML
+	    void onClickRelatedEmployerButton(ActionEvent event) {
+	    	vm.showAllEmployers(job);
+	    }
+
+	    @FXML
+	    void onClickRelatedPerson(ActionEvent event) {
+	    	vm.showAllPersons(job);
+	    }
+
+	    @FXML
+	    void onClickRelatedPostsButton(ActionEvent event) {
+	    	vm.showAllPosts(job);
+	    }
+
+	    @FXML
+	    void onClickRelatedSkill(ActionEvent event) {
+	    	vm.showAllSkills(job);
+	    }
 
 	public void setJobName() {
 		jobTitle.textProperty().bind(this.info.getJobName());
@@ -145,15 +176,19 @@ public class AllJobsViewController
 
 	    @FXML
 	    void onClickEditJobPage(ActionEvent event) {
+	    	System.out.println(vm.getLoggedIn().getPageID());
+	    	System.out.print(job.getEditors());
+	    	
 //	    	String user = loggedIn.getPageID();
-//	    	if (job.has_permission(loggedIn)) {
-//	    		vm.showEditJob(job.getPageID());
-//	    	}
+	    	if (job.has_permission(vm.getLoggedIn())) {
+	    		System.out.print("lkja");
+	    		vm.showEditJob(job.getPageID());
+	    	}
 //	    	if (job.getEditors().contains(user)) {
 //	            vm.showEditJob(job.getPageID());
 //	        }
 //	    	System.out.print("print" + user);
-	    	vm.showEditJob(job.getPageID());
+//	    	vm.showEditJob(job.getPageID());
 	    	
 	    }
 	    

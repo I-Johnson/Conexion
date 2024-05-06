@@ -152,4 +152,38 @@ public class AllSkillsViewController {
     	vm.showSingleSkill(skill.getPageID());
     	
     }
+    
+    @FXML
+    private Button relatedEmployer;
+
+    @FXML
+    private Button relatedJobs;
+
+    @FXML
+    private Button relatedPerson;
+
+    @FXML
+    private Button relatedPosts;
+
+ 
+
+    @FXML
+    void onClickPerson(ActionEvent event) {
+    	vm.showAllPersons(skill);
+    }
+
+    @FXML
+    void onClickRelatedEmployer(ActionEvent event) {
+    	vm.showAllEmployers(skill);
+    }
+
+    @FXML
+    void onClickRelatedJob(ActionEvent event) {
+    	vm.showAllJobs(skill);
+    }
+
+    @FXML
+    void onClickRelatedPosts(ActionEvent event) {
+    	vm.showAllPosts(skill);
+    }
 }
