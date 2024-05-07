@@ -225,5 +225,37 @@ public class AllJobsViewController
 	    	vm.showSingleJob(job.getPageID());
 	    	
 	    }
+	    
+	    @FXML
+	    private Button addEmployerButton;
+
+	    @FXML
+	    private Button addSkillButton;
+
+	    @FXML
+	    private Button addPersonButton;
+
+	    @FXML
+	    private Button addPostButton;
+	    
+	    @FXML
+	    void onClickAddEmployer(ActionEvent event) {
+	    	vm.showAddEmployers();
+	    }
+
+	    @FXML
+	    void onClickAddSkill(ActionEvent event) {
+	    	vm.showAddSkills();
+	    }
+
+	    @FXML
+	    void onClickAddPerson(ActionEvent event) {
+	    	vm.showAddPerson();
+	    }
+
+	    @FXML
+	    void onClickAddPosts(ActionEvent event) {
+	    	vm.showAddPosts();
+	    }
 	
 }

@@ -234,6 +234,37 @@ public class AllPostsViewController
     void onClickRelatedSkill(ActionEvent event) {
     	vm.showAllSkills(post);
     }
+    
+    @FXML
+    private Button addEmployer;
+
+    @FXML
+    private Button addSkill;
+
+    @FXML
+    private Button addJob;
+
+    @FXML
+    private Button addPerson;
+    @FXML
+    void onClickAddEmployer(ActionEvent event) {
+    	vm.showAddEmployers();;
+    }
+
+    @FXML
+    void onClickAddJobs(ActionEvent event) {
+    	vm.showAddJobs();
+    }
+
+    @FXML
+    void onClickAddSkills(ActionEvent event) {
+    	vm.showAddSkills();
+    }
+
+    @FXML
+    void onClickAddPerson(ActionEvent event) {
+    	vm.showAddPerson();
+    }
 
 	
 }

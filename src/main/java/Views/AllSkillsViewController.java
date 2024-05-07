@@ -223,14 +223,26 @@ public class AllSkillsViewController {
     	vm.showAllPosts(skill);
     }
     
+    
+    @FXML
+    private Button addEmployer;
+
+    @FXML
+    private Button addJobs;
+
+    @FXML
+    private Button addPerson;
+
+    @FXML
+    private Button addPosts;
     @FXML
     void onClickAddEmployer(ActionEvent event) {
-//    	vm.showAddPerson();
+    	vm.showAddEmployers();
     }
 
     @FXML
     void onClickAddJob(ActionEvent event) {
-
+    	vm.showAddJobs();
     }
 
     @FXML
@@ -240,6 +252,6 @@ public class AllSkillsViewController {
 
     @FXML
     void onClickAddPosts(ActionEvent event) {
-
+    	vm.showAddPosts();
     }
 }

@@ -180,7 +180,7 @@ class RestMainTest {
 			
 //			Netflix.addPost(SWEAssociate_Job);
 			
-			Netflix.addPost(SWESenior_Job_Article); 
+//			Netflix.addPost(SWESenior_Job_Article); 
 			
 			cloudComputing.addPost(SWESenior_Job_Article);
 		// do it

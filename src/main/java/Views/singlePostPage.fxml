@@ -26,7 +26,7 @@
                   <Button fx:id="relatedJob" mnemonicParsing="false" onAction="#onClickRelatedJob" text="Job" />
                   <Button fx:id="relatedSkill" mnemonicParsing="false" onAction="#onClickRelatedSkill" text="Skill" />
                   <Button fx:id="relatedPerson" mnemonicParsing="false" onAction="#onClickRelatedPerson" text="Person" />
-                  <Button fx:id="relatedEmployer" mnemonicParsing="false" onAction="#onClickRelatedPerson" text="Employer" />
+                  <Button fx:id="relatedEmployer" mnemonicParsing="false" onAction="#onClickRelatedEmployer" text="Employer" />
                </children>
             </VBox>
          </children>

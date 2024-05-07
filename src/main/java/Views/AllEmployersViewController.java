@@ -230,4 +230,36 @@ public class AllEmployersViewController {
     	vm.changetoLoginView();
 
     }
+    
+    @FXML
+    private Button addSkillButton;
+
+    @FXML
+    private Button addJobButton;
+
+    @FXML
+    private Button addPersonButton;
+
+    @FXML
+    private Button addPostButton;
+    
+    @FXML
+    void onClickAddJob(ActionEvent event) {
+    	vm.showAddJobs();
+    }
+
+    @FXML
+    void onClickAddSkill(ActionEvent event) {
+    	vm.showAddSkills();
+    }
+
+    @FXML
+    void onClickAddPerson(ActionEvent event) {
+    	vm.showAddPerson();
+    }
+
+    @FXML
+    void onClickAddPost(ActionEvent event) {
+    	vm.showAddPosts();
+    }
 }

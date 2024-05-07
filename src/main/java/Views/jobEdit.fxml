@@ -23,10 +23,10 @@
       <VBox layoutX="487.0" layoutY="89.0" prefHeight="200.0" prefWidth="100.0">
                <children>
                   <Label prefHeight="17.0" prefWidth="97.0" text="Related Pages" />
-                  <Button fx:id="relatedSkillButton" mnemonicParsing="false" onAction="#onClickRelatedSkill" text="Skill" />
-                  <Button fx:id="relatedPersonButton" mnemonicParsing="false" onAction="#onClickRelatedPerson" text="Person" />
-                  <Button fx:id="relatedEmployerButton" mnemonicParsing="false" onAction="#onClickRelatedEmployerButton" text="Employer" />
-                  <Button fx:id="relatedPostButton" mnemonicParsing="false" onAction="#onClickRelatedPostsButton" text="Posts" />
+                  <Button fx:id="addSkillButton" mnemonicParsing="false" onAction="#onClickAddSkill" text="Skill" />
+                  <Button fx:id="addPersonButton" mnemonicParsing="false" onAction="#onClickAddPerson" text="Person" />
+                  <Button fx:id="addEmployerButton" mnemonicParsing="false" onAction="#onClickAddEmployer" text="Employer" />
+                  <Button fx:id="addPostButton" mnemonicParsing="false" onAction="#onClickAddPosts" text="Posts" />
                </children>
             </VBox>
       <TextField fx:id="jobNameTextField" layoutX="140.0" layoutY="44.0" prefHeight="29.0" prefWidth="193.0" />

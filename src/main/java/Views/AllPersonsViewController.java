@@ -248,7 +248,17 @@ public class AllPersonsViewController {
     		vm.showEditPerson(person.getPageID());
     	}
     }
-    
+    @FXML
+    private Button addEmployer;
+
+    @FXML
+    private Button addSkill;
+
+    @FXML
+    private Button addJob;
+
+    @FXML
+    private Button addPosts;
     @FXML
     void onClickAddEmployer(ActionEvent event) {
     	vm.showAddEmployers();;
