@@ -5,6 +5,7 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Views.AllJobsViewController">
@@ -19,8 +20,17 @@
             <Font size="16.0" />
          </font>
       </Label>
+      <VBox layoutX="487.0" layoutY="89.0" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Label prefHeight="17.0" prefWidth="97.0" text="Related Pages" />
+                  <Button fx:id="relatedSkillButton" mnemonicParsing="false" onAction="#onClickRelatedSkill" text="Skill" />
+                  <Button fx:id="relatedPersonButton" mnemonicParsing="false" onAction="#onClickRelatedPerson" text="Person" />
+                  <Button fx:id="relatedEmployerButton" mnemonicParsing="false" onAction="#onClickRelatedEmployerButton" text="Employer" />
+                  <Button fx:id="relatedPostButton" mnemonicParsing="false" onAction="#onClickRelatedPostsButton" text="Posts" />
+               </children>
+            </VBox>
       <TextField fx:id="jobNameTextField" layoutX="140.0" layoutY="44.0" prefHeight="29.0" prefWidth="193.0" />
-      <TextArea fx:id="jobDescriptionTextField" layoutX="137.0" layoutY="107.0" prefHeight="161.0" prefWidth="360.0" />
+      <TextArea fx:id="jobDescriptionTextField" layoutX="137.0" layoutY="107.0" prefHeight="161.0" prefWidth="329.0" />
       <Button fx:id="jobEditSave" layoutX="263.0" layoutY="316.0" mnemonicParsing="false" onAction="#onClickJobEditSave" prefHeight="29.0" prefWidth="74.0" text="Save" />
    </children>
 </AnchorPane>

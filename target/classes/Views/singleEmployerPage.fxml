@@ -19,6 +19,7 @@
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
             <Label fx:id="employerDescriptionLabel" layoutX="78.0" layoutY="63.0" prefHeight="126.0" prefWidth="384.0" text="Text" />
+            <Button fx:id="employerEditButton" layoutX="487.0" layoutY="14.0" mnemonicParsing="false" onAction="#onClickEditEmployerPage" prefHeight="26.0" prefWidth="56.0" text="Edit " />
             <VBox layoutX="480.0" layoutY="57.0" prefHeight="200.0" prefWidth="100.0">
                <children>
                   <Label text="Related Pages" />

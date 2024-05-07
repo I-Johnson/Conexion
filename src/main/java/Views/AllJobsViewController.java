@@ -3,6 +3,7 @@ package Views;
 import java.util.ArrayList;
 
 import conexion.Job;
+import conexion.Page;
 import conexion.RestMain;
 import conexion.User;
 import javafx.collections.FXCollections;
@@ -17,7 +18,10 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.util.Callback;
 import models.ViewTransitionalModel;
+import models.AddJobCell;
+import models.AddSkillCell;
 import models.ItemJobCell;
+import models.ItemSkillCell;
 import models.Text;
 
 public class AllJobsViewController
@@ -27,7 +31,20 @@ public class AllJobsViewController
 	Job job;
 	Text info;
 	User loggedIn;
+	Page parent;
 	
+	public Page getParent() {
+		return parent;
+	}
+
+
+
+	public void setParent(Page parent) {
+		this.parent = parent;
+	}
+
+
+
 	public Text getInfo() {
 		return info;
 	}
@@ -62,21 +79,6 @@ public class AllJobsViewController
 	
 	@FXML 
 	private Button myJobsButton;
-	
-//	@FXML
-//	void onClickShowOnlyMyJobs(ActionEvent event) {
-//		if(vm.getLoggedIn() != null) {
-//			ArrayList<Job> myJobs = new ArrayList<Job> ();
-//			for (Job job: allJobsList.getItems()) {
-//				if (vm.getLoggedIn().getJobs().contains(job.getPageID())) {
-//					myJobs.add(job);
-//				}
-//			}
-//			ObservableList<Job> myObservableJobs = FXCollections.observableList(myJobs);
-//			allJobsList.setItems(myObservableJobs);
-//		}
-//	}
-	
 
 	    @FXML
 	    private Button relatedEmployerButton;
@@ -128,8 +130,6 @@ public class AllJobsViewController
 	
 	
 	public void showJobItem(Job item) {
-		// TODO Auto-generated method stub
-		//replace w/ changetoSingleJob
 		vm.showSingleJob(item.getPageID());
 		
 	}
@@ -159,9 +159,25 @@ public class AllJobsViewController
 			  });
 	    	
 	    	allJobsList.setItems(model.getItems());
+	    }
+	    
+	    public void setAddJobModel(ListJob model)
+	    {
+	    	this.listJob = model;
 	    	
+	    	allJobsList.setCellFactory(new Callback<ListView<Job>, ListCell<Job>>()
+			  {
+
+				@Override
+				public ListCell<Job> call(ListView<Job> lv)
+				{
+					AddJobCell addJobCell = new AddJobCell(lv,itemShower);
+					addJobCell.getItemController().setParent(parent);
+					return new ItemJobCell(lv,itemShower);
+				}
+			  });
 	    	
-	    	
+	    	allJobsList.setItems(model.getItems());
 	    }
 	    
 
@@ -176,19 +192,13 @@ public class AllJobsViewController
 
 	    @FXML
 	    void onClickEditJobPage(ActionEvent event) {
-	    	System.out.println(vm.getLoggedIn().getPageID());
-	    	System.out.print(job.getEditors());
+//	    	System.out.println(vm.getLoggedIn().getPageID());
+//	    	System.out.print(job.getEditors());
 	    	
-//	    	String user = loggedIn.getPageID();
 	    	if (job.has_permission(vm.getLoggedIn())) {
 	    		System.out.print("lkja");
 	    		vm.showEditJob(job.getPageID());
 	    	}
-//	    	if (job.getEditors().contains(user)) {
-//	            vm.showEditJob(job.getPageID());
-//	        }
-//	    	System.out.print("print" + user);
-//	    	vm.showEditJob(job.getPageID());
 	    	
 	    }
 	    

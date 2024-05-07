@@ -2,6 +2,7 @@ package Views;
 
 import java.util.ArrayList;
 
+import conexion.Page;
 import conexion.Post;
 import conexion.RestMain;
 import javafx.collections.FXCollections;
@@ -15,6 +16,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.util.Callback;
+import models.AddPostCell;
 import models.ItemPostCell;
 import models.Text;
 import models.ViewTransitionalModel;
@@ -25,7 +27,20 @@ public class AllPostsViewController
 	ListPost listPost;
 	Post post;
 	Text info;
+	Page parent;
 	
+	public Page getParent() {
+		return parent;
+	}
+
+
+
+	public void setParent(Page parent) {
+		this.parent = parent;
+	}
+
+
+
 	public Text getInfo() {
 		return info;
 	}
@@ -99,25 +114,14 @@ public class AllPostsViewController
 
     @FXML
     void onClickEditPostPage(ActionEvent event) {
-//    	String user = loggedIn.getPageID();
-//    	if (job.has_permission(loggedIn)) {
-//    		vm.showEditJob(job.getPageID());
-//    	}
-//    	if (job.getEditors().contains(user)) {
-//            vm.showEditJob(job.getPageID());
-//        }
+
+//    	System.out.println(vm.getLoggedIn().getPageID());
+//    	System.out.print(post.getEditors());
     	
-    	System.out.println(vm.getLoggedIn().getPageID());
-    	System.out.print(post.getEditors());
-    	
-//    	String user = loggedIn.getPageID();
     	if (post.has_permission(vm.getLoggedIn())) {
     		System.out.print("lkja");
     		vm.showEditJob(post.getPageID());
     	}
-//    	System.out.print("print" + user);
-//    	vm.showEditPost(post.getPageID());
-    	
     }
 	
 	public void showPostItem(Post item) {
@@ -143,6 +147,27 @@ public class AllPostsViewController
 			public ListCell<Post> call(ListView<Post> lv)
 			{
 				return new ItemPostCell(lv,itemShower);
+			}
+		  });
+    	
+    	allPostsList.setItems(model.getItems());
+    	
+    	
+    }
+    
+    public void setAddPostModel(ListPost model)
+    {
+    	this.listPost = model;
+    	
+    	allPostsList.setCellFactory(new Callback<ListView<Post>, ListCell<Post>>()
+		  {
+
+			@Override
+			public ListCell<Post> call(ListView<Post> lv)
+			{
+				AddPostCell addPostCell = new AddPostCell(lv,itemShower);
+				addPostCell.getItemController().setParent(parent);
+				return new ItemPostCell(lv, itemShower);
 			}
 		  });
     	

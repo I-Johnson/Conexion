@@ -8,6 +8,10 @@ public class Text {
 	StringProperty jobName = new SimpleStringProperty();
 	StringProperty jobDescription = new SimpleStringProperty();
 	
+	StringProperty pageName = new SimpleStringProperty();
+	StringProperty pageDescription = new SimpleStringProperty();
+	
+
 	StringProperty postName = new SimpleStringProperty();
 	StringProperty postDescription = new SimpleStringProperty();
 	
@@ -83,5 +87,11 @@ public class Text {
 		PersonDescription = personDescription;
 	}
 	
+	public StringProperty getPageDescription() {
+		return pageDescription;
+	}
+	public void setPageDescription(StringProperty pageDescription) {
+		this.pageDescription = pageDescription;
+	}
 
 }

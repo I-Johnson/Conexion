@@ -37,7 +37,21 @@ public class ItemPostCell extends ListCell<Post> {
 			
 			
 		}
+		
 
+		public PostCellController getItemController() {
+			return itemController;
+		}
+
+
+		public void setItemController(PostCellController itemController) {
+			this.itemController = itemController;
+		}
+
+
+		public ItemPostCell() {
+			
+		}
 
 		@Override
 		protected void updateItem(Post item, boolean empty)

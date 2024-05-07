@@ -1,6 +1,7 @@
 package Views;
 
 import javafx.fxml.FXML;
+import models.LoginDataModel;
 import models.ViewTransitionModelInterface;
 import javafx.event.ActionEvent;
 public class MainController {
@@ -54,5 +55,10 @@ public class MainController {
     	model.showAllPersons();
     	System.out.println("clicked users");
     }
+
+//	public void setModel(LoginDataModel loginDataModel) {
+//		// TODO Auto-generated method stub
+//		
+//	}
 
 }

@@ -55,6 +55,15 @@ public class Skill extends Page{
 		client.updatePage(this);
 		client.updatePage(post);
 	}
+	
+	@Override
+	public void addPerson(Person person) {
+		this.getPersons().add(person.getPageID());
+		person.getSkills().add(this.getPageID());
+		RestMain client = RestMain.getInstance();
+		client.updatePage(this);
+		client.updatePage(person);
+	}
 
 	@Override
 	public String toString() {

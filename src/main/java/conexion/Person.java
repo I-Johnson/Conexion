@@ -133,5 +133,17 @@ public class Person extends User{
 		return "Person " + this.getUserName();
 	}
 	
+	@Override
+	public void addPerson(Person person) {
+		
+		if(this != person) {
+			this.getPersons().add(person.getPageID());
+		}
+		person.getSkills().add(this.getPageID());
+		RestMain client = RestMain.getInstance();
+		client.updatePage(this);
+		client.updatePage(person);
+	}
+	
 
 }

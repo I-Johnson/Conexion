@@ -24,9 +24,6 @@ public class ListJob
 		items.add(item);
 	}
 
-
-	
-	
 	
 	/**
 	 * @return the items

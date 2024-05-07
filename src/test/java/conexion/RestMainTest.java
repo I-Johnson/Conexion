@@ -142,7 +142,6 @@ class RestMainTest {
 			RWilliams = new Person(idGenerator, "Robin", "Williams", "robin@princeton.edu", "GreatestActor", 4, 
 					"Masters", "PrincetonU", "Computer Science");
 			
-			System.out.println(mern.getPageID() + " " + cloudComputing.getPageID() + " " +  springMVC.getPageID());
 			RWilliams.addSkill(cloudComputing);
 			RWilliams.addSkill(mern);
 			RWilliams.addSkill(springMVC);
@@ -164,7 +163,7 @@ class RestMainTest {
 			
 			Netflix = new Employer(idGenerator, "Netflix", "No Sharing", "careers@netflix.com", "Finest Software Engineering", "Headquarters");
 			
-			SWEAssociate_Job = new Job(idGenerator, "Software Engineering Associate", "April 1", "JobDesc", Netflix.getPageID(), 2, "Bachelors", "Computer Science");
+//			SWEAssociate_Job = new Job(idGenerator, "Software Engineering Associate", "April 1", "JobDesc", Netflix.getPageID(), 2, "Bachelors", "Computer Science");
 			
 			NetflixJob1 = Netflix.postJob(3, "Masters", "Computer Science", "SWE Senior", "April1", "job Description");
 			NetflixJob1.addSkill(cloudComputing);
@@ -179,17 +178,16 @@ class RestMainTest {
 			NetflixJob3.addSkill(cloudComputing);
 			NetflixJob3.addSkill(mern);
 			
-			Netflix.addPost(SWEAssociate_Job);
+//			Netflix.addPost(SWEAssociate_Job);
 			
 			Netflix.addPost(SWESenior_Job_Article); 
 			
 			cloudComputing.addPost(SWESenior_Job_Article);
 		// do it
-//		 mern = new Skill(idGenerator, "MERN");
 		 Sundar = new Person(idGenerator, "Sundar", "sundar@google.com", "1234", "CEO", 21, "Centre College", "Masters", "Computer Science");
-		 Netflix = new Employer(idGenerator, "Netflix", "No Sharing", "careers@netflix.com", "Finest Software Engineering", "Headquarters");
+
 		 //Job
-		 SWEAssociate_Job = new Job(idGenerator, "Software Engineering Associate", "April 1", "JobDesc", Netflix.getPageID(), 2, "Bachelors", "Computer Science");
+		 SWEAssociate_Job  = Netflix.postJob(2, "Bachelors", "Computer Science", "Software Engineering Associate", "May 11", "Job Desc");
 		 SWE_Principles_Post = Sundar.post("SWE Job Article", "March 31", "BODY");
 				 
 		server.addPage(mern);
@@ -200,12 +198,11 @@ class RestMainTest {
 		server.addPage(SWE_Principles_Post);
 		server.addPage(KMiles);
 		server.addPage(RWilliams);
-		server.addPage(Netflix);
 		server.addPage(springMVC);
-		server.addPage(SWEAssociate_Job);
 		server.addPage(NetflixJob1);
 		server.addPage(NetflixJob2);
 		server.addPage(NetflixJob3);
+		server.addPage(SWEAssociate_Job);
 		server.addPage(cloudComputing);
 		server.updatePage(RWilliams);
 		server.updatePage(NetflixJob1);

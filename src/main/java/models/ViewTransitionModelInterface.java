@@ -32,5 +32,14 @@ public interface ViewTransitionModelInterface {
 	void showAllPosts(Page page);
 	void showAllEmployers(Page page);
 	void showAllPersons(Page page);
+	void showEditEmployer(String id);
+	void showEditPerson(String id);
+	void showPrivatePerson(String id);
+	void showPrivateEmployer(String id);
+	void showAddPerson();
+	void showAddSkills();
+	void showAddPosts();
+	void showAddJobs();
+	void showAddEmployers();
 
 }

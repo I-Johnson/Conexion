@@ -134,6 +134,15 @@ public class Post extends Page{
 	public String toString() {
 		return "Post: " + postTitle;
 	}
+	
+	@Override
+	public void addPerson(Person person) {
+		this.getPersons().add(person.getPageID());
+		person.getSkills().add(this.getPageID());
+		RestMain client = RestMain.getInstance();
+		client.updatePage(this);
+		client.updatePage(person);
+	}
 
 	@Override
 	public int hashCode() {

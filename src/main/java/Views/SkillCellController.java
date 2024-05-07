@@ -1,4 +1,5 @@
 package Views;
+import conexion.Page;
 import conexion.Skill;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -11,8 +12,17 @@ public class SkillCellController {
     private Label skillCell;
     
     ItemSkillCell model;
+    Page parent;
     
-    public void setModel(ItemSkillCell cell)
+    public Page getParent() {
+		return parent;
+	}
+
+	public void setParent(Page parent) {
+		this.parent = parent;
+	}
+
+	public void setModel(ItemSkillCell cell)
     {
     	model = cell;
     }

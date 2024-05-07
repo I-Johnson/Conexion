@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Views.AllEmployersViewController">
+   <children>
+      <Label layoutX="50.0" layoutY="46.0" text="Job Name">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <Label layoutX="48.0" layoutY="107.0" text="Description">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      
+      <VBox layoutX="480.0" layoutY="57.0" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Label text="Add Links" />
+                  <Button fx:id="relatedJobButton" mnemonicParsing="false" onAction="#onClickRelatedJob" text="Job" />
+                  <Button fx:id="relatedPostButton" mnemonicParsing="false" onAction="#onClickRelatedPost" text="Post" />
+                  <Button fx:id="relatedSkillButton" mnemonicParsing="false" onAction="#onClickRelatedSkill" text="Skill" />
+                  <Button fx:id="relatedPersonButton" mnemonicParsing="false" onAction="#onClickRelatedPerson" text="Person" />
+               </children>
+            </VBox>
+      <TextField fx:id="employerNameTextField" layoutX="140.0" layoutY="44.0" prefHeight="29.0" prefWidth="193.0" />
+      <TextArea fx:id="employerDescriptionTextField" layoutX="137.0" layoutY="107.0" prefHeight="161.0" prefWidth="332.0" />
+      <Button fx:id="employerEditSave" layoutX="263.0" layoutY="316.0" mnemonicParsing="false" onAction="#onClickEmployerEditSave" prefHeight="29.0" prefWidth="74.0" text="Save" />
+   </children>
+</AnchorPane>

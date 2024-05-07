@@ -39,6 +39,20 @@ public class ItemSkillCell extends ListCell<Skill> {
 		}
 
 
+		public SkillCellController getItemController() {
+			return itemController;
+		}
+
+
+		public void setItemController(SkillCellController itemController) {
+			this.itemController = itemController;
+		}
+		
+		public ItemSkillCell() {
+			
+		}
+
+
 		@Override
 		protected void updateItem(Skill item, boolean empty)
 		{

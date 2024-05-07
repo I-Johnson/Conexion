@@ -1,4 +1,5 @@
 package Views;
+import conexion.Page;
 import conexion.Person;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -11,6 +12,7 @@ public class PersonCellController {
     private Label personCell;
     
     ItemPersonCell model;
+    Page parent;
     
     public void setModel(ItemPersonCell cell)
     {
@@ -29,8 +31,17 @@ public class PersonCellController {
     		personCell.setText(item.toString());
     	}
     }
+    
 
-    @FXML
+    public Page getParent() {
+		return parent;
+	}
+
+	public void setParent(Page parent) {
+		this.parent = parent;
+	}
+
+	@FXML
     void OnClickPerson(MouseEvent event) {
     	model.showItem();
     }

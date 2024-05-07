@@ -1,4 +1,5 @@
 package Views;
+import conexion.Page;
 import conexion.Post;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -11,8 +12,17 @@ public class PostCellController {
     private Label postCell;
     
     ItemPostCell model;
+    Page parent;
     
-    public void setModel(ItemPostCell cell)
+    public Page getParent() {
+		return parent;
+	}
+
+	public void setParent(Page parent) {
+		this.parent = parent;
+	}
+
+	public void setModel(ItemPostCell cell)
     {
     	model = cell;
     }

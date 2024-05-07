@@ -37,7 +37,24 @@ public class ItemJobCell extends ListCell<Job> {
 			
 			
 		}
+		
+		
 
+		public JobCellController getItemController() {
+			return itemController;
+		}
+
+
+
+		public void setItemController(JobCellController itemController) {
+			this.itemController = itemController;
+		}
+
+
+
+		public ItemJobCell() {
+			
+		}
 
 		@Override
 		protected void updateItem(Job item, boolean empty)

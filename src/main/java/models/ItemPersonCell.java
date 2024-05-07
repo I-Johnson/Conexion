@@ -37,6 +37,18 @@ public class ItemPersonCell extends ListCell<Person> {
 			
 			
 		}
+		
+		public PersonCellController getItemController() {
+			return itemController;
+		}
+
+		public void setItemController(PersonCellController itemController) {
+			this.itemController = itemController;
+		}
+
+		public ItemPersonCell() {
+			
+		}
 
 
 		@Override

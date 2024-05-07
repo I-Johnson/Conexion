@@ -24,7 +24,4 @@
          </padding>
       </VBox>
    </top>
-   <bottom>
-      <Button fx:id="showOnlyMyEmployersButton" mnemonicParsing="false" onAction="#onClickShowOnlyMyEmployers" text="Show Only My Employers" BorderPane.alignment="CENTER" />
-   </bottom>
 </BorderPane>

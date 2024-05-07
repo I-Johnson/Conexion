@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Views.AllPersonsViewController">
+   <children>
+      <Label layoutX="29.0" layoutY="48.0" text="Person Name">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <Label layoutX="48.0" layoutY="107.0" text="Description">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <VBox layoutX="473.0" layoutY="63.0" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Label text="Add Links" />
+                  <Button fx:id="addJob" mnemonicParsing="false" onAction="#onClickAddJobs" text="Job" />
+                  <Button fx:id="addSkill" mnemonicParsing="false" onAction="#onClickAddSkills" text="Skill" />
+                  <Button fx:id="addEmployer" mnemonicParsing="false" onAction="#onClickAddEmployer" text="Employer" />
+                  <Button fx:id="addPosts" mnemonicParsing="false" onAction="#onClickAddPosts" text="Post" />
+               </children>
+      </VBox>
+      <TextField fx:id="personNameTextField" layoutX="140.0" layoutY="44.0" prefHeight="29.0" prefWidth="193.0" />
+      <TextArea fx:id="personDescriptionTextField" layoutX="137.0" layoutY="107.0" prefHeight="161.0" prefWidth="311.0" />
+      <Button fx:id="personEditSave" layoutX="263.0" layoutY="316.0" mnemonicParsing="false" onAction="#onClickPersonEditSave" prefHeight="29.0" prefWidth="74.0" text="Save" />
+   </children>
+</AnchorPane>

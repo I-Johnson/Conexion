@@ -1,5 +1,6 @@
 package Views;
 import conexion.Job;
+import conexion.Page;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
@@ -10,7 +11,16 @@ public class JobCellController {
     @FXML
     private Label jobCell;
     
-    ItemJobCell model;
+    Page parent;
+    public Page getParent() {
+		return parent;
+	}
+
+	public void setParent(Page parent) {
+		this.parent = parent;
+	}
+
+	ItemJobCell model;
     
     public void setModel(ItemJobCell cell)
     {

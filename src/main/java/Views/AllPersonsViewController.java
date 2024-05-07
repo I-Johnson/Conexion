@@ -1,7 +1,8 @@
 package Views;
 
 import java.util.ArrayList;
-
+import models.AddPersonCell;
+import conexion.Page;
 import conexion.Person;
 import conexion.RestMain;
 import javafx.collections.FXCollections;
@@ -12,6 +13,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.util.Callback;
 import models.ItemPersonCell;
 import models.Text;
@@ -23,7 +26,22 @@ public class AllPersonsViewController {
 	ListPerson listPerson;
 	Person person;
 	Text info;
+	Page parent;
 	
+	
+	
+	public Page getParent() {
+		return parent;
+	}
+
+
+
+	public void setParent(Page parent) {
+		this.parent = parent;
+	}
+
+
+
 	public Text getInfo() {
 		return info;
 	}
@@ -39,7 +57,6 @@ public class AllPersonsViewController {
 	}
 
 
-
 	public void setPerson(Person person) {
 		this.person = person;
 	}
@@ -52,6 +69,11 @@ public class AllPersonsViewController {
 	public void setPersonDescriptionName() {
 		personDescriptionLabel.textProperty().bind(this.info.getPersonDescription());
 		this.info.getPersonDescription().set(person.getUserBio());
+	}
+	
+	public void setEditInfo() {
+		personNameTextField.textProperty().set(person.getUserName());
+		personDescriptionTextField.textProperty().set(person.getUserBio());
 	}
 	
 	public void setPersonViewModel(ViewTransitionalModel vm) {
@@ -120,6 +142,29 @@ public class AllPersonsViewController {
     	
     }
     
+    public void setAddPersonModel(ListPerson model)
+    {
+    	this.listPerson = model;
+    	
+    	allPersonsList.setCellFactory(new Callback<ListView<Person>, ListCell<Person>>()
+		  {
+
+			@Override
+			public ListCell<Person> call(ListView<Person> lv)
+			{
+				AddPersonCell addPersonCell =  new AddPersonCell(lv,itemShower);
+				addPersonCell.getItemController().setParent(parent);
+				return addPersonCell;
+			}
+		  });
+    	
+    	allPersonsList.setItems(model.getItems());
+    	
+    	
+    }
+    
+    
+    
     
 
     @FXML
@@ -154,23 +199,75 @@ public class AllPersonsViewController {
     	vm.showAllSkills(person);
     }
 	
-	//Edit Skill
+    @FXML
+    private TextArea personDescriptionTextField;
+
+    @FXML
+    private Button personEditSave;
+
+    @FXML
+    private TextField personNameTextField;
+
+    @FXML
+    void onClickPersonEditSave(ActionEvent event) {
+//    	setEditInfo();
+    	String personName = personNameTextField.textProperty().get();
+    	String personDescription = personDescriptionTextField.textProperty().get();
+    	
+    	person.setUserName(personName);
+    	person.setUserBio(personDescription);
+    	RestMain client = RestMain.getInstance();
+    	client.updatePage(person);
+    	vm.showSinglePerson(person.getPageID());
+  	
+    }
+    
+    @FXML
+    private Button signOut;
+    @FXML
+    void onClickSignOut(ActionEvent event) {
+    	vm.setLoggedIn(null);
+    	vm.changetoLoginView();
+
+    }
+    
+
+    @FXML
+    private Button personEditButton;
+    
+//    @FXML
+//    private Label personDescriptionLabel;
 //
 //    @FXML
-//    private Button skillEditSave;
-//
-//    @FXML
-//    private TextField skillNameTextField;
-//
-//    @FXML
-//    void onClickSkillEditSave(ActionEvent event) {
-////    	setEditInfo();
-//    	String skillName = skillNameTextField.textProperty().get();
-//    	
-//    	skill.setSkillName(skillName);
-//    	RestMain client = RestMain.getInstance();
-//    	client.updatePage(skill);
-//    	vm.showSingleSkill(skill.getPageID());
-//    	
-//    }
+//    private Label personTitle;
+    
+    @FXML
+    void onClickEditPersonPage(ActionEvent event) {
+    	
+    	if (person.has_permission(vm.getLoggedIn())) {
+    		vm.showEditPerson(person.getPageID());
+    	}
+    }
+    
+    @FXML
+    void onClickAddEmployer(ActionEvent event) {
+    	vm.showAddEmployers();;
+    }
+
+    @FXML
+    void onClickAddJobs(ActionEvent event) {
+    	vm.showAddJobs();
+    }
+
+    @FXML
+    void onClickAddSkills(ActionEvent event) {
+    	vm.showAddSkills();
+    }
+
+    @FXML
+    void onClickAddPosts(ActionEvent event) {
+    	vm.showAddPosts();
+    }
+
+    
 }

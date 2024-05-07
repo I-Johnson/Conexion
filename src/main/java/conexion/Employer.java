@@ -38,7 +38,24 @@ public class Employer extends User{
 	public String getEmployerLocation() {
 		return employerLocation;
 	}
-
+	
+	@Override
+	public void addPerson(Person person) {
+		this.getPersons().add(person.getPageID());
+		person.getSkills().add(this.getPageID());
+		RestMain client = RestMain.getInstance();
+		client.updatePage(this);
+		client.updatePage(person);
+	}
+	
+//	@Override
+//	public void addPerson(Person person) {
+//		this.getPersons().add(person.getPageID());
+//		person.getSkills().add(this.getPageID());
+//		RestMain client = RestMain.getInstance();
+//		client.updatePage(this);
+//		client.updatePage(person);
+//	}
 
 	public Job postJob(Integer requiredExperience, String requiredDegree, String requiredMajor, 
 			String postTitle, String postDate, String postBody) {//, recommendation recommendation) {

@@ -37,7 +37,20 @@ public class ItemEmployerCell extends ListCell<Employer> {
 			
 			
 		}
+		
+		public ItemEmployerCell() {
+			
+		}
 
+		
+
+		public EmployerCellController getItemController() {
+			return itemController;
+		}
+
+		public void setItemController(EmployerCellController itemController) {
+			this.itemController = itemController;
+		}
 
 		@Override
 		protected void updateItem(Employer item, boolean empty)

@@ -1,6 +1,7 @@
 package Views;
 import java.util.ArrayList;
 
+import conexion.Page;
 import conexion.RestMain;
 import conexion.Skill;
 import javafx.collections.FXCollections;
@@ -13,6 +14,7 @@ import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.util.Callback;
+import models.AddSkillCell;
 import models.ItemSkillCell;
 import models.Text;
 import models.ViewTransitionalModel;
@@ -22,8 +24,21 @@ public class AllSkillsViewController {
 	ListSkill listSkill;
 	Skill skill;
 	Text info;
+	Page parent;
 	
 	
+	public Page getParent() {
+		return parent;
+	}
+
+
+
+	public void setParent(Page parent) {
+		this.parent = parent;
+	}
+
+
+
 	public Text getInfo() {
 		return info;
 	}
@@ -132,6 +147,27 @@ public class AllSkillsViewController {
     	
     	
     }
+    
+    public void setAddSkillModel(ListSkill model)
+    {
+    	this.listSkill= model;
+    	
+    	allSkillsList.setCellFactory(new Callback<ListView<Skill>, ListCell<Skill>>()
+		  {
+
+			@Override
+			public ListCell<Skill> call(ListView<Skill> lv)
+			{
+				AddSkillCell addSkillCell = new AddSkillCell(lv,itemShower);
+				addSkillCell.getItemController().setParent(parent);
+				return new ItemSkillCell(lv,itemShower);
+			}
+		  });
+    	
+    	allSkillsList.setItems(model.getItems());
+    	
+    	
+    }
 	
 	//Edit Skill
 
@@ -185,5 +221,25 @@ public class AllSkillsViewController {
     @FXML
     void onClickRelatedPosts(ActionEvent event) {
     	vm.showAllPosts(skill);
+    }
+    
+    @FXML
+    void onClickAddEmployer(ActionEvent event) {
+//    	vm.showAddPerson();
+    }
+
+    @FXML
+    void onClickAddJob(ActionEvent event) {
+
+    }
+
+    @FXML
+    void onClickAddPerson(ActionEvent event) {
+    	vm.showAddPerson();
+    }
+
+    @FXML
+    void onClickAddPosts(ActionEvent event) {
+
     }
 }
