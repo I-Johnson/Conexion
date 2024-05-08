@@ -22,11 +22,12 @@
       </Label>
       <VBox layoutX="487.0" layoutY="89.0" prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <Label prefHeight="17.0" prefWidth="97.0" text="Related Pages" />
+                  <Label prefHeight="17.0" prefWidth="97.0" text="Add Pages" />
                   <Button fx:id="addSkillButton" mnemonicParsing="false" onAction="#onClickAddSkill" text="Skill" />
                   <Button fx:id="addPersonButton" mnemonicParsing="false" onAction="#onClickAddPerson" text="Person" />
                   <Button fx:id="addEmployerButton" mnemonicParsing="false" onAction="#onClickAddEmployer" text="Employer" />
                   <Button fx:id="addPostButton" mnemonicParsing="false" onAction="#onClickAddPosts" text="Posts" />
+                  <Button fx:id="addJobButton" mnemonicParsing="false" onAction="#onClickAddJobs" text="Jobs" />
                </children>
             </VBox>
       <TextField fx:id="jobNameTextField" layoutX="140.0" layoutY="44.0" prefHeight="29.0" prefWidth="193.0" />

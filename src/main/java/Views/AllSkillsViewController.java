@@ -35,7 +35,7 @@ public class AllSkillsViewController {
 
 	public void setParent(Page parent) {
 		this.parent = parent;
-	}
+	} 
 
 
 
@@ -160,7 +160,7 @@ public class AllSkillsViewController {
 			{
 				AddSkillCell addSkillCell = new AddSkillCell(lv,itemShower);
 				addSkillCell.getItemController().setParent(parent);
-				return new ItemSkillCell(lv,itemShower);
+				return addSkillCell;
 			}
 		  });
     	
@@ -170,7 +170,7 @@ public class AllSkillsViewController {
     }
 	
 	//Edit Skill
-
+ 
     @FXML
     private Button skillEditSave;
 
@@ -235,6 +235,14 @@ public class AllSkillsViewController {
 
     @FXML
     private Button addPosts;
+    
+    @FXML
+    private Button addSkills;
+    @FXML
+    void onClickAddSkill(ActionEvent event) {
+    	vm.showAddSkills();
+    }
+    
     @FXML
     void onClickAddEmployer(ActionEvent event) {
     	vm.showAddEmployers();

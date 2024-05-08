@@ -19,11 +19,11 @@ public class AddSkillCell extends ItemSkillCell{
 		showSkills = cont;
 		
 		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(ItemSkillCell.class.getResource("/Views/skillCell.fxml"));
+		loader.setLocation(ItemSkillCell.class.getResource("/Views/addSkillCell.fxml"));
 	    try {
-	      node = loader.load(); //store for later
+	      node = loader.load(); 
 	      
-	      itemController = loader.getController(); //store for later
+	      itemController = loader.getController(); 
 	      itemController.setModel(this);
 	    } catch (IOException e) {
 	      e.printStackTrace();

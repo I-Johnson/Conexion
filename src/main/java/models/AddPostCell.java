@@ -17,7 +17,7 @@ public class AddPostCell extends ItemPostCell{
 		showPosts = cont;
 		
 		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(ItemPostCell.class.getResource("/Views/postCell.fxml"));
+		loader.setLocation(ItemPostCell.class.getResource("/Views/addPostCell.fxml"));
 	    try {
 	      node = loader.load(); //store for later
 	      

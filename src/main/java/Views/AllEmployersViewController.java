@@ -6,9 +6,6 @@ import conexion.Employer;
 import conexion.Page;
 import conexion.Person;
 import conexion.RestMain;
-import conexion.Skill;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -78,7 +75,7 @@ public class AllEmployersViewController {
     private ListView<Employer> allEmployersList;
     
 	@FXML 
-	private Button myEmployerButton;
+	private Button myEmployerButton; 
 
 	
 	
@@ -139,7 +136,8 @@ public class AllEmployersViewController {
 			{
 				AddEmployerCell addEmployerCell = new AddEmployerCell(lv,itemShower);
 				addEmployerCell.getItemController().setParent(parent);
-				return new ItemEmployerCell(lv,itemShower);
+				return addEmployerCell;
+						
 			}
 		  });
     	
@@ -242,6 +240,14 @@ public class AllEmployersViewController {
 
     @FXML
     private Button addPostButton;
+    
+    @FXML
+    private Button addEmployerButton;
+    
+    @FXML
+    void onClickAddEmployer(ActionEvent event) {
+    	vm.showAddEmployers();
+    }
     
     @FXML
     void onClickAddJob(ActionEvent event) {

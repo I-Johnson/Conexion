@@ -17,7 +17,7 @@ public class AddJobCell extends ItemJobCell{
 		showJobs = cont;
 		
 		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(ItemJobCell.class.getResource("/Views/jobCell.fxml"));
+		loader.setLocation(ItemJobCell.class.getResource("/Views/addJobCell.fxml"));
 	    try {
 	      node = loader.load(); //store for later
 	      
@@ -27,7 +27,7 @@ public class AddJobCell extends ItemJobCell{
 	      e.printStackTrace();
 	    }
 	    
-	    setGraphic(node);
+	    setGraphic(node); 
 		
 		
 	}

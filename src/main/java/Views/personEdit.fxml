@@ -27,6 +27,7 @@
                   <Button fx:id="addSkill" mnemonicParsing="false" onAction="#onClickAddSkills" text="Skill" />
                   <Button fx:id="addEmployer" mnemonicParsing="false" onAction="#onClickAddEmployer" text="Employer" />
                   <Button fx:id="addPosts" mnemonicParsing="false" onAction="#onClickAddPosts" text="Post" />
+                   <Button fx:id="addPersons" mnemonicParsing="false" onAction="#onClickAddPersons" text="Person" />
                </children>
       </VBox>
       <TextField fx:id="personNameTextField" layoutX="140.0" layoutY="44.0" prefHeight="29.0" prefWidth="193.0" />

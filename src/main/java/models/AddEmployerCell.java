@@ -17,7 +17,7 @@ public class AddEmployerCell extends ItemEmployerCell{
 		showEmployers = cont;
 		
 		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(ItemEmployerCell.class.getResource("/Views/EmployerCell.fxml"));
+		loader.setLocation(ItemEmployerCell.class.getResource("/Views/addEmployerCell.fxml"));
 	    try {
 	      node = loader.load(); //store for later
 	      
@@ -26,7 +26,7 @@ public class AddEmployerCell extends ItemEmployerCell{
 	    } catch (IOException e) {
 	      e.printStackTrace();
 	    }
-	    
+	     
 	    setGraphic(node);
 		
 		

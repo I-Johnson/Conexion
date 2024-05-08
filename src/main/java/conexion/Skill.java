@@ -17,7 +17,7 @@ public class Skill extends Page{
 
 		this.setSkillName(skillName);
 		this.addSkill(this);
-	}
+	} 
 	
 	// Skill Default Constructor: 
 	public Skill() {
@@ -44,9 +44,8 @@ public class Skill extends Page{
 		RestMain client = RestMain.getInstance();
 		client.updatePage(this);
 		client.updatePage(skill);
-		
-		
 	}
+	
 	@Override
 	public void addPost(Post post) {
 		this.getPosts().add(post.getPageID());
@@ -55,7 +54,16 @@ public class Skill extends Page{
 		client.updatePage(this);
 		client.updatePage(post);
 	}
-	
+	@Override
+	public void addEmployer(Employer employer) {
+
+		this.getEmployers().add(employer.getPageID());
+		
+		employer.getSkills().add(this.getPageID());
+		RestMain client = RestMain.getInstance();
+		client.updatePage(this);
+		client.updatePage(employer);
+	} 
 	@Override
 	public void addPerson(Person person) {
 		this.getPersons().add(person.getPageID());
@@ -63,6 +71,14 @@ public class Skill extends Page{
 		RestMain client = RestMain.getInstance();
 		client.updatePage(this);
 		client.updatePage(person);
+	}
+	@Override
+	public void addJob(Job job) {
+		this.getJobs().add(job.getPageID());
+		job.getSkills().add(this.getPageID());
+		RestMain client = RestMain.getInstance();
+		client.updatePage(this);
+		client.updatePage(job);
 	}
 
 	@Override

@@ -29,7 +29,7 @@ public class Person extends User{
 		this.personInstitution = personInstitution;
 		this.personMajor = personMajor;
 		this.recommendedJobs = new ArrayList<String>();
-	}
+	} 
 	
 	public Person() {
 		super();
@@ -145,5 +145,22 @@ public class Person extends User{
 		client.updatePage(person);
 	}
 	
+	@Override
+	public void addJob(Job job) {
+		this.getJobs().add(job.getPageID());
+		job.getPersons().add(this.getPageID());
+		RestMain client = RestMain.getInstance();
+		client.updatePage(this);
+		client.updatePage(job);
+	}
+	
+	@Override
+	public void addEmployer(Employer employer) {
+		this.getEmployers().add(employer.getPageID());
+		employer.getPersons().add(this.getPageID());
+		RestMain client = RestMain.getInstance();
+		client.updatePage(this);
+		client.updatePage(employer);
+	}
 
 }

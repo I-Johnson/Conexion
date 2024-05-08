@@ -32,7 +32,7 @@ public class TestConexionUI {
 	private void start(Stage stage) {
 //		prepopulate();
 		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(Main.class.getResource("/views/navBar.fxml"));
+		loader.setLocation(Main.class.getResource("/Views/navBar.fxml"));
 		BorderPane view;
 		try {
 			view = loader.load();
@@ -42,7 +42,7 @@ public class TestConexionUI {
 			cont.setModel(vm);
 			Scene s = new Scene(view);
 			stage.setScene(s);
-			stage.show();
+			stage.show(); 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -70,8 +70,8 @@ public class TestConexionUI {
 	
 	@Test
 	public void testLogin(FxRobot robot) {
-		enterInfo(robot, "robin@princeton.edu", "#emailBox");
-		enterInfo(robot, "Williams", "#passwordBox");
+		enterInfo(robot, "robin@princeton.edu", "email");
+		enterInfo(robot, "Williams", "password");
 		robot.clickOn("#loginButton");
 		try {
 			Thread.sleep(3000);

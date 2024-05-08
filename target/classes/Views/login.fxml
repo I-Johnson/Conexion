@@ -33,13 +33,13 @@
                   <Font size="23.0" />
                </font>
             </Label>
-            <TextField fx:id="emailBox" maxWidth="200.0" minWidth="10.0" prefWidth="100.0" />
+            <TextField id="email" fx:id="emailBox" maxWidth="200.0" minWidth="10.0" prefWidth="100.0" />
             <Label text="Password">
                <font>
                   <Font size="23.0" />
                </font>
             </Label>
-            <TextField fx:id="passwordBox" maxWidth="200.0" />
+            <TextField id="password" fx:id="passwordBox" maxWidth="200.0" />
             <AnchorPane prefHeight="200.0" prefWidth="200.0">
                <children>
                   <Button fx:id="loginButton" layoutX="227.0" layoutY="46.0" mnemonicParsing="false" onAction="#onClickLogin" prefHeight="41.0" prefWidth="71.0" text="Login">

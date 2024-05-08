@@ -173,7 +173,7 @@ public class AllJobsViewController
 				{
 					AddJobCell addJobCell = new AddJobCell(lv,itemShower);
 					addJobCell.getItemController().setParent(parent);
-					return new ItemJobCell(lv,itemShower);
+					return addJobCell;
 				}
 			  });
 	    	
@@ -237,7 +237,14 @@ public class AllJobsViewController
 
 	    @FXML
 	    private Button addPostButton;
+
+	    @FXML
+	    private Button addJobButton;
 	    
+	    @FXML
+	    void onClickAddJobs(ActionEvent event) {
+	    	vm.showAddJobs();
+	    }
 	    @FXML
 	    void onClickAddEmployer(ActionEvent event) {
 	    	vm.showAddEmployers();

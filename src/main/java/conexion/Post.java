@@ -120,9 +120,25 @@ public class Post extends Page{
 		}
 		post.getPosts().add(this.getPageID());
 		RestMain client = RestMain.getInstance();
-		client.updatePage(this);
+		client.updatePage(this); 
 		client.updatePage(post);
 		
+	}
+	@Override
+	public void addEmployer(Employer employer) {
+		this.getEmployers().add(employer.getPageID());
+		employer.getPosts().add(this.getPageID());
+		RestMain client = RestMain.getInstance();
+		client.updatePage(this);
+		client.updatePage(employer);
+	} 
+	@Override
+	public void addJob(Job job) {
+		this.getJobs().add(job.getPageID());
+		job.getPosts().add(this.getPageID());
+		RestMain client = RestMain.getInstance();
+		client.updatePage(this);
+		client.updatePage(job);
 	}
 	
 	public String addPostAttachment(String string ) {
@@ -138,7 +154,7 @@ public class Post extends Page{
 	@Override
 	public void addPerson(Person person) {
 		this.getPersons().add(person.getPageID());
-		person.getSkills().add(this.getPageID());
+		person.getPosts().add(this.getPageID());
 		RestMain client = RestMain.getInstance();
 		client.updatePage(this);
 		client.updatePage(person);

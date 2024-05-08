@@ -33,7 +33,7 @@ public class ItemJobCell extends ListCell<Job> {
 		      e.printStackTrace();
 		    }
 		    
-		    setGraphic(node);
+		    setGraphic(node); 
 			
 			
 		}

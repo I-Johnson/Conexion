@@ -149,8 +149,8 @@ public abstract class Page {
 	public abstract void addSkill(Skill skill);
 	public abstract void addPost(Post post);
 	public abstract void addPerson(Person person);
-//	public abstract void addEmployer(Employer employer);
-//	public abstract void addJob(Job job);
+	public abstract void addEmployer(Employer employer);
+	public abstract void addJob(Job job);
 	
 	public void addViewer(User user) {
 		this.viewers.add(user.getPageID());

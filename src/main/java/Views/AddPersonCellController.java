@@ -11,7 +11,7 @@ public class AddPersonCellController extends PersonCellController {
     	if(model.getItem() != null) {
     		parent.addPerson(model.getItem());
     		
-    	}
+    	} 
     }
 	
 }

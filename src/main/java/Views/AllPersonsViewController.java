@@ -103,7 +103,7 @@ public class AllPersonsViewController {
 	}
 	
     @FXML
-    private Label personDescriptionLabel;
+    private Label personDescriptionLabel; 
 
 
     @FXML
@@ -259,8 +259,16 @@ public class AllPersonsViewController {
 
     @FXML
     private Button addPosts;
+    
+    @FXML
+    private Button addPersons;
+    @FXML
+    void onClickAddPersons(ActionEvent event) {
+    	vm.showAddPerson();;
+    }
     @FXML
     void onClickAddEmployer(ActionEvent event) {
+//    	System.out.println("new");
     	vm.showAddEmployers();;
     }
 

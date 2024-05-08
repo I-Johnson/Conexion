@@ -91,7 +91,7 @@ public class ViewTransitionalModel implements ViewTransitionModelInterface {
 			cont.setEmployerViewModel(this);
 			cont.setParent(current);
 			cont.setAddEmployerModel(listEmployer);
-			cont.setEmployerModel(listEmployer);
+//			cont.setEmployerModel(listEmployer); 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -164,6 +164,31 @@ public class ViewTransitionalModel implements ViewTransitionModelInterface {
 				
 			}
 			ListJob listJob = new ListJob();
+			ObservableList<Job> observableJobs = FXCollections.observableList(pages);
+			(listJob).setItems(observableJobs);
+			Node view = loader.load();
+			mainview.setCenter(view);
+			AllJobsViewController cont = loader.getController();
+			cont.setJobViewModel(this);
+			cont.setJobModel(listJob);
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+	
+
+	@Override
+	public void showAllJobs() {
+		// TODO Auto-generated method stub
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(ViewTransitionalModel.class.getResource("/Views/allJobs.fxml"));
+		try {
+			
+//			ArrayList<Job> pages = client.getAllJobs();
+			ListJob listJob = new ListJob();
 			
 			ObservableList<Job> observableJobs = FXCollections.observableList(client.getAllJobs());
 			(listJob).setItems(observableJobs);
@@ -179,6 +204,8 @@ public class ViewTransitionalModel implements ViewTransitionModelInterface {
 		}
 
 	}
+
+	
 	@Override
 	public void showSingleJob(String id) {
 		// TODO Auto-generated method stub
@@ -839,11 +866,7 @@ public class ViewTransitionalModel implements ViewTransitionModelInterface {
 	}
 
 
-	@Override
-	public void showAllJobs() {
-		// TODO Auto-generated method stub
-		
-	}
+
 
 
 }

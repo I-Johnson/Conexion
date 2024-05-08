@@ -167,7 +167,7 @@ public class AllPostsViewController
 			{
 				AddPostCell addPostCell = new AddPostCell(lv,itemShower);
 				addPostCell.getItemController().setParent(parent);
-				return new ItemPostCell(lv, itemShower);
+				return addPostCell;
 			}
 		  });
     	
@@ -213,6 +213,8 @@ public class AllPostsViewController
 
     @FXML
     private Button relatedSkill;
+ 
+    
 
 
     @FXML
@@ -266,5 +268,12 @@ public class AllPostsViewController
     	vm.showAddPerson();
     }
 
+    @FXML
+    private Button addPost;
+
+    @FXML
+    void onClickAddPosts(ActionEvent event) {
+    	vm.showAddPosts();
+    }
 	
 }

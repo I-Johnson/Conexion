@@ -17,10 +17,11 @@
       	<VBox layoutX="465.0" layoutY="83.0" prefHeight="200.0" prefWidth="100.0">
                <children>
                   <Label text="Add Links" />
-                  <Button fx:id="addJob" mnemonicParsing="false" onAction="#onClickAddJob" text="Job" />
+                  <Button fx:id="addJobs" mnemonicParsing="false" onAction="#onClickAddJob" text="Job" />
                   <Button fx:id="addEmployer" mnemonicParsing="false" onAction="#onClickAddEmployer" text="Employer" />
                   <Button fx:id="addPerson" mnemonicParsing="false" onAction="#onClickAddPerson" text="Person" />
                   <Button fx:id="addPosts" mnemonicParsing="false" onAction="#onClickAddPosts" text="Posts" />
+                  <Button fx:id="addSkills" mnemonicParsing="false" onAction="#onClickAddSkill" text="Skill" />
                </children>
             </VBox>
       <TextField fx:id="skillNameTextField" layoutX="140.0" layoutY="44.0" prefHeight="29.0" prefWidth="193.0" />

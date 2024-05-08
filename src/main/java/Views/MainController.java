@@ -19,7 +19,7 @@ public class MainController {
     	System.out.println("clicked employers");
 
     }
-
+ 
     @FXML
     void onClickHome(ActionEvent event) {
 //    	model.showHome();

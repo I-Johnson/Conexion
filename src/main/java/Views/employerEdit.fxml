@@ -25,6 +25,7 @@
                <children>
                   <Label text="Add Links" />
                   <Button fx:id="addJobButton" mnemonicParsing="false" onAction="#onClickAddJob" text="Job" />
+                  <Button fx:id="addEmployerButton" mnemonicParsing="false" onAction="#onClickAddEmployer" text="Employer" />
                   <Button fx:id="addPostButton" mnemonicParsing="false" onAction="#onClickAddPost" text="Post" />
                   <Button fx:id="addSkillButton" mnemonicParsing="false" onAction="#onClickAddSkill" text="Skill" />
                   <Button fx:id="addPersonButton" mnemonicParsing="false" onAction="#onClickAddPerson" text="Person" />

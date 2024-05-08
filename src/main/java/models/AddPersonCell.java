@@ -17,7 +17,7 @@ public class AddPersonCell extends ItemPersonCell{
 		showPersons = cont;
 		
 		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(ItemPersonCell.class.getResource("/Views/personCell.fxml"));
+		loader.setLocation(ItemPersonCell.class.getResource("/Views/addPersonCell.fxml"));
 	    try {
 	      node = loader.load(); //store for later
 	      
@@ -32,5 +32,5 @@ public class AddPersonCell extends ItemPersonCell{
 		
 	}
 	
-	
+	 
 }
