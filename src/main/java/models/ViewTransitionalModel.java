@@ -829,7 +829,8 @@ public class ViewTransitionalModel implements ViewTransitionModelInterface {
 				if((person.getUserEmail().equals(email)) && (person.getUserPassword().equals(password))) {
 					found = true; 
 					this.loggedIn = person;
-					showPrivatePerson(person.getPageID());
+//					showPrivatePerson(person.getPageID());
+					showSinglePerson(person.getPageID());
 					System.out.println("found a profile");
 					break;
 				}		
@@ -838,7 +839,8 @@ public class ViewTransitionalModel implements ViewTransitionModelInterface {
 			if((employer.getUserEmail().equals(email)) && (employer.getUserPassword().equals(password))) {
 				found = true; 
 				this.loggedIn = employer;
-				showPrivateEmployer(employer.getPageID());
+//				showPrivateEmployer(employer.getPageID());
+				showSingleEmployer(employer.getPageID());
 //				System.out.println("found a profile");
 				break;
 			}		
