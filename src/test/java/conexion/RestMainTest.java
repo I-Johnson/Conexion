@@ -226,11 +226,11 @@ class RestMainTest {
 		 
 		 
 		 //Test get all methods
-		 ArrayList<Skill> allSkills = server.getAllSkills();
-		 ArrayList<Post> allPosts = server.getAllPosts();
-		 ArrayList<Employer> allEmployers = server.getAllEmployers();
-		 ArrayList<Person> allPersons = server.getAllPersons();
-		 ArrayList<Job> allJobs = server.getAllJobs();
+		 ArrayList<Page> allSkills = server.getAllSkills();
+		 ArrayList<Page> allPosts = server.getAllPosts();
+		 ArrayList<Page> allEmployers = server.getAllEmployers();
+		 ArrayList<Page> allPersons = server.getAllPersons();
+		 ArrayList<Page> allJobs = server.getAllJobs();
 		 
 		 //Skills --
 		 assertTrue(allSkills.contains(mern));

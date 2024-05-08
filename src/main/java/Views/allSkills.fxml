@@ -25,6 +25,6 @@
       </VBox>
    </center>
    <bottom>
-      <Button fx:id="showOnlyMySkillsButton" mnemonicParsing="false" onAction="#onClickShowOnlyMySkills" text="Show Only My Skills" BorderPane.alignment="CENTER" />
+      <!-- <Button fx:id="showOnlyMyPagesButton" mnemonicParsing="false" onAction="#onClickShowOnlyMyPages" text="Show Only My Skills" BorderPane.alignment="CENTER" /> -->
    </bottom>
 </BorderPane>

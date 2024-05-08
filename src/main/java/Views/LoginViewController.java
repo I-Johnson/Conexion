@@ -25,7 +25,7 @@ public class LoginViewController {
     	String password = passwordBox.textProperty().get();
     	viewModel.login(email, password);
     	
-    	//System.out.println(username);
+    	System.out.println(email);
     }
 
 

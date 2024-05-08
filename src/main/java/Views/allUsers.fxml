@@ -25,6 +25,6 @@
       </VBox>
    </center>
    <bottom>
-      <Button fx:id="showFollowedUsersButton" mnemonicParsing="false" onAction="#onClickShowOnlyMyPersons" text="Show Only Followed Users" BorderPane.alignment="CENTER" />
+     <!--  <Button fx:id="showFollowedUsersButton" mnemonicParsing="false" onAction="#onClickShowOnlyMyPersons" text="Show Only Followed Users" BorderPane.alignment="CENTER" /> -->
    </bottom>
 </BorderPane>

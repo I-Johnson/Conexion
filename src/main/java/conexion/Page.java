@@ -17,6 +17,8 @@ public abstract class Page {
 	private ArrayList<String> jobs;
 	private ArrayList<String> employers;
 	private ArrayList<String> persons;
+	String pageTitle;
+	String pageDescription;
 	
 	public Page(IDGenerator idGenerator) {
 		this.idGenerator = idGenerator;
@@ -48,8 +50,24 @@ public abstract class Page {
 		this.employers = new ArrayList<String> ();
 		this.persons = new ArrayList<String> ();
 	}
+	@Override
+	public String toString() {
+		return pageTitle;
+	}
+	public String getPageTitle() {
+		return pageTitle;
+	}
+	public void setPageTitle(String pageTitle) {
+		this.pageTitle = pageTitle;
+		
+	}
 	
-	
+	public String getPageDescription() {
+		return pageDescription;
+	}
+	public void setPageDescription(String pageDescription) {
+		this.pageDescription = pageDescription;
+	}
 	
 	public ArrayList<String> getPersons() {
 		return persons;
@@ -155,19 +173,18 @@ public abstract class Page {
 	public void addViewer(User user) {
 		this.viewers.add(user.getPageID());
 	}
-	
-	@Override
-	public String toString() {
-		return "Page [pageID=" + pageID + ", skills=" + skills + ", posts=" + posts + ", idGenerator=" + idGenerator
-				+ ", viewers=" + viewers + ", editors=" + editors + ", isPublicallyVisible=" + isPublicallyVisible
-				+ "]";
-	}
+
 
 	// editor automatically has viewer access
 	public void addEditor(String user) {
 		this.editors.add(user);
 		this.viewers.add(user);
 		
+	}
+	
+	public void push() {
+		RestMain client = RestMain.getInstance();
+		client.updatePage(this);
 	}
 
 	@Override

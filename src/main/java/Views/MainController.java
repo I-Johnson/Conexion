@@ -3,6 +3,7 @@ package Views;
 import javafx.fxml.FXML;
 import models.LoginDataModel;
 import models.ViewTransitionModelInterface;
+import conexion.Person;
 import javafx.event.ActionEvent;
 public class MainController {
 	
@@ -34,7 +35,18 @@ public class MainController {
 
     @FXML
     void onClickMyProfile(ActionEvent event) {
-    	model.showPrivateProfile();
+    	if(model.getLoggedIn()!=null) {
+    		if(model.getLoggedIn() instanceof Person) {
+    			model.showSinglePerson(model.getLoggedIn().getPageID());
+    		}
+    		else{
+    			model.showSingleEmployer(model.getLoggedIn().getPageID());
+    		}
+    	}
+    	
+    	else{
+    		model.changetoLoginView();
+    	}
     	System.out.println("clicked my profile");
     }
 

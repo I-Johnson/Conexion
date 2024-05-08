@@ -5,41 +5,29 @@ import conexion.User;
 
 public interface ViewTransitionModelInterface {
 	
-	// View Pages
-	public User getLoggedIn();
 	public void showHome();
 	public void showAllEmployers();
 	public void showAllJobs();
 	public void showAllSkills();
+	void showAllPersons();
 	public void showAllPosts();
 	public void showPrivateProfile();
+	public void showAllPosts(Page parent);
+	public void showAllSkills(Page parent);
+	public void showAllEmployers(Page parent);
+	public void showAllJobs(Page parent);
+	public void showAllPersons(Page parent);
 	public void login(String username, String password);
 	//Edit Pages 
 	
-//	public void changetoEditView();
 	public void changetoLoginView();
-	void showAllPersons();
-	void showSingleJob(String id);
-	void showEditJob(String id);
-	void showSinglePost(String id);
-	void showEditPost(String id);
-	void showSingleSkill(String id);
-	void showEditSkill(String id);
-	void showSinglePerson(String id);
-	void showSingleEmployer(String id);
-	void showAllJobs(Page page);
-	void showAllSkills(Page page);
-	void showAllPosts(Page page);
-	void showAllEmployers(Page page);
-	void showAllPersons(Page page);
-	void showEditEmployer(String id);
-	void showEditPerson(String id);
-	void showPrivatePerson(String id);
-	void showPrivateEmployer(String id);
-	void showAddPerson();
-	void showAddSkills();
-	void showAddPosts();
-	void showAddJobs();
-	void showAddEmployers();
+	public User getLoggedIn();
+	public void showSingleSkill(String id);
+	public void showSinglePost(String id);
+	public void showSinglePerson(String id);
+	public void showSingleEmployer(String id);
+//	public void showEmployer(String id);
+	public void showSingleJob(String id);
+	
 
 }

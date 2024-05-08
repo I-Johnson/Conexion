@@ -182,9 +182,9 @@ public class RestMain {
 	// ------- Get all entities  ------: 
 	
 	// Skills
-	public ArrayList<Skill> getAllSkills() {
+	public ArrayList<Page> getAllSkills() {
 		Skill page;
-		ArrayList<Skill> skills = new ArrayList<Skill> ();
+		ArrayList<Page> skills = new ArrayList<Page> ();
 		for(int i = 1; i <= idGenerator.getNumberOfPages(); i++) {
 			try {
 				page = getSkill("/Skill/" + ((Integer) i).toString()).data();
@@ -198,9 +198,9 @@ public class RestMain {
 	}
 	
 	// Post
-	public ArrayList<Post> getAllPosts() {
+	public ArrayList<Page> getAllPosts() {
 		Post page;
-		ArrayList<Post> posts = new ArrayList<Post> ();
+		ArrayList<Page> posts = new ArrayList<Page> ();
 		for(int i = 1; i <= idGenerator.getNumberOfPages(); i++) {
 			try {
 				page = getPost("/Post/" + ((Integer) i).toString()).data();
@@ -214,9 +214,9 @@ public class RestMain {
 	}
 	
 	// Jobs
-	public ArrayList<Job> getAllJobs() {
+	public ArrayList<Page> getAllJobs() {
 		Job page;
-		ArrayList<Job> jobs = new ArrayList<Job> ();
+		ArrayList<Page> jobs = new ArrayList<Page> ();
 		for(int i = 1; i <= idGenerator.getNumberOfPages(); i++) {
 			try {
 				page = getJob("/Job/" + ((Integer) i).toString()).data();
@@ -230,9 +230,9 @@ public class RestMain {
 	}
 	
 	// Employers
-	public ArrayList<Employer> getAllEmployers() {
+	public ArrayList<Page> getAllEmployers() {
 		Employer page;
-		ArrayList<Employer> employers = new ArrayList<Employer> ();
+		ArrayList<Page> employers = new ArrayList<Page> ();
 		for(int i = 1; i <= idGenerator.getNumberOfPages(); i++) {
 			try {
 				page = getEmployer("/Employer/" + ((Integer) i).toString()).data();
@@ -246,9 +246,9 @@ public class RestMain {
 	}
 	
 	// Person
-	public ArrayList<Person> getAllPersons() {
+	public ArrayList<Page> getAllPersons() {
 		Person page;
-		ArrayList<Person> persons = new ArrayList<Person> ();
+		ArrayList<Page> persons = new ArrayList<Page> ();
 		for(int i = 1; i <= idGenerator.getNumberOfPages(); i++) {
 			try {
 				page = getPerson("/Person/" + ((Integer) i).toString()).data();

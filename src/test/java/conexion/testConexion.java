@@ -50,7 +50,7 @@ class testConexion {
 		
 		KMiles = new Person(idGenerator, "Ken Miles", "FordIsBest", "Miles@ford.com", "Best Driver", 1, 
 		"Bachelors", "Centre University", "Computer Science");
-
+ 
 		KMiles.getSkills().add(springMVC.getPageID());
 		KMiles.addSkill(cloudComputing);
 		
