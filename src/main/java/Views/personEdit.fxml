@@ -30,8 +30,8 @@
                    <Button fx:id="addPersons" mnemonicParsing="false" onAction="#onClickAddPersons" text="Person" />
                </children>
       </VBox>
-      <TextField fx:id="personNameTextField" layoutX="140.0" layoutY="44.0" prefHeight="29.0" prefWidth="193.0" />
-      <TextArea fx:id="personDescriptionTextField" layoutX="137.0" layoutY="107.0" prefHeight="161.0" prefWidth="311.0" />
-      <Button fx:id="personEditSave" layoutX="263.0" layoutY="316.0" mnemonicParsing="false" onAction="#onClickPersonEditSave" prefHeight="29.0" prefWidth="74.0" text="Save" />
+      <TextField id="titleText" fx:id="personNameTextField" layoutX="140.0" layoutY="44.0" prefHeight="29.0" prefWidth="193.0" />
+      <TextArea id="descriptionText" fx:id="personDescriptionTextField" layoutX="137.0" layoutY="107.0" prefHeight="161.0" prefWidth="311.0" />
+      <Button id="save" fx:id="personEditSave" layoutX="263.0" layoutY="316.0" mnemonicParsing="false" onAction="#onClickPersonEditSave" prefHeight="29.0" prefWidth="74.0" text="Save" />
    </children>
 </AnchorPane>

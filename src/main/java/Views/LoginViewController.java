@@ -26,7 +26,7 @@ public class LoginViewController {
     	viewModel.login(email, password);
     	
     	//System.out.println(username);
-    }
+    } 
 
 
 	public ViewTransitionalModel getViewModel() {

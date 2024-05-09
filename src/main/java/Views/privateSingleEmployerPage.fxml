@@ -29,7 +29,7 @@
                   <Button fx:id="relatedPersonButton" mnemonicParsing="false" onAction="#onClickRelatedPerson" text="Person" />
                </children>
             </VBox>
-            <Button fx:id="signOut" layoutX="480.0" layoutY="304.0" mnemonicParsing="false" onAction="#onClickSignOut" text="Sign Out" />
+            <Button id = "signOut" fx:id="signOut" layoutX="480.0" layoutY="304.0" mnemonicParsing="false" onAction="#onClickSignOut" text="Sign Out" />
          </children>
       </AnchorPane>
    </center>

@@ -12,7 +12,7 @@
    <top>
       <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
-            <Label text="Employers" textAlignment="CENTER">
+            <Label id = "allEmployersTitle" text="Employers" textAlignment="CENTER">
                <font>
                   <Font name="Courier New Bold" size="22.0" />
                </font>

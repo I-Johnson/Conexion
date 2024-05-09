@@ -33,7 +33,7 @@ class RestMainTest {
 	
 	public Post SWESenior_Job_Article;
 	
-	public Post RWilliamsPost1;
+//	public Post RWilliamsPost1;
 	public Post SWE_Principles_Post;
 	
 	public Job NetflixJob1;
@@ -129,7 +129,7 @@ class RestMainTest {
 						.body(String.class);
 //				System.out.println(response);
 				
-			} catch (JsonProcessingException e) {
+			} catch (JsonProcessingException e) { 
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
@@ -147,7 +147,7 @@ class RestMainTest {
 			RWilliams.addSkill(springMVC);
 			
 			 
-			RWilliamsPost1 = RWilliams.post("Centre College Good", "March 31st", "no_body_available");
+//			RWilliamsPost1 = RWilliams.post("Centre College Good", "March 31st", "no_body_available");
 			
 			
 			

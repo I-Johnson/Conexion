@@ -25,6 +25,6 @@ public class LoginDataModel {
 		this.loggedIn = loggedIn;
 	}
 	
-	
+	 
 }
 

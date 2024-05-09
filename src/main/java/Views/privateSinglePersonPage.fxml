@@ -9,7 +9,7 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Views.AllPersonsViewController">
    <top>
-      <Label fx:id="personTitle" prefHeight="35.0" prefWidth="245.0" text="Person Name" textAlignment="JUSTIFY" BorderPane.alignment="CENTER">
+      <Label id="title" fx:id="personTitle" prefHeight="35.0" prefWidth="245.0" text="Person Name" textAlignment="JUSTIFY" BorderPane.alignment="CENTER">
          <font>
             <Font size="19.0" />
          </font>
@@ -18,18 +18,18 @@
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Label fx:id="personDescriptionLabel" layoutX="69.0" layoutY="63.0" prefHeight="126.0" prefWidth="384.0" text="Text" />
-            <Button fx:id="personEditButton" layoutX="487.0" layoutY="14.0" mnemonicParsing="false" onAction="#onClickEditPersonPage" prefHeight="26.0" prefWidth="56.0" text="Edit " />
+            <Label id="description" fx:id="personDescriptionLabel" layoutX="69.0" layoutY="63.0" prefHeight="126.0" prefWidth="384.0" text="Text" />
+            <Button id="edit" fx:id="personEditButton" layoutX="487.0" layoutY="14.0" mnemonicParsing="false" onAction="#onClickEditPersonPage" prefHeight="26.0" prefWidth="56.0" text="Edit " />
             <VBox layoutX="473.0" layoutY="63.0" prefHeight="200.0" prefWidth="100.0">
                <children>
                   <Label text="RelatedPages" />
-                  <Button fx:id="relatedJob" mnemonicParsing="false" onAction="#onClickRelatedJobs" text="Job" />
-                  <Button fx:id="relatedSkill" mnemonicParsing="false" onAction="#onClickRelatedSkills" text="Skill" />
-                  <Button fx:id="relatedEmployer" mnemonicParsing="false" onAction="#onClickRelatedEmployer" text="Employer" />
-                  <Button fx:id="relatedPosts" mnemonicParsing="false" onAction="#onClickRelatedPosts" text="Post" />
+                  <Button id="job" fx:id="relatedJob" mnemonicParsing="false" onAction="#onClickRelatedJobs" text="Job" />
+                  <Button id="skill" fx:id="relatedSkill" mnemonicParsing="false" onAction="#onClickRelatedSkills" text="Skill" />
+                  <Button id = "employer" fx:id="relatedEmployer" mnemonicParsing="false" onAction="#onClickRelatedEmployer" text="Employer" />
+                  <Button id = "post" fx:id="relatedPosts" mnemonicParsing="false" onAction="#onClickRelatedPosts" text="Post" />
                </children>
             </VBox>
-            <Button fx:id="signOut" layoutX="473.0" layoutY="300.0" mnemonicParsing="false" onAction="#onClickSignOut" text="Sign Out" />
+            <Button id = "signOut" fx:id="signOut" layoutX="473.0" layoutY="300.0" mnemonicParsing="false" onAction="#onClickSignOut" text="Sign Out" />
          </children>
       </AnchorPane>
    </center>

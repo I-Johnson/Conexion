@@ -39,7 +39,7 @@ public class AllPersonsViewController {
 	public void setParent(Page parent) {
 		this.parent = parent;
 	}
-
+ 
 
 
 	public Text getInfo() {
@@ -218,6 +218,7 @@ public class AllPersonsViewController {
     	person.setUserBio(personDescription);
     	RestMain client = RestMain.getInstance();
     	client.updatePage(person);
+    	vm.showPrivatePerson(person.getPageID());
     	vm.showSinglePerson(person.getPageID());
   	
     }

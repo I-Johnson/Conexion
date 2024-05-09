@@ -316,10 +316,10 @@ public class ViewTransitionalModel implements ViewTransitionModelInterface {
 
 	}
 	
-	@Override
+	@Override 
 	public void showSingleEmployer(String id) {
 		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(ViewTransitionalModel.class.getResource("/Views/singleEmployerPage.fxml"));
+		loader.setLocation(ViewTransitionalModel.class.getResource("/Views/privateSingleEmployerPage.fxml"));
 		RestMain client = RestMain.getInstance();
 		Employer myEmployer = client.getEmployer(id).data(); 
 		Text text = new Text();
@@ -349,7 +349,7 @@ public class ViewTransitionalModel implements ViewTransitionModelInterface {
 	public void showSinglePerson(String id) {
 		// TODO Auto-generated method stub
 		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(ViewTransitionalModel.class.getResource("/Views/singlePersonPage.fxml"));
+		loader.setLocation(ViewTransitionalModel.class.getResource("/Views/privateSinglePersonPage.fxml"));
 		RestMain client = RestMain.getInstance();
 		Person myPerson = client.getPerson(id).data(); // add edit permissions later!!
 		current = myPerson;
@@ -366,7 +366,7 @@ public class ViewTransitionalModel implements ViewTransitionModelInterface {
 			cont.setPersonName();
 			cont.setPersonDescriptionName();
 			
-		} catch (IOException e) {
+		} catch (IOException e) { 
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -774,20 +774,24 @@ public class ViewTransitionalModel implements ViewTransitionModelInterface {
 		if(loggedIn == null) {
 			changetoLoginView();
 			return;
+		} else if (loggedIn instanceof Person) {
+			showPrivatePerson(loggedIn.getPageID());
+		} else {
+			showPrivateEmployer(loggedIn.getPageID());
 		}
 		
-		loader.setLocation(ViewTransitionalModel.class.getResource("/Views/privateProfile.fxml"));
-		try {
-			Node view = loader.load();
-			mainview.setCenter(view);
-			privateProfileController cont = loader.getController();
-			cont.setUser(loggedIn);
-			cont.setViewModel(this);
-			
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		loader.setLocation(ViewTransitionalModel.class.getResource("/Views/privateProfile.fxml"));
+//		try {
+//			Node view = loader.load();
+//			mainview.setCenter(view);
+//			privateProfileController cont = loader.getController();
+//			cont.setUser(loggedIn);
+//			cont.setViewModel(this);
+//			
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 	}
 
 
@@ -818,9 +822,7 @@ public class ViewTransitionalModel implements ViewTransitionModelInterface {
 	@Override
 	public void login(String email, String password) {
 		IDGenerator idGenerator = IDGenerator.getInstance();
-		RestMain client = RestMain.getInstance();
 		boolean found = false;
-		
 		ArrayList<Person> persons = client.getAllPersons();
 		ArrayList<Employer> employers = client.getAllEmployers();
 		
@@ -829,8 +831,8 @@ public class ViewTransitionalModel implements ViewTransitionModelInterface {
 				if((person.getUserEmail().equals(email)) && (person.getUserPassword().equals(password))) {
 					found = true; 
 					this.loggedIn = person;
-//					showPrivatePerson(person.getPageID());
-					showSinglePerson(person.getPageID());
+					showPrivatePerson(person.getPageID());
+//					showSinglePerson(person.getPageID());
 					System.out.println("found a profile");
 					break;
 				}		
@@ -839,8 +841,8 @@ public class ViewTransitionalModel implements ViewTransitionModelInterface {
 			if((employer.getUserEmail().equals(email)) && (employer.getUserPassword().equals(password))) {
 				found = true; 
 				this.loggedIn = employer;
-//				showPrivateEmployer(employer.getPageID());
-				showSingleEmployer(employer.getPageID());
+				showPrivateEmployer(employer.getPageID());
+//				showSingleEmployer(employer.getPageID());
 //				System.out.println("found a profile");
 				break;
 			}		
