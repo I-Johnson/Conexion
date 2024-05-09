@@ -9,14 +9,14 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Views.AllJobsViewController">
    <top>
-      <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+      <VBox alignment="TOP_CENTER" prefHeight="297.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
             <Label id="allJobsTitle" text="Job Openings" textAlignment="CENTER">
                <font>
                   <Font name="Courier New Bold" size="22.0" />
                </font>
             </Label>
-            <ListView fx:id="allJobsList" prefHeight="135.0" prefWidth="552.0" />
+            <ListView fx:id="allJobsList" prefHeight="214.0" prefWidth="560.0" />
          </children>
          <padding>
             <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />

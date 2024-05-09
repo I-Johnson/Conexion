@@ -1,6 +1,8 @@
 package conexion;
 
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -13,9 +15,11 @@ import org.testfx.util.WaitForAsyncUtils;
 
 import Views.MainController;
 import javafx.application.Platform;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
@@ -131,8 +135,15 @@ public class TestConexionUI {
         checkResult(robot, "The Greatest Actor", "#description"); // Check if the description is "The Greatest Actor"
         
         //Check related pages buttons work
-        robot.clickOn("#job");
+        robot.clickOn("#Jobs");
         checkResult(robot, "Job Openings", "#allJobsTitle");
+        ListView<String> jobListView = robot.lookup("#allJobsList").queryAs(ListView.class);
+        ObservableList<String> jobItems = jobListView.getItems();
+//        jobItems.forEach(System.out::println);
+        // Define expected job titles
+        List<String> expectedJobs = Arrays.asList("Job: SWE Senior", "Job: SWE Associate", "Job: SWE Principal", "Job: Software Engineering Associate");
+        Assertions.assertThat(jobItems).containsExactlyElementsOf(expectedJobs);
+        
         robot.clickOn("#Profile");
         robot.clickOn("#employer");
         checkResult(robot, "Employers", "#allEmployersTitle");
@@ -145,6 +156,8 @@ public class TestConexionUI {
         robot.clickOn("#post");
         checkResult(robot, "Posts", "#allPostsTitle");
         robot.clickOn("#Profile");
+        
+
         
         //Check if signout Button works. 
         robot.clickOn("#signOut"); // Assert signout works and there are no permissions. 
