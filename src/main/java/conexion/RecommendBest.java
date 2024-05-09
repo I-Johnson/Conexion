@@ -5,7 +5,7 @@ import org.springframework.web.client.RestClientException;
 public class RecommendBest implements Recommendation {
 
 
-	@Override
+	@Override 
 	public void sendRecommendation(Job job) {
 		// TODO Auto-generated method stub
 		Page page;

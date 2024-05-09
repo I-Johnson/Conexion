@@ -104,7 +104,7 @@ public class Person extends User{
 	}
 	
 
-	public void addRecommendation(String job) {
+	public void addRecommendation(String job) { 
 		// TODO Auto-generated method stub
 		this.getRecommendedJobs().add(job);
 		

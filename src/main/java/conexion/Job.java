@@ -9,6 +9,7 @@ public class Job extends Post{
 	private String requiredDegree;
 	private String requiredMajor;
 	private ArrayList<String> postAttachments;
+	private ArrayList<String> interests;
 
 
 
@@ -39,6 +40,7 @@ public class Job extends Post{
 		this.requiredExperience = requiredExperience;
 		this.requiredDegree = requiredDegree;
 		this.requiredMajor = requiredMajor;
+		this.interests = new ArrayList<String>();
 //		this.skillRequirements = skillRequirements;
 	}
 
@@ -64,6 +66,14 @@ public class Job extends Post{
 	 */
 	public ArrayList<String> getApplicants() {
 		return applicants;
+	}
+	
+	public ArrayList<String> getInterests() {
+		return interests;
+	}
+	
+	public void addInterest(String person) {
+		this.getInterests().add(person);
 	}
 
 //	public String getApplicants_s() {

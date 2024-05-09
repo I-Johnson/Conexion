@@ -23,7 +23,7 @@ public class Main extends Application {
 		
 		Scene s = new Scene(view);
 		stage.setScene(s);
-		stage.show();
+		stage.show(); 
 	}
 
 	public static void main(String [] args){

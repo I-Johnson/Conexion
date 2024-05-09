@@ -179,6 +179,9 @@ class RestMainTest {
 			NetflixJob3.addSkill(mern);
 			
 //			Netflix.addPost(SWEAssociate_Job);
+//			HighlightMethod interest = new SendInterest();
+//			interest.sendInterest(KMiles);
+			
 			
 //			Netflix.addPost(SWESenior_Job_Article); 
 			
@@ -258,6 +261,9 @@ class RestMainTest {
 
 		 	recommendAll = new RecommendAll();
 			recommendAll.sendRecommendation(SWEAssociate_Job);
+			
+			HighlightMethod sendInterest = new SendInterest();
+			sendInterest.sendInterest(NetflixJob1);
 			
 			KMiles = server.getPerson(KMiles.getPageID()).data();
 			RWilliams = server.getPerson(RWilliams.getPageID()).data();
