@@ -90,16 +90,16 @@ public class AllPersonsViewController {
 
 	@FXML
 	void onClickShowOnlyMyPersons(ActionEvent event) {
-		if(vm.getLoggedIn() != null) {
-			ArrayList<Person> myPersons = new ArrayList<Person> ();
-			for (Person person: allPersonsList.getItems()) {
-				if (vm.getLoggedIn().getPersons().contains(person.getPageID())) {
-					myPersons.add(person);
-				}
-			}
-			ObservableList<Person> myObservablePerson = FXCollections.observableList(myPersons);
-			allPersonsList.setItems(myObservablePerson);
-		}
+//		if(vm.getLoggedIn() != null) {
+//			ArrayList<Person> myPersons = new ArrayList<Person> ();
+//			for (Person person: allPersonsList.getItems()) {
+//				if (vm.getLoggedIn().getPersons().contains(person.getPageID())) {
+//					myPersons.add(person);
+//				}
+//			}
+//			ObservableList<Person> myObservablePerson = FXCollections.observableList(myPersons);
+//			allPersonsList.setItems(myObservablePerson);
+//		}
 	}
 	
     @FXML

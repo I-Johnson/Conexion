@@ -24,7 +24,7 @@
                    <Button id = "addUser" fx:id="addPerson" mnemonicParsing="false" onAction="#onClickAddPerson" text="Person" />
                </children>
             </VBox>
-      <TextField fx:id="skillNameTextField" layoutX="140.0" layoutY="44.0" prefHeight="29.0" prefWidth="193.0" />
+      <TextField id="titleText" fx:id="skillNameTextField" layoutX="140.0" layoutY="44.0" prefHeight="29.0" prefWidth="193.0" />
       <Button id="save" fx:id="skillEditSave" layoutX="263.0" layoutY="316.0" mnemonicParsing="false" onAction="#onClickSkillEditSave" prefHeight="29.0" prefWidth="74.0" text="Save" />
    </children>
 </AnchorPane>

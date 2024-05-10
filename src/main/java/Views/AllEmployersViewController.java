@@ -243,10 +243,11 @@ public class AllEmployersViewController {
     @FXML
     private Button addEmployerButton;
     
-    @FXML
-    void onClickAddEmployer(ActionEvent event) {
-    	vm.showAddEmployers();
-    }
+    //not using function to add employer to employer
+//    @FXML
+//    void onClickAddEmployer(ActionEvent event) {
+//    	vm.showAddEmployers();
+//    }
     
     @FXML
     void onClickAddJob(ActionEvent event) {

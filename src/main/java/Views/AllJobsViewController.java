@@ -238,10 +238,12 @@ public class AllJobsViewController
 	    @FXML
 	    private Button addPost;
 	    
-	    @FXML
-	    void onClickAddJobs(ActionEvent event) {
-	    	vm.showAddJobs();
-	    }
+	    
+	    //Not using function to add jobs to jobs
+//	    @FXML
+//	    void onClickAddJobs(ActionEvent event) {
+//	    	vm.showAddJobs();
+//	    }
 	    @FXML
 	    void onClickAddEmployer(ActionEvent event) {
 	    	vm.showAddEmployers();

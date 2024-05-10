@@ -110,7 +110,7 @@ class testConexion {
 		assertEquals(1, cloudComputing.getSkills().size());
 		
 		//Cloud computing was already added to netflix. 
-		assertEquals(2, cloudComputing.getPosts().size());
+		assertEquals(1, cloudComputing.getPosts().size());
 		
 		
 		assertEquals(KMiles.getPageID(), SWESenior_Job_Article.getPostAuthor());

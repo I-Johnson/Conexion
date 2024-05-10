@@ -23,17 +23,10 @@
            <VBox layoutX="465.0" layoutY="83.0" prefHeight="200.0" prefWidth="100.0">
                <children>
                	<Label prefHeight="17.0" prefWidth="97.0" text="Add Pages" />
-             <Button id="addJob" fx:id="addJob" mnemonicParsing="false" onAction="#onClickAddJobs" text="Job" /> 
-	               <Button id="addSkill" fx:id="addSkill" mnemonicParsing="false" onAction="#onClickAddSkills" text="Skill" /> 
-                  <Button id="addEmployer" fx:id="addEmployer" mnemonicParsing="false" onAction="#onClickAddEmployer" text="Employer" />
-                   <Button id = "addUser" fx:id="addPerson" mnemonicParsing="false" onAction="#onClickAddPerson" text="Person" />
-                  
-<!--                   <Label text="Add Pages" />
-                  <Button id="addJob" fx:id="addJob" mnemonicParsing="false" onAction="#onClickAddJobs" text="Job" />
-                  <Button id="addSkill" fx:id="addSkill" mnemonicParsing="false" onAction="#onClickAddSkills" text="Skill" />
-                  <Button id="addPerson" fx:id="addPerson" mnemonicParsing="false" onAction="#onClickAddPerson" text="Person" />
-                  <Button id="addEmployer" fx:id="addEmployer" mnemonicParsing="false" onAction="#onClickAddEmployer" text="Employer" /> -->
-                  <!-- <Button fx:id="addPost" mnemonicParsing="false" onAction="#onClickAddPosts" text="Post" /> -->
+             		<Button id="addJob" fx:id="addJob" mnemonicParsing="false" onAction="#onClickAddJobs" text="Job" /> 
+	               	<Button id="addSkill" fx:id="addSkill" mnemonicParsing="false" onAction="#onClickAddSkills" text="Skill" /> 
+                  	<Button id="addEmployer" fx:id="addEmployer" mnemonicParsing="false" onAction="#onClickAddEmployer" text="Employer" />
+                   	<Button id = "addUser" fx:id="addPerson" mnemonicParsing="false" onAction="#onClickAddPerson" text="Person" />
                </children>
             </VBox>
       <TextField id="titleText" fx:id="postNameTextField" layoutX="140.0" layoutY="44.0" prefHeight="29.0" prefWidth="193.0" />

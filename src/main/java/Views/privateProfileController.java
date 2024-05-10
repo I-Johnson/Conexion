@@ -57,13 +57,6 @@ public class privateProfileController {
     @FXML
     void onClickEditButton(ActionEvent event) {
     	System.out.println("clicked edit");
-//    	viewModel.changetoEditView();
-//    	if (viewModel != null) {
-//             // Call changetoEditView() on the viewModel instance
-//    		break;
-//        } else {
-//            System.err.println("ViewModel is not initialized.");
-//        }
     
     }
 

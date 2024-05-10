@@ -90,16 +90,16 @@ public class AllPostsViewController
 	
 	@FXML 
 	void onClickShowOnlyMyPosts(ActionEvent event) {
-		if(vm.getLoggedIn() != null) {
-			ArrayList<Post> myPosts = new ArrayList<Post> ();
-			for (Post post: allPostsList.getItems()) {
-				if (vm.getLoggedIn().getPosts().contains(post.getPageID())) {
-					myPosts.add(post);
-				}
-			}
-			ObservableList<Post> myObservablePosts = FXCollections.observableList(myPosts);
-			allPostsList.setItems(myObservablePosts);
-		}
+//		if(vm.getLoggedIn() != null) {
+//			ArrayList<Post> myPosts = new ArrayList<Post> ();
+//			for (Post post: allPostsList.getItems()) {
+//				if (vm.getLoggedIn().getPosts().contains(post.getPageID())) {
+//					myPosts.add(post);
+//				}
+//			}
+//			ObservableList<Post> myObservablePosts = FXCollections.observableList(myPosts);
+//			allPostsList.setItems(myObservablePosts);
+//		}
 	}
 	
     @FXML

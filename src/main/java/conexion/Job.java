@@ -43,7 +43,7 @@ public class Job extends Post{
 	}
 
 	@Override
-	public String toString() {
+	public String toString() { 
 		return "Job: " + this.getPostTitle();
 	}
 

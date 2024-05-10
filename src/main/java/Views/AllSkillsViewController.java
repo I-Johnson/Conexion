@@ -109,16 +109,16 @@ public class AllSkillsViewController {
 	
 	@FXML
 	void onClickShowOnlyMySkills(ActionEvent event) {
-		if(vm.getLoggedIn() != null) {
-			ArrayList<Skill> mySkills = new ArrayList<Skill> ();
-			for (Skill skill: allSkillsList.getItems()) {
-				if (vm.getLoggedIn().getSkills().contains(skill.getPageID())) {
-					mySkills.add(skill);
-				}
-			}
-			ObservableList<Skill> myObservableSkills = FXCollections.observableList(mySkills);
-			allSkillsList.setItems(myObservableSkills);
-		}
+//		if(vm.getLoggedIn() != null) {
+//			ArrayList<Skill> mySkills = new ArrayList<Skill> ();
+//			for (Skill skill: allSkillsList.getItems()) {
+//				if (vm.getLoggedIn().getSkills().contains(skill.getPageID())) {
+//					mySkills.add(skill);
+//				}
+//			}
+//			ObservableList<Skill> myObservableSkills = FXCollections.observableList(mySkills);
+//			allSkillsList.setItems(myObservableSkills);
+//		}
 	}
 	
 	private final AllSkillsViewController itemShower;

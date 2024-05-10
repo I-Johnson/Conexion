@@ -121,7 +121,7 @@ public class Post extends Page{
 		post.getPosts().add(this.getPageID());
 		RestMain client = RestMain.getInstance();
 		client.updatePage(this); 
-		client.updatePage(post);
+		client.updatePage(post); 
 		
 	}
 	@Override

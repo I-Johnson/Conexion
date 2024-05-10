@@ -33,12 +33,11 @@ class RestMainTest {
 	
 	public Post SWESenior_Job_Article;
 	
-//	public Post RWilliamsPost1;
 	public Post SWE_Principles_Post;
 	
 	public Job NetflixJob1;
 	public Job NetflixJob2;
-	public Job NetflixJob3;
+	public Job NetflixJob3; 
 	
 	public RecommendAll recommendAll;
 	public RecommendBest recommendBest;
@@ -143,11 +142,7 @@ class RestMainTest {
 			
 			RWilliams.addSkill(cloudComputing);
 			RWilliams.addSkill(mern);
-			RWilliams.addSkill(springMVC);
-			
-			 
-//			RWilliamsPost1 = RWilliams.post("Centre College Good", "March 31st", "no_body_available");
-			
+			RWilliams.addSkill(springMVC);			
 			
 			
 			KMiles = new Person(idGenerator, "Ken Miles", "FordIsBest", "Miles@ford.com", "Best Driver", 1, 
@@ -157,13 +152,10 @@ class RestMainTest {
 			KMiles.addSkill(cloudComputing);
 			
 			SWESenior_Job_Article = KMiles.post("Have fun in life", "March 31", "BODY");
-//			KMiles.po
 			
 			
 			Netflix = new Employer(idGenerator, "Netflix", "No Sharing", "careers@netflix.com", "Finest Software Engineering", "Headquarters");
-			
-//			SWEAssociate_Job = new Job(idGenerator, "Software Engineering Associate", "April 1", "JobDesc", Netflix.getPageID(), 2, "Bachelors", "Computer Science");
-			
+						
 			NetflixJob1 = Netflix.postJob(3, "Masters", "Computer Science", "SWE Senior", "April1", "job Description");
 			NetflixJob1.addSkill(cloudComputing);
 			NetflixJob1.addSkill(mern);
@@ -189,7 +181,7 @@ class RestMainTest {
 
 		 //Job
 		 SWEAssociate_Job  = Netflix.postJob(2, "Bachelors", "Computer Science", "Software Engineering Associate", "May 11", "Job Desc");
-		 SWE_Principles_Post = Sundar.post("SWE Job Article", "March 31", "BODY");
+		 SWE_Principles_Post = Netflix.post("SWE Job Article", "March 31", "BODY");
 				 
 		server.addPage(mern);
 		server.addPage(SWESenior_Job_Article);
