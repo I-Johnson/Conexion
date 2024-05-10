@@ -9,7 +9,7 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Views.AllPostsViewController">
    <top>
-      <Label fx:id="postTitle" prefHeight="35.0" prefWidth="245.0" text="Post Name" textAlignment="JUSTIFY" BorderPane.alignment="CENTER">
+      <Label id="title" fx:id="postTitle" prefHeight="35.0" prefWidth="245.0" text="Post Name" textAlignment="JUSTIFY" BorderPane.alignment="CENTER">
          <font>
             <Font size="19.0" />
          </font>
@@ -18,15 +18,15 @@
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Label fx:id="postDescriptionLabel" layoutX="57.0" layoutY="57.0" prefHeight="126.0" prefWidth="384.0" text="Text" />
-            <Button fx:id="postEditButton" layoutX="487.0" layoutY="14.0" mnemonicParsing="false" onAction="#onClickEditPostPage" prefHeight="26.0" prefWidth="56.0" text="Edit " />
+            <Label id="description" fx:id="postDescriptionLabel" layoutX="57.0" layoutY="57.0" prefHeight="126.0" prefWidth="384.0" text="Text" />
+            <Button id="edit" fx:id="postEditButton" layoutX="487.0" layoutY="14.0" mnemonicParsing="false" onAction="#onClickEditPostPage" prefHeight="26.0" prefWidth="56.0" text="Edit " />
             <VBox layoutX="465.0" layoutY="83.0" prefHeight="200.0" prefWidth="100.0">
                <children>
                   <Label text="Related Pages" />
-                  <Button fx:id="relatedJob" mnemonicParsing="false" onAction="#onClickRelatedJob" text="Job" />
-                  <Button fx:id="relatedSkill" mnemonicParsing="false" onAction="#onClickRelatedSkill" text="Skill" />
-                  <Button fx:id="relatedPerson" mnemonicParsing="false" onAction="#onClickRelatedPerson" text="Person" />
-                  <Button fx:id="relatedEmployer" mnemonicParsing="false" onAction="#onClickRelatedEmployer" text="Employer" />
+                  <Button id="job" fx:id="relatedJob" mnemonicParsing="false" onAction="#onClickRelatedJob" text="Job" />
+                  <Button id="skill" fx:id="relatedSkill" mnemonicParsing="false" onAction="#onClickRelatedSkill" text="Skill" />
+                  <Button id="person" fx:id="relatedPerson" mnemonicParsing="false" onAction="#onClickRelatedPerson" text="Person" />
+                  <Button id="employer" fx:id="relatedEmployer" mnemonicParsing="false" onAction="#onClickRelatedEmployer" text="Employer" />
                </children>
             </VBox>
          </children>

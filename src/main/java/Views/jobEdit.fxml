@@ -23,15 +23,15 @@
       <VBox layoutX="487.0" layoutY="89.0" prefHeight="200.0" prefWidth="100.0">
                <children>
                   <Label prefHeight="17.0" prefWidth="97.0" text="Add Pages" />
-                  <Button fx:id="addSkillButton" mnemonicParsing="false" onAction="#onClickAddSkill" text="Skill" />
-                  <Button fx:id="addPersonButton" mnemonicParsing="false" onAction="#onClickAddPerson" text="Person" />
-                  <Button fx:id="addEmployerButton" mnemonicParsing="false" onAction="#onClickAddEmployer" text="Employer" />
-                  <Button fx:id="addPostButton" mnemonicParsing="false" onAction="#onClickAddPosts" text="Posts" />
-                  <Button fx:id="addJobButton" mnemonicParsing="false" onAction="#onClickAddJobs" text="Jobs" />
+<!--                   <Button id="addJob" fx:id="addJobs" mnemonicParsing="false" onAction="#onClickAddJobs" text="Job" /> -->
+	               <Button id="addSkill" fx:id="addSkill" mnemonicParsing="false" onAction="#onClickAddSkill" text="Skill" /> 
+                  <Button id="addEmployer" fx:id="addEmployer" mnemonicParsing="false" onAction="#onClickAddEmployer" text="Employer" />
+                  <Button id="addPost" fx:id="addPost" mnemonicParsing="false" onAction="#onClickAddPosts" text="Post" />
+                   <Button id = "addUser" fx:id="addPerson" mnemonicParsing="false" onAction="#onClickAddPerson" text="Person" />
                </children>
             </VBox>
-      <TextField fx:id="jobNameTextField" layoutX="140.0" layoutY="44.0" prefHeight="29.0" prefWidth="193.0" />
-      <TextArea fx:id="jobDescriptionTextField" layoutX="137.0" layoutY="107.0" prefHeight="161.0" prefWidth="329.0" />
-      <Button fx:id="jobEditSave" layoutX="263.0" layoutY="316.0" mnemonicParsing="false" onAction="#onClickJobEditSave" prefHeight="29.0" prefWidth="74.0" text="Save" />
+      <TextField id = "titleText" fx:id="jobNameTextField" layoutX="140.0" layoutY="44.0" prefHeight="29.0" prefWidth="193.0" />
+      <TextArea id = "descriptionText" fx:id="jobDescriptionTextField" layoutX="137.0" layoutY="107.0" prefHeight="161.0" prefWidth="329.0" />
+      <Button id="save" fx:id="jobEditSave" layoutX="263.0" layoutY="316.0" mnemonicParsing="false" onAction="#onClickJobEditSave" prefHeight="29.0" prefWidth="74.0" text="Save" />
    </children>
 </AnchorPane>

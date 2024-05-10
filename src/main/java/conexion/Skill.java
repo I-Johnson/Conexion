@@ -30,17 +30,17 @@ public class Skill extends Page{
 	public String getSkillName() {
 		return skillName;
 	}
-
+ 
 	public void setSkillName(String skillName) { 
 		this.skillName = skillName;
 	}
 	
 	@Override
 	public void addSkill(Skill skill) {
-		this.getSkills().add(skill.getPageID());
 		if (skill!=this) {
-			skill.getSkills().add(this.getPageID());
-		}
+			this.getSkills().add(skill.getPageID());
+		}	
+		skill.getSkills().add(this.getPageID());
 		RestMain client = RestMain.getInstance();
 		client.updatePage(this);
 		client.updatePage(skill);
@@ -58,7 +58,6 @@ public class Skill extends Page{
 	public void addEmployer(Employer employer) {
 
 		this.getEmployers().add(employer.getPageID());
-		
 		employer.getSkills().add(this.getPageID());
 		RestMain client = RestMain.getInstance();
 		client.updatePage(this);
@@ -71,7 +70,7 @@ public class Skill extends Page{
 		RestMain client = RestMain.getInstance();
 		client.updatePage(this);
 		client.updatePage(person);
-	}
+	} 
 	@Override
 	public void addJob(Job job) {
 		this.getJobs().add(job.getPageID());
@@ -80,15 +79,16 @@ public class Skill extends Page{
 		client.updatePage(this);
 		client.updatePage(job);
 	}
+	
 
 	@Override
 	public String toString() {
-		return "Skill [skillName=" + skillName + "]";
+		return "Skill: " + skillName ;
 	}
 
 	@Override
 	public int hashCode() {
-		final int prime = 31;
+		final int prime = 31; 
 		int result = super.hashCode();
 		result = prime * result + Objects.hash(skillName);
 		return result;

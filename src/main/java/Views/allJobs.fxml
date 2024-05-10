@@ -11,12 +11,12 @@
    <top>
       <VBox alignment="TOP_CENTER" prefHeight="297.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <Label id="allJobsTitle" text="Job Openings" textAlignment="CENTER">
+            <Label id="allPagesTitle" text="Job Openings" textAlignment="CENTER">
                <font>
                   <Font name="Courier New Bold" size="22.0" />
                </font>
             </Label>
-            <ListView fx:id="allJobsList" prefHeight="214.0" prefWidth="560.0" />
+            <ListView id = "allPagesList" fx:id="allJobsList" prefHeight="214.0" prefWidth="560.0" />
          </children>
          <padding>
             <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />

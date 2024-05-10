@@ -23,10 +23,11 @@
             <VBox layoutX="473.0" layoutY="63.0" prefHeight="200.0" prefWidth="100.0">
                <children>
                   <Label text="RelatedPages" />
-                  <Button id="job" fx:id="relatedJob" mnemonicParsing="false" onAction="#onClickRelatedJobs" text="Job" />
-                  <Button id="skill" fx:id="relatedSkill" mnemonicParsing="false" onAction="#onClickRelatedSkills" text="Skill" />
-                  <Button id = "employer" fx:id="relatedEmployer" mnemonicParsing="false" onAction="#onClickRelatedEmployer" text="Employer" />
-                  <Button id = "post" fx:id="relatedPosts" mnemonicParsing="false" onAction="#onClickRelatedPosts" text="Post" />
+                  <Button id="job" fx:id="relatedJob" mnemonicParsing="false" onAction="#onClickRelatedJobs" text="Jobs" />
+                  <Button id="skill" fx:id="relatedSkill" mnemonicParsing="false" onAction="#onClickRelatedSkills" text="Skills" />
+                  <Button id = "employer" fx:id="relatedEmployer" mnemonicParsing="false" onAction="#onClickRelatedEmployer" text="Employers" />
+                  <Button id = "post" fx:id="relatedPosts" mnemonicParsing="false" onAction="#onClickRelatedPosts" text="Posts" />
+                  <Button id = "user" fx:id="relatedUsers" mnemonicParsing="false" onAction="#onClickRelatedUsers" text="Users" />
                </children>
             </VBox>
             <Button id = "signOut" fx:id="signOut" layoutX="473.0" layoutY="300.0" mnemonicParsing="false" onAction="#onClickSignOut" text="Sign Out" />

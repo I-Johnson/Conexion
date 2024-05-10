@@ -139,11 +139,11 @@ public class Person extends User{
 		if(this != person) {
 			this.getPersons().add(person.getPageID());
 		}
-		person.getSkills().add(this.getPageID());
+		person.getPersons().add(this.getPageID());
 		RestMain client = RestMain.getInstance();
 		client.updatePage(this);
 		client.updatePage(person);
-	}
+	} 
 	
 	@Override
 	public void addJob(Job job) {
@@ -155,12 +155,32 @@ public class Person extends User{
 	}
 	
 	@Override
+	public void addSkill(Skill skill) {
+		this.getSkills().add(skill.getPageID());
+		skill.getPersons().add(this.getPageID());
+		RestMain client = RestMain.getInstance();
+		client.updatePage(this);
+		client.updatePage(skill);
+	}
+
+	@Override
+	public void addPost(Post post) {
+		this.getPosts().add(post.getPageID());
+		post.getPersons().add(this.getPageID());
+		RestMain client = RestMain.getInstance();
+		client.updatePage(this);
+		client.updatePage(post);
+	}
+	
+
+	@Override
 	public void addEmployer(Employer employer) {
 		this.getEmployers().add(employer.getPageID());
-		employer.getPersons().add(this.getPageID());
+		employer.getPersons().add(this.getPageID()); 
 		RestMain client = RestMain.getInstance();
 		client.updatePage(this);
 		client.updatePage(employer);
 	}
+	
 
 }

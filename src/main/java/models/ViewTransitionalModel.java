@@ -431,19 +431,20 @@ public class ViewTransitionalModel implements ViewTransitionModelInterface {
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(ViewTransitionalModel.class.getResource("/Views/postEdit.fxml"));
 		RestMain client = RestMain.getInstance();
-		Post myPost = client.getPost(id).data(); // add edit permissions later!!
+		Post myPost = client.getPost(id).data(); 
 		Text text = new Text();
 		
 		try {
+			System.out.println("lkajfd");
 			Node view = loader.load();
 			mainview.setCenter(view);
 			AllPostsViewController cont = loader.getController();
 			cont.setPost(myPost);
 			cont.setPostViewModel(this);
 			cont.setInfo(text);
-			cont.setEditInfo();
+			cont.setEditInfo(); 
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			// TODO Auto-generated catch block 
 			e.printStackTrace();
 		}
 
@@ -819,7 +820,7 @@ public class ViewTransitionalModel implements ViewTransitionModelInterface {
 	
 		}
 	
-	@Override
+	@Override 
 	public void login(String email, String password) {
 		IDGenerator idGenerator = IDGenerator.getInstance();
 		boolean found = false;

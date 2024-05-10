@@ -51,7 +51,7 @@ public class AllEmployersViewController {
 
 
 	public void setInfo(Text info) {
-		this.info = info;
+		this.info = info; 
 	}
 	
 	public Employer getEmployer() {
@@ -67,7 +67,6 @@ public class AllEmployersViewController {
 	
 	public void setEmployerViewModel(ViewTransitionalModel vm) {
 		this.vm = vm;
-//		this.employer = (Employer) vm.getLoggedIn();
 	}
 	
 	

@@ -41,7 +41,7 @@ public class AllSkillsViewController {
 
 	public Text getInfo() {
 		return info;
-	}
+	} 
 
 
 

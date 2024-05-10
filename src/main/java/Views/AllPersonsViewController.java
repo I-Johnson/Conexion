@@ -178,7 +178,16 @@ public class AllPersonsViewController {
 
     @FXML
     private Button relatedSkill;
+    
+    @FXML
+    private Button relatedUsers;
 
+    
+    @FXML
+    void onClickRelatedUsers(ActionEvent event) {
+    	vm.showAllPersons(person);
+    }
+    
     @FXML
     void onClickRelatedEmployer(ActionEvent event) {
     	vm.showAllEmployers(person);

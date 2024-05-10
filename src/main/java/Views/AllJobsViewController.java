@@ -227,19 +227,16 @@ public class AllJobsViewController
 	    }
 	    
 	    @FXML
-	    private Button addEmployerButton;
+	    private Button addEmployer;
 
 	    @FXML
-	    private Button addSkillButton;
+	    private Button addSkill;
 
 	    @FXML
-	    private Button addPersonButton;
+	    private Button addPerson;
 
 	    @FXML
-	    private Button addPostButton;
-
-	    @FXML
-	    private Button addJobButton;
+	    private Button addPost;
 	    
 	    @FXML
 	    void onClickAddJobs(ActionEvent event) {

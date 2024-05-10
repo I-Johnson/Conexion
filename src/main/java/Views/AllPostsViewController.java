@@ -78,7 +78,6 @@ public class AllPostsViewController
 	
 	public void setPostViewModel(ViewTransitionalModel vm) {
 		this.vm = vm;
-
 		
 	}
     
@@ -89,7 +88,7 @@ public class AllPostsViewController
 	@FXML 
 	private Button myPostsButton;
 	
-	@FXML
+	@FXML 
 	void onClickShowOnlyMyPosts(ActionEvent event) {
 		if(vm.getLoggedIn() != null) {
 			ArrayList<Post> myPosts = new ArrayList<Post> ();
@@ -119,8 +118,7 @@ public class AllPostsViewController
 //    	System.out.print(post.getEditors());
     	
     	if (post.has_permission(vm.getLoggedIn())) {
-    		System.out.print("lkja");
-    		vm.showEditJob(post.getPageID());
+    		vm.showEditPost(post.getPageID());
     	}
     }
 	

@@ -33,7 +33,7 @@ public abstract class Page {
 		this.employers = new ArrayList<String> ();
 		this.persons = new ArrayList<String> ();
 		
-	}
+	} 
 	
 	//defualt constructor so that json stops with all its crap
 	public Page() {

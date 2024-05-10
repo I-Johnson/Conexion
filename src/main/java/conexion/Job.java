@@ -130,7 +130,7 @@ public class Job extends Post{
 				+ Objects.hash(applicants, postAttachments, requiredDegree, requiredExperience, requiredMajor);
 		return result;
 	}
-
+ 
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -148,6 +148,54 @@ public class Job extends Post{
 //	public void addPostAttachment(String string) {
 //		this.postAttachments.add(string);
 //	}
+	@Override
+	public void addJob(Job job) {
+		
+		if(this != job) {
+			this.getJobs().add(job.getPageID());
+		}
+		job.getJobs().add(this.getPageID());
+		RestMain client = RestMain.getInstance();
+		client.updatePage(this);
+		client.updatePage(job);
+	}
+	
+	@Override
+	public void addPerson(Person person) {
+		this.getPersons().add(person.getPageID());
+		person.getJobs().add(this.getPageID());
+		RestMain client = RestMain.getInstance();
+		client.updatePage(this);
+		client.updatePage(person);
+	}
+	
+	@Override
+	public void addSkill(Skill skill) {
+		this.getSkills().add(skill.getPageID());
+		skill.getJobs().add(this.getPageID());
+		RestMain client = RestMain.getInstance();
+		client.updatePage(this);
+		client.updatePage(skill);
+	}
+
+	@Override
+	public void addPost(Post post) {
+		this.getPosts().add(post.getPageID());
+		post.getJobs().add(this.getPageID());
+		RestMain client = RestMain.getInstance();
+		client.updatePage(this);
+		client.updatePage(post);
+	}
+	
+
+	@Override
+	public void addEmployer(Employer employer) {
+		this.getEmployers().add(employer.getPageID());
+		employer.getJobs().add(this.getPageID()); 
+		RestMain client = RestMain.getInstance();
+		client.updatePage(this);
+		client.updatePage(employer);
+	}
 	
 	
 	

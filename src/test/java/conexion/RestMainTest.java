@@ -50,7 +50,6 @@ class RestMainTest {
 		server = new RestMain(); 
 		idGenerator = new IDGenerator();
 		
-
 	}
 	
 	public void testPageRemoval(String id, RestMain server) {
@@ -105,7 +104,7 @@ class RestMainTest {
 	     server.makeClass("Post"); // /posts
 	     server.makeClass("Skill"); // /skill
 	     server.makeClass("User"); // /user
-	     server.makeClass("Person");// /person
+	     server.makeClass("Person");// /person 
 	     server.makeClass("Employer"); // /employer
 	     server.makeClass("Job"); // /job
 	     server.makeClass("pageCounter");
@@ -169,15 +168,17 @@ class RestMainTest {
 			NetflixJob1.addSkill(cloudComputing);
 			NetflixJob1.addSkill(mern);
 			NetflixJob1.addSkill(springMVC);
+			Netflix.addJob(NetflixJob1);
 			
 			
 			NetflixJob2 = Netflix.postJob(1, "Bachelors", "Computer Science", "SWE Associate", "May 20", "job Description");
 			NetflixJob2.addSkill(springMVC);
+			Netflix.addJob(NetflixJob2);
 			
 			NetflixJob3 = Netflix.postJob(4, "Masters", "Computer Science", "SWE Principal", "April 18", "job Description");
 			NetflixJob3.addSkill(cloudComputing);
 			NetflixJob3.addSkill(mern);
-			
+			Netflix.addJob(NetflixJob3);
 //			Netflix.addPost(SWEAssociate_Job);
 			
 //			Netflix.addPost(SWESenior_Job_Article); 
@@ -265,7 +266,7 @@ class RestMainTest {
 			
 			assertTrue(KMiles.getRecommendedJobs().contains(SWEAssociate_Job.getPageID()));
 			assertTrue(RWilliams.getRecommendedJobs().contains(SWEAssociate_Job.getPageID()));
-			
+			 
 			//RecommendSkilled
 			recommendSkilled = new RecommendSkilled();
 			recommendSkilled.sendRecommendation(NetflixJob1);
@@ -285,7 +286,7 @@ class RestMainTest {
 			Sundar = server.getPerson(Sundar.getPageID()).data();
 			
 			assertFalse(KMiles.getRecommendedJobs().contains(NetflixJob3.getPageID()));
-			assertFalse(RWilliams.getRecommendedJobs().contains(NetflixJob3.getPageID()));
+			assertFalse(RWilliams.getRecommendedJobs().contains(NetflixJob3.getPageID())); 
 			assertTrue(Sundar.getRecommendedJobs().contains(NetflixJob3.getPageID()));
 			
 			

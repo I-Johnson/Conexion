@@ -9,7 +9,6 @@ public class AddJobCellController extends JobCellController{
     void OnClickJob(MouseEvent event) {
     	if(model.getItem() != null) {
     		parent.addJob(model.getItem());
-    		
-    	}
+    	} 
     }
 }

@@ -42,10 +42,28 @@ public class Employer extends User{
 	@Override
 	public void addPerson(Person person) {
 		this.getPersons().add(person.getPageID());
-		person.getSkills().add(this.getPageID());
+		person.getEmployers().add(this.getPageID());
 		RestMain client = RestMain.getInstance();
 		client.updatePage(this);
 		client.updatePage(person);
+	} 
+	
+	@Override
+	public void addSkill(Skill skill) {
+		this.getSkills().add(skill.getPageID());
+		skill.getEmployers().add(this.getPageID());
+		RestMain client = RestMain.getInstance();
+		client.updatePage(this);
+		client.updatePage(skill);
+	}
+	
+	@Override
+	public void addPost(Post post) {
+		this.getPosts().add(post.getPageID());
+		post.getEmployers().add(this.getPageID());
+		RestMain client = RestMain.getInstance();
+		client.updatePage(this);
+		client.updatePage(post);
 	} 
 	
 	@Override
@@ -77,7 +95,7 @@ public class Employer extends User{
 		return newJob;
 	}
 
-	@Override
+	@Override 
 	public int hashCode() {
 		final int prime = 31;
 		int result = super.hashCode();
