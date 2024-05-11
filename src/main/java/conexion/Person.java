@@ -30,7 +30,7 @@ public class Person extends User{
 		this.personMajor = personMajor;
 		this.recommendedJobs = new ArrayList<String>();
 	} 
-	
+	 
 	public Person() {
 		super();
 		this.yearsOfExperience = 0;

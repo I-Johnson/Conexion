@@ -3,7 +3,7 @@ package models;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
-
+import java.util.Stack;
 
 import Views.AllEmployersViewController;
 import Views.AllJobsViewController;
@@ -38,6 +38,7 @@ public class ViewTransitionalModel implements ViewTransitionModelInterface {
 	RestMain client = RestMain.getInstance();
 	BorderPane  mainview;
 	Page current;
+	private Stack<String> historyStack = new Stack<>();
 	public ViewTransitionalModel(BorderPane view) {
 		mainview = view;
 		loggedIn = null;
@@ -55,8 +56,7 @@ public class ViewTransitionalModel implements ViewTransitionModelInterface {
 	@Override
 	public void showAllEmployers() {
 		// TODO Auto-generated method stub
-
-		FXMLLoader loader = new FXMLLoader();
+		FXMLLoader loader = new FXMLLoader();							
 		loader.setLocation(ViewTransitionalModel.class.getResource("/Views/allEmployers.fxml"));
 		try {
 			ListEmployer listEmployer = new ListEmployer();
@@ -72,6 +72,42 @@ public class ViewTransitionalModel implements ViewTransitionModelInterface {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+	}
+	
+	public void navigateTo(String viewName) {
+		historyStack.push(viewName);
+		switch (viewName) {
+		case "allJobs": 
+			showAllJobs();
+			break;
+		case "allEmployers" :
+			showAllEmployers();
+			break;
+		case "allPosts":
+			showAllPosts();
+			break;
+		case "allSkills": 
+			showAllSkills();
+			break;
+//		case "privateSinglePersonPage":
+//			showSinglePerson();
+//			break;
+		}
+	}
+	
+	public void showPreviousPage() {
+		if (!historyStack.isEmpty()) {
+			historyStack.pop();
+			if(!historyStack.isEmpty()) {
+				String previousView = historyStack.peek();
+				navigateTo(previousView);
+			}
+		}
+	}
+	
+	@Override
+	public void showBackPage() {
 		
 	}
 	@Override

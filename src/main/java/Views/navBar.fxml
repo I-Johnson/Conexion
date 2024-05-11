@@ -19,6 +19,7 @@
                   <Button id="Users" mnemonicParsing="false" onAction="#onClickUsers" text="Users" />
                   <Button id="Skills" mnemonicParsing="false" onAction="#onClickSkills" text="Skills" />
                   <Button id="Posts" mnemonicParsing="false" onAction="#onClickPosts" text="Posts" />
+                  <Button id="Back" mnemonicParsing="false" text="Back" onAction="#onClickBack"/>
               </buttons>
                <padding>
                   <Insets bottom="80.0" />

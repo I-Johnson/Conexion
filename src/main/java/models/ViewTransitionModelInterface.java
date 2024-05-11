@@ -9,6 +9,7 @@ public interface ViewTransitionModelInterface {
 	public User getLoggedIn();
 	public void showHome();
 	public void showAllEmployers();
+	public void showBackPage();
 	public void showAllJobs();
 	public void showAllSkills();
 	public void showAllPosts();

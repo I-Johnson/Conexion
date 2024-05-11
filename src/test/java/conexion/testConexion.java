@@ -39,7 +39,7 @@ class testConexion {
 		RWilliams = new Person(idGenerator, "Robin", "Williams", "robin@princeton.edu", "GreatestActor", 4, 
 				"Masters", "PrincetonU", "Computer Science");
 		
-		RWilliams.getSkills().add(springMVC.getPageID());
+		RWilliams.getSkills().add(springMVC.getPageID()); 
 		RWilliams.getSkills().add(cloudComputing.getPageID());
 		RWilliams.addSkill(mern);
 		 
@@ -150,7 +150,7 @@ class testConexion {
 		assertEquals(true, Netflix.editAttempt(SWEAssociate_Job));
 		assertEquals(true, KMiles.viewAttempt(Netflix));
 		assertEquals(true, KMiles.viewAttempt(KMiles)); 
-		
+		 
 	}
 	
 	public void RecommendationTest(){
