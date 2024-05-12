@@ -3,7 +3,7 @@ Conexion is a specialized networking platform tailored for Computer Scientists, 
 Inspired by LinkedIn, Conexion leverages a robust tech stack and follows best practices in software development to deliver a secure, scalable, and user-friendly experience.
 
 ## Features
-- **Professional Profiles: **Users can create and customize their profiles with details such as education, work experience, skills, and more.
+- **Professional Profiles:** Users can create and customize their profiles with details such as education, work experience, skills, and more.
 - **Networking:** Facilitates connections between computer scientists, allowing for networking opportunities.
 - **Job Listings:** Users can browse and apply for jobs, and employers can post job opportunities.
 - **RESTful API:** A comprehensive REST API for seamless integration and automation of platform functionalities.
