@@ -9,9 +9,9 @@ Inspired by LinkedIn, Conexion leverages a robust tech stack and follows best pr
 - **RESTful API:** A comprehensive REST API for seamless integration and automation of platform functionalities.
 ## Technologies Used
 - **JavaFX & SceneBuilder**: For creating a responsive and intuitive user interface.
-- **JUnit & TestFX**: Employed for rigorous backend and frontend testing to ensure reliability and performance.
+- **JUnit & TestFX**: Employed for rigorous backend and frontend testing (functional and unit tests) to ensure reliability and performance.
 - **Eclipse:** The primary IDE used for developing the project.
 - **Git**: For version control, ensuring a collaborative and iterative approach to development.
-- **Design Patterns & OOP Principles:** Ensured a robust and maintainable codebase that is easy to extend and manage.
+- **Design Patterns & OOP Principles:** Ensured a robust and maintainable codebase that is easy to extend and manage using various design patterns such as Strategy, Template, Command, Factory etc.
 - **MVC Pattern:** Followed the Model-View-Controller (MVC) design pattern to separate concerns and enhance modularity.
 - **Agile Practices:** Project managed with Agile methodologies to adapt rapidly to changes and continuously improve.
